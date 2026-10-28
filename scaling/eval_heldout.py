@@ -53,7 +53,11 @@ def main(
     policy, cfg = load_policy_from_checkpoint(ckpt, device)
     out_dir.mkdir(parents=True, exist_ok=True)
     common = dict(device=device, num_envs=num_envs, future_frames=cfg["env"]["future_frames"], obs_mode=obs_mode_from_config(cfg))
-    summary_all = {"ckpt": str(ckpt)}
+    # merge into an existing summary, so sets evaluated in separate passes (held-out now, training sample later)
+    # end up in one file
+    prev = out_dir / "summary.json"
+    summary_all = json.loads(prev.read_text()) if prev.exists() else {}
+    summary_all["ckpt"] = str(ckpt)
     print(f"held-out sets: {[item.split('=', 1)[0] for item in library]}", flush=True)
     for item in library:
         name, path = item.split("=", 1)

@@ -91,3 +91,13 @@ done
 uv run python scaling/wm_error.py --ckpt $DATA/logs/{D1,D7,D40,Dall}/ckpt_0040000.pt \
     --windows "$DATA/results/*/ckpt_0040000/*_windows.pt" --out $DATA/results/wm_error_0040000.json
 ```
+
+## 7. Training-motion evaluation, pooled world-model error, figures (one GPU pod, after all runs)
+
+```bash
+DATA=/workspace/data bash scaling/post_runs.sh
+```
+
+Evaluates a fixed sample of each run's own training clips (up to 2000, 10 s segments) at every checkpoint, scores
+every run's world model on the pooled held-out windows at every checkpoint step, then writes `results.md`,
+`results.json` and four figures to `$DATA/analysis`. Every step skips work already done, so it can be rerun.

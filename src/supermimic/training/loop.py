@@ -312,6 +312,10 @@ class Trainer:
                 self.save(f"ckpt_h{h:g}.pt")
                 if self.is_main:
                     print(f"[INFO] {h:g} h checkpoint at iteration {self.iteration}", flush=True)
+            if sch.stop_iteration is not None and self.iteration >= sch.stop_iteration:
+                if self.is_main:
+                    print(f"[INFO] stop_iteration {sch.stop_iteration} reached, stopping", flush=True)
+                break
             if sch.max_hours is not None and self.iteration % sch.log_interval == 0:
                 stop = float((time.time() - t_start) / 3600 > sch.max_hours)
                 if self.world > 1:

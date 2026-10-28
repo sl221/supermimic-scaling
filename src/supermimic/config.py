@@ -68,6 +68,9 @@ class ScheduleCfg:
     checkpoint_interval: int = 4000  # iterations
     checkpoint_at_hours: tuple[float, ...] = ()  # extra ckpt_h{X}.pt when training time first passes X hours
     max_hours: float | None = None
+    # Stop early at this iteration while the learning-rate schedule still follows total_iterations
+    # (scaling study: 40k iterations on the paper's 320k-iteration cosine schedule).
+    stop_iteration: int | None = None
 
 
 @dataclass

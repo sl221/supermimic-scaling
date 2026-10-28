@@ -48,9 +48,13 @@ def load_policy_from_checkpoint(path: str | Path, device: str) -> tuple[Policy, 
 
 
 @torch.no_grad()
-def run_benchmark(policy: Policy, npz_files: list[str], device: str = "cuda:0", num_envs: int | None = None, future_frames: int = 10, verbose: bool = True, obs_mode: str = "proprio_only", compact_library: bool = False, num_clips: int | None = None) -> list[ClipResult]:
+def run_benchmark(policy: Policy, npz_files: list[str], device: str = "cuda:0", num_envs: int | None = None, future_frames: int = 10, verbose: bool = True, obs_mode: str = "proprio_only", compact_library: bool = False, num_clips: int | None = None, record_transitions: bool = False, replay_capacity: int = 1000, on_finish=None) -> list[ClipResult]:
     """``npz_files`` is a list of clip npz files, or ``[library.pt]`` with ``compact_library=True`` (then pass
-    ``num_clips``, the library's clip count, to size the env pool)."""
+    ``num_clips``, the library's clip count, to size the env pool).
+
+    ``record_transitions`` keeps every simulator transition in the env's replay buffer (size it with
+    ``replay_capacity`` rows per env so nothing is overwritten); ``on_finish(env)`` runs before the env closes,
+    e.g. to sample k-step windows from that buffer for world-model error."""
     num_envs = min(num_envs or 1024, num_clips if compact_library else len(npz_files))
     args = SuperMimicEnvCfgArgs(
         npz_files=npz_files,
@@ -62,7 +66,8 @@ def run_benchmark(policy: Policy, npz_files: list[str], device: str = "cuda:0", 
         reset_noise=False,
         domain_randomization=False,
         sampling_mode="start",
-        record_transitions=False,
+        record_transitions=record_transitions,
+        replay_capacity=replay_capacity,
         seed=0,
         obs_mode=obs_mode,
         compact_library=compact_library,
@@ -125,6 +130,8 @@ def run_benchmark(policy: Policy, npz_files: list[str], device: str = "cuda:0", 
                 ret_sum[ids] = 0.0
                 term_sum[ids] = 0.0
                 steps[ids] = 0
+        if on_finish is not None:
+            on_finish(env)
         return [results[i] for i in range(n_clips)]
     finally:
         env.close()

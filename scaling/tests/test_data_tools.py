@@ -10,7 +10,7 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from make_splits import split  # noqa: E402
+from make_splits import motion_group, split  # noqa: E402
 from make_subsets import nested_prefixes  # noqa: E402
 from segment_library import segment, segment_bounds  # noqa: E402
 
@@ -73,3 +73,28 @@ def test_segment_library_keeps_every_frame_in_order():
     assert torch.equal(out["ref"], ref)
     for s, l, n in zip(out["starts"], out["lengths"], out["names"]):
         assert out["ref"][s : s + l].shape[0] == l, n
+
+
+def test_mirrors_share_a_motion_group_and_never_leak():
+    assert motion_group("body_check_M", "_M") == "body_check" and motion_group("body_check", "_M") == "body_check"
+    lengths, meta = synthetic()
+    # give every clip a mirror with the same performer, as BONES-SEED does
+    for n in list(lengths):
+        lengths[n + "_M"] = lengths[n]
+        meta[n + "_M"] = meta[n]
+    s = split(lengths, meta, target_clips=300, seed=0)
+    train = set(s["train_pool"])
+    for held in ("heldout_motion", "heldout_performer"):
+        for n in s[held]:
+            twin = n[:-2] if n.endswith("_M") else n + "_M"
+            assert twin not in train, (held, n)
+
+
+def test_large_motion_groups_are_never_held_out():
+    lengths, meta = synthetic()
+    for i in range(500):  # one very common motion
+        lengths[f"common{i:03d}"] = 300
+        meta[f"common{i:03d}"] = (f"p{i % 40}", "common")
+    for seed in range(5):
+        s = split(lengths, meta, target_clips=300, seed=seed, max_motion_clips=100)
+        assert "common" not in s["_held_motions"]

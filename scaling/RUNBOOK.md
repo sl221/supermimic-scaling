@@ -32,12 +32,12 @@ Check: about 129,500 clips and 263 h.
 ## 2. Held-out splits and nested subsets
 
 ```bash
-uv run python scaling/make_splits.py --library $DATA/lib/bones_all.pt --metadata $DATA/raw/metadata/seed_metadata_v004.csv --out-dir $DATA/splits --show-columns
-# pick the performer and motion-group columns from that list, then:
-uv run python scaling/make_splits.py --library $DATA/lib/bones_all.pt --metadata $DATA/raw/metadata/seed_metadata_v004.csv --out-dir $DATA/splits \
-    --performer-col <col> --motion-col <col>
+uv run python scaling/make_splits.py --library $DATA/lib/bones_all.pt --metadata $DATA/raw/metadata/seed_metadata_v004.csv --out-dir $DATA/splits
 uv run python scaling/make_subsets.py --library $DATA/lib/bones_all.pt --train-pool $DATA/splits/train_pool.txt --out-dir $DATA/subsets --hours 1 7 40
 ```
+
+Defaults: performer = `actor_uid`, motion group = `content_name` with the mirror suffix `_M` stripped (a take and its
+mirror are held out together), motions with more than 100 clips never held out.
 
 Check: no clip in two sets (the script guarantees it; `splits_report.json` shows the counts); subsets nested.
 

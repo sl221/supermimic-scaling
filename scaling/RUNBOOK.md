@@ -65,7 +65,7 @@ uv run python scaling/segment_library.py --library $DATA/lib/lafan1.pt --out $DA
 uv run sm-train --run-name smoke --data.library $DATA/lib/train_D1.pt --env.obs-mode beyondmimic_seq \
     --schedule.stop-iteration 1000 --schedule.checkpoint-interval 500
 uv run python scaling/eval_heldout.py --ckpt logs/smoke/ckpt_0001000.pt --out-dir results/smoke \
-    --library motion=$DATA/lib/heldout_motion_seg10.pt --library lafan1=$DATA/lib/lafan1_seg10.pt
+    --library motion=$DATA/lib/heldout_motion_seg10.pt lafan1=$DATA/lib/lafan1_seg10.pt
 uv run python scaling/wm_error.py --ckpt logs/smoke/ckpt_0001000.pt --windows "results/smoke/*_windows.pt" --out results/smoke/wm_error.json
 ```
 
@@ -84,8 +84,8 @@ uv run sm-train --run-name $S --seed 0 --data.library $DATA/lib/train_$S.pt --en
 ```bash
 for c in $DATA/logs/$S/ckpt_00*.pt; do
   uv run python scaling/eval_heldout.py --ckpt $c --out-dir $DATA/results/$S/$(basename $c .pt) \
-    --library motion=$DATA/lib/heldout_motion_seg10.pt --library performer=$DATA/lib/heldout_performer_seg10.pt \
-    --library lafan1=$DATA/lib/lafan1_seg10.pt
+    --library motion=$DATA/lib/heldout_motion_seg10.pt performer=$DATA/lib/heldout_performer_seg10.pt \
+              lafan1=$DATA/lib/lafan1_seg10.pt
 done
 # once all four runs are evaluated, per checkpoint:
 uv run python scaling/wm_error.py --ckpt $DATA/logs/{D1,D7,D40,Dall}/ckpt_0040000.pt \

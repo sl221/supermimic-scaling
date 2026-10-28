@@ -8,8 +8,8 @@ For one checkpoint and each held-out library (10 s segments), this:
    the same transitions.
 
   python scaling/eval_heldout.py --ckpt logs/D40/ckpt_0040000.pt \
-      --library motion=$DATA/lib/heldout_motion_seg10.pt --library performer=$DATA/lib/heldout_performer_seg10.pt \
-      --library lafan1=$DATA/lib/lafan1_seg10.pt --out-dir results/D40/ckpt_0040000
+      --library motion=$DATA/lib/heldout_motion_seg10.pt performer=$DATA/lib/heldout_performer_seg10.pt \
+                lafan1=$DATA/lib/lafan1_seg10.pt --out-dir results/D40/ckpt_0040000
 
 Writes ``<out-dir>/<set>.json`` (per-segment results + summary) and ``<out-dir>/<set>_windows.pt``.
 """
@@ -45,7 +45,8 @@ def main(
     device: str = "cuda:0",
     seed: int = 0,
 ) -> None:
-    """``--library`` takes ``name=path`` pairs, one per held-out set."""
+    """``--library`` takes ``name=path`` pairs after ONE flag (``--library a=x b=y``); repeating the flag keeps
+    only the last pair."""
     from supermimic.config import obs_mode_from_config
     from supermimic.eval.benchmark import load_policy_from_checkpoint, run_benchmark, save_results, summarize
 
@@ -53,6 +54,7 @@ def main(
     out_dir.mkdir(parents=True, exist_ok=True)
     common = dict(device=device, num_envs=num_envs, future_frames=cfg["env"]["future_frames"], obs_mode=obs_mode_from_config(cfg))
     summary_all = {"ckpt": str(ckpt)}
+    print(f"held-out sets: {[item.split('=', 1)[0] for item in library]}", flush=True)
     for item in library:
         name, path = item.split("=", 1)
         pack = torch.load(path, map_location="cpu", weights_only=False)

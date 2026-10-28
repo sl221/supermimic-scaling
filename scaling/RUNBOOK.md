@@ -19,11 +19,11 @@ export WANDB_API_KEY=...     # never commit this
 Accept the license at https://huggingface.co/datasets/bones-studio/seed first.
 
 ```bash
-uv run hf download bones-studio/seed g1.tar.gz seed_metadata_v004.csv --repo-type dataset --local-dir $DATA/raw
-uv run python scripts/data/stream_bones_seed.py --archive $DATA/raw/g1.tar.gz --out $DATA/shards --workers 16
+uv run hf download bones-studio/seed g1.tar.gz metadata/seed_metadata_v004.csv --repo-type dataset --local-dir $DATA/raw
+uv run python scripts/data/stream_bones_seed.py --archive $DATA/raw/g1.tar.gz --out $DATA/shards --workers 14   # 16-vCPU pod: leave cores for the archive reader
 uv run python scripts/data/filter_bones_seed.py --shards $DATA/shards --parts $DATA/parts --workers 8
 uv run python scripts/data/merge_library_parts.py --parts $DATA/parts --merged-manifest $DATA/merged.csv
-uv run python scripts/data/filter_bones_seed.py --metadata $DATA/raw/seed_metadata_v004.csv --merged-manifest $DATA/merged.csv --out $DATA/keep.txt
+uv run python scripts/data/filter_bones_seed.py --metadata $DATA/raw/metadata/seed_metadata_v004.csv --merged-manifest $DATA/merged.csv --out $DATA/keep.txt
 uv run python scripts/data/merge_library_parts.py --parts $DATA/parts --clip-list $DATA/keep.txt --out $DATA/lib/bones_all.pt
 ```
 
@@ -32,9 +32,9 @@ Check: about 129,500 clips and 263 h.
 ## 2. Held-out splits and nested subsets
 
 ```bash
-uv run python scaling/make_splits.py --library $DATA/lib/bones_all.pt --metadata $DATA/raw/seed_metadata_v004.csv --out-dir $DATA/splits --show-columns
+uv run python scaling/make_splits.py --library $DATA/lib/bones_all.pt --metadata $DATA/raw/metadata/seed_metadata_v004.csv --out-dir $DATA/splits --show-columns
 # pick the performer and motion-group columns from that list, then:
-uv run python scaling/make_splits.py --library $DATA/lib/bones_all.pt --metadata $DATA/raw/seed_metadata_v004.csv --out-dir $DATA/splits \
+uv run python scaling/make_splits.py --library $DATA/lib/bones_all.pt --metadata $DATA/raw/metadata/seed_metadata_v004.csv --out-dir $DATA/splits \
     --performer-col <col> --motion-col <col>
 uv run python scaling/make_subsets.py --library $DATA/lib/bones_all.pt --train-pool $DATA/splits/train_pool.txt --out-dir $DATA/subsets --hours 1 7 40
 ```

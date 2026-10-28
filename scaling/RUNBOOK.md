@@ -61,7 +61,7 @@ uv run python scaling/segment_library.py --library $DATA/lib/lafan1.pt --out $DA
 
 ```bash
 uv run sm-train --run-name smoke --data.library $DATA/lib/train_D1.pt --env.obs-mode beyondmimic_seq \
-    --env.compact-library --schedule.stop-iteration 1000 --schedule.checkpoint-interval 500
+    --schedule.stop-iteration 1000 --schedule.checkpoint-interval 500
 uv run python scaling/eval_heldout.py --ckpt logs/smoke/ckpt_0001000.pt --out-dir results/smoke \
     --library motion=$DATA/lib/heldout_motion_seg10.pt --library lafan1=$DATA/lib/lafan1_seg10.pt
 uv run python scaling/wm_error.py --ckpt logs/smoke/ckpt_0001000.pt --windows "results/smoke/*_windows.pt" --out results/smoke/wm_error.json
@@ -74,7 +74,7 @@ Record iterations per second and peak GPU memory from the training log before la
 ```bash
 S=D40   # D1, D7, D40 or Dall
 uv run sm-train --run-name $S --seed 0 --data.library $DATA/lib/train_$S.pt --env.obs-mode beyondmimic_seq \
-    --env.compact-library --schedule.stop-iteration 40000 --schedule.checkpoint-interval 4000 --log-root $DATA/logs
+    --schedule.stop-iteration 40000 --schedule.checkpoint-interval 4000 --log-root $DATA/logs
 ```
 
 ## 6. Evaluation (same GPU, after training)

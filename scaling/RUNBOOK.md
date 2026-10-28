@@ -8,6 +8,8 @@ paper networks and hyperparameters, 40,000 iterations on the paper's 320,000-ite
 ## 0. Environment (every machine)
 
 ```bash
+apt-get update -qq && apt-get install -y -qq tmux libegl1 libgl1   # minimal images: MuJoCo needs libEGL to import
+curl -LsSf https://astral.sh/uv/install.sh | sh && source ~/.local/bin/env
 uv sync --group dev
 export DATA=/path/to/shared/volume
 export HF_TOKEN=...          # never commit this

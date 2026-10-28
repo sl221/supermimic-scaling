@@ -19,7 +19,7 @@ export WANDB_API_KEY=...     # never commit this
 Accept the license at https://huggingface.co/datasets/bones-studio/seed first.
 
 ```bash
-huggingface-cli download bones-studio/seed g1.tar.gz seed_metadata_v004.csv --repo-type dataset --local-dir $DATA/raw
+uv run hf download bones-studio/seed g1.tar.gz seed_metadata_v004.csv --repo-type dataset --local-dir $DATA/raw
 uv run python scripts/data/stream_bones_seed.py --archive $DATA/raw/g1.tar.gz --out $DATA/shards --workers 16
 uv run python scripts/data/filter_bones_seed.py --shards $DATA/shards --parts $DATA/parts --workers 8
 uv run python scripts/data/merge_library_parts.py --parts $DATA/parts --merged-manifest $DATA/merged.csv

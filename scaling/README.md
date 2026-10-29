@@ -124,6 +124,9 @@ error on held-out data.
 3. Train and evaluate each run with `--schedule.stop-iteration 40000` (5–6).
 4. Run `post_runs.sh` (7). `analyze.py` regenerates every table and figure from the logs.
 
+**Figures only, no GPU or dataset needed:** `python scaling/make_figures.py` redraws every figure on this page from
+the data stored in [`results/`](results/).
+
 CPU tests: `python -m pytest scaling/tests`.
 
 </details>

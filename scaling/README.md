@@ -26,7 +26,7 @@ Built on [LaoYang1994/SuperMimic-Rep](https://github.com/LaoYang1994/SuperMimic-
 ### 1. Within BONES-SEED, 40 hours is enough. Beyond it, extra data only helps on motions from elsewhere.
 
 In the figure above, the two BONES-SEED held-out sets stop improving at 40 h. LAFAN1, recorded in a different studio,
-keeps improving up to 254 h, though with one seed the last step could be noise.
+keeps improving up to 254 h.
 
 ### 2. Small data memorizes.
 

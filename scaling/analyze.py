@@ -271,10 +271,14 @@ def _end_labels(ax, items, min_gap: float = 0.06):
                     arrowprops=dict(arrowstyle="-", color=GRID, linewidth=0.8) if abs(ly - y) > 1e-9 else None)
 
 
+def _data_label(h: float) -> str:
+    return f"{h:.0f} h" if h >= 10 or abs(h - round(h)) < 0.05 else f"{h:.1f} h"
+
+
 def _hours_axis(ax, hours):
     ax.set_xscale("log")
     ax.set_xticks(hours)
-    ax.set_xticklabels([f"{h:.0f} h" if h >= 10 or abs(h - round(h)) < 0.05 else f"{h:.1f} h" for h in hours])
+    ax.set_xticklabels([_data_label(h) for h in hours])
     ax.minorticks_off()
     ax.set_xlabel("Training data (hours of motion)", color=INK2, fontsize=10)
 
@@ -328,11 +332,11 @@ def figures(res: dict, out_dir: Path) -> list[Path]:
             v = runs[n]["sets"].get(s)
             if v:
                 its = [i / 1000 for i in v["curve"]["iterations"]]
-                ax.plot(its, v["curve"]["mean_norm_return"], color=RUN_COLORS[n], linewidth=2, marker="o", markersize=4, label=n)
+                ax.plot(its, v["curve"]["mean_norm_return"], color=RUN_COLORS[n], linewidth=2, marker="o", markersize=4, label=_data_label(runs[n]["hours_data"]))
         ax.set_title(SET_LABELS[s], loc="left", color=INK, fontsize=10)
         ax.set_xlabel("Iteration (thousands)", color=INK2, fontsize=9)
     axes[0][0].set_ylabel("Mean return", color=INK2, fontsize=10)
-    axes[0][-1].legend(frameon=False, fontsize=9, title="Run", title_fontsize=9, loc="lower right")
+    axes[0][-1].legend(frameon=False, fontsize=9, title="Training data", title_fontsize=9, loc="lower right")
     fig.tight_layout()
     written.append(out_dir / "fig2_learning_curves.png")
     fig.savefig(written[-1], dpi=160, facecolor=SURFACE)
@@ -362,11 +366,11 @@ def figures(res: dict, out_dir: Path) -> list[Path]:
             c = runs[n].get("pooled_nse8_curve")
             if c:
                 ax2.plot([i / 1000 for i in c["iterations"]], [1e3 * v for v in c["nse8"]], color=RUN_COLORS[n], linewidth=2,
-                         marker="o", markersize=4, label=n)
+                         marker="o", markersize=4, label=_data_label(runs[n]["hours_data"]))
         ax2.set_ylim(bottom=0)
         ax2.set_xlabel("Iteration (thousands)", color=INK2, fontsize=10)
         ax2.set_title("Held-out (pooled) 8-step error during training", loc="left", color=INK, fontsize=11)
-        ax2.legend(frameon=False, fontsize=9, title="Run", title_fontsize=9, loc="upper right")
+        ax2.legend(frameon=False, fontsize=9, title="Training data", title_fontsize=9, loc="upper right")
         fig.tight_layout()
         written.append(out_dir / "fig3_wm_error.png")
         fig.savefig(written[-1], dpi=160, facecolor=SURFACE)

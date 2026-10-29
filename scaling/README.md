@@ -2,66 +2,44 @@
 
 Does more motion data make [SuperMimic](https://arxiv.org/abs/2610.28480) better on motions it has never seen?
 The paper's data sweep evaluates on training motions only. I trained it on 1, 7, 40 and 254 hours of BONES-SEED and
-tested it on three held-out sets.
-
-![Tracking return vs training data](figures/fig1_heldout_vs_data.png)
-
-*Unseen BONES-SEED motions and performers flatten after 40 h. LAFAN1 keeps rising.*
-
-| Training data | Unseen motions | Unseen performers | LAFAN1 |
-|---|---:|---:|---:|
-| 1 h | 0.867 | 0.872 | 0.624 |
-| 7 h | 0.909 | 0.918 | 0.706 |
-| 40 h | **0.926** | 0.929 | 0.755 |
-| 254 h | **0.926** | 0.930 | **0.779** |
-
-Mean return (1.0 = perfect tracking), averaged over the last 3 checkpoints. Full numbers:
-[`results/results.md`](results/results.md).
+tested it on three held-out sets: unseen motions, unseen performers, and LAFAN1, a dataset recorded in a different
+studio.
 
 Built on [LaoYang1994/SuperMimic-Rep](https://github.com/LaoYang1994/SuperMimic-Rep), a fork of
 [CuboiLeo/SuperMimic-Reproduced](https://github.com/CuboiLeo/SuperMimic-Reproduced) (MIT).
 
 ## Findings
 
-### 1. Within BONES-SEED, 40 hours is enough. Beyond it, extra data only helps on motions from elsewhere.
+### 1. The policy: within BONES-SEED, 40 hours is enough, and small data memorizes
 
-In the figure above, the two BONES-SEED held-out sets stop improving at 40 h. LAFAN1, recorded in a different studio,
-keeps improving up to 254 h.
+![Tracking return vs training data](figures/fig1_heldout_vs_data.png)
 
-### 2. Small data memorizes.
+The two BONES-SEED held-out sets stop improving at 40 h. LAFAN1 keeps improving up to 254 h.
 
 ![Learning curves](figures/fig2_learning_curves.png)
 
-The 1 h run scores highest of all on its own training motions and lowest on everything new. Its curves flatten early,
-and more training does not close the gap.
+Over training, the 1 h run is best on its own motions and worst on everything new. More training does not close the
+gap.
 
-### 3. The world model memorizes even more than the policy.
+### 2. The world model memorizes even more than the policy
 
 ![World-model error](figures/fig3_wm_error.png)
 
 With 1 h of data, the world model predicts its own training data well but new motions badly (left). As training
 continues, it gets *worse* on new motions (right), while its policy holds steady.
 
-### 4. Measured on training motions, small data looks cheap. On new motions, it is the most expensive.
+### 3. Measured on training motions, small data looks cheap. On new motions, it is the most expensive.
 
 ![Iterations to target](figures/fig4_compute_to_target.png)
 
 The paper measures compute to a target return on training motions, where the 1 h run gets there first. On unseen
-motions it gets there last, and never reaches 0.9.
+motions it gets there last, and it never reaches 0.9 there or 0.7 on LAFAN1.
 
 ## How this was built
 
-20 hours from idea to results, using 27 H100-hours (about $120).
+![Timeline](figures/fig5_timeline.png)
 
-| Phase | When (Pacific time) |
-|---|---|
-| Idea and literature check | Wed 08:30 – 09:30 |
-| Experiment design and plan | Wed 09:30 – 10:30 |
-| Code and tests | Wed 10:30 – 11:40 |
-| Accounts, GPUs, data pipeline | Wed 11:40 – 15:00 |
-| Smoke test and launch | Wed 15:00 – 16:00 |
-| Training: 4 runs on 2 H100s | Wed 16:00 – Thu 03:00 |
-| Evaluation and analysis | Thu 04:00 – 04:45 |
+27 H100-hours in total (about $120).
 
 <details>
 <summary>Problems caught along the way</summary>

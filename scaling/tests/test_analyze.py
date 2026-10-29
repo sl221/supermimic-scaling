@@ -94,3 +94,21 @@ def test_resumed_log_is_stitched(tmp_path):
     rows = parse_log(tmp_path / "r.out")
     assert [r["it"] for r in rows] == [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000]
     assert rows[4]["hours"] == pytest.approx(4.0 + 1.2) and rows[4]["train_ret"] == 0.6
+
+
+def test_per_set_world_model_figures(tmp_path):
+    fake_tree(tmp_path)
+    rep = {}
+    for it in range(4000, 40001, 4000):
+        rep[f"ckpt_{it:07d}"] = {s: {r: {"nse_1step": 0.01, "nse_8step": 0.02 + 0.01 * j + 0.001 * k}
+                                     for j, r in enumerate(("D1", "D7", "D40", "Dall"))}
+                                 for k, s in enumerate(("motion", "performer", "lafan1"))}
+    (tmp_path / "results" / "wm_error_sets.json").write_text(json.dumps(rep))
+    res = summarize(tmp_path)
+    assert res["runs"]["D1"]["wm_sets"]["lafan1"]["mean"] == pytest.approx(0.022)
+    assert len(res["runs"]["D1"]["online_nse8_curve"]["nse8"]) == 10
+    pytest.importorskip("matplotlib")
+    from analyze import figures
+
+    names = [p.name for p in figures(res, tmp_path / "fig")]
+    assert "fig3_wm_vs_data.png" in names and "fig3b_wm_curves.png" in names and "fig3_wm_error.png" not in names

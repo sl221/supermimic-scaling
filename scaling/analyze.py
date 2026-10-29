@@ -174,6 +174,37 @@ def summarize(data: Path, last_k_ckpts: int = 3, targets: tuple[float, ...] = (0
             r["pooled_nse8"] = sum(pooled[it][run] for it in sel) / len(sel)
             r["pooled_nse8_curve"] = {"iterations": wm_its, "nse8": [pooled[it][run] for it in wm_its]}
         res["runs"][run] = r
+    return attach_wm_sets(res, data)
+
+
+WM_SETS = ["motion", "performer", "lafan1"]
+
+
+def attach_wm_sets(res: dict, data: Path) -> dict:
+    """Add per-set world-model error (``wm_error_sets.py`` output) and the online training-rollout error at each
+    evaluated iteration (from the logs) to an existing summary."""
+    k = res["last_k"]
+    path = data / "results" / "wm_error_sets.json"
+    sets_rep = json.loads(path.read_text()) if path.exists() else {}
+    for run, r in res["runs"].items():
+        per = {}
+        for s in WM_SETS:
+            pts = sorted((int(step.split("_")[1]), v[s][run]["nse_8step"]) for step, v in sets_rep.items() if s in v and run in v[s])
+            if not pts:
+                continue
+            vals = [v for _, v in pts[-k:]]
+            per[s] = {"mean": sum(vals) / len(vals), "min": min(vals), "max": max(vals),
+                      "curve": {"iterations": [i for i, _ in pts], "nse8": [v for _, v in pts]}}
+        if per:
+            r["wm_sets"] = per
+        log = parse_log(data / "logs" / f"{run}.out")
+        its = r.get("eval_iterations") or []
+        if log and its:
+            curve = []
+            for it in its:
+                near = [x["nse8"] for x in log if it - 2000 < x["it"] <= it]
+                curve.append(sum(near) / len(near) if near else float("nan"))
+            r["online_nse8_curve"] = {"iterations": its, "nse8": curve}
     return res
 
 
@@ -342,44 +373,96 @@ def figures(res: dict, out_dir: Path) -> list[Path]:
     fig.savefig(written[-1], dpi=160, facecolor=SURFACE)
     plt.close(fig)
 
-    # 3. world-model error vs data size (both are the same normalised error, so one axis)
-    series = [("pooled_nse8", "Held-out windows (pooled)", "#2a78d6", "o"), ("online_nse8", "Own training rollouts", "#eb6834", "s")]
-    if any(runs[n].get(k) is not None for n in names for k, *_ in series):
-        fig, (ax, ax2) = plt.subplots(1, 2, figsize=(12.4, 4.2), facecolor=SURFACE, gridspec_kw={"width_ratios": [1.15, 1]})
+    # 3. world-model error: per held-out set when available (same layout as figures 1 and 2), else pooled
+    if any(runs[n].get("wm_sets") for n in names):
+        fig, ax = plt.subplots(figsize=(7.2, 4.4), facecolor=SURFACE)
         _style(ax)
         ends = []
-        for key, label, color, mk in series:
-            pts = [(runs[n]["hours_data"], 1e3 * runs[n][key]) for n in names if runs[n].get(key) is not None]
-            if pts:
-                ax.plot(*zip(*pts), color=color, marker=mk, markersize=7, linewidth=2, markeredgecolor=SURFACE, markeredgewidth=1.5, label=label)
-                ends.append((*pts[-1], label))
+        for s in WM_SETS:
+            xs, ys, lo, hi = [], [], [], []
+            for n in names:
+                v = runs[n].get("wm_sets", {}).get(s)
+                if v:
+                    xs.append(runs[n]["hours_data"]), ys.append(1e3 * v["mean"])
+                    lo.append(1e3 * max(v["mean"] - v["min"], 0.0)), hi.append(1e3 * max(v["max"] - v["mean"], 0.0))
+            if xs:
+                ax.errorbar(xs, ys, yerr=[lo, hi], color=SET_COLORS[s], marker=SET_MARKERS[s], markersize=7, linewidth=2, capsize=3,
+                            markeredgecolor=SURFACE, markeredgewidth=1.5, label=SET_LABELS[s])
+                ends.append((xs[-1], ys[-1], SET_LABELS[s]))
+        pts = [(runs[n]["hours_data"], 1e3 * runs[n]["online_nse8"]) for n in names if runs[n].get("online_nse8") is not None]
+        if pts:
+            ax.plot(*zip(*pts), color=SET_COLORS["train"], marker=SET_MARKERS["train"], markersize=7, linewidth=2,
+                    markeredgecolor=SURFACE, markeredgewidth=1.5, label="Own training rollouts")
+            ends.append((*pts[-1], "Own training rollouts"))
         _hours_axis(ax, hours)
         ax.set_xlim(min(hours) / 1.6, max(hours) * 12)
         ax.set_ylim(bottom=0)
         _end_labels(ax, ends)
-        ax.set_ylabel("8-step error (x1e-3, normalised)", color=INK2, fontsize=10)
-        ax.set_title(f"World-model 8-step error vs training data (last {res['last_k']} checkpoints)", loc="left", color=INK, fontsize=11)
+        ax.set_ylabel(f"8-step error, x1e-3 (last {res['last_k']} checkpoints)", color=INK2, fontsize=10)
+        ax.set_title("World-model error vs training data", loc="left", color=INK, fontsize=12)
         ax.legend(frameon=False, fontsize=9, loc="upper right")
-        # right: the held-out error over training, per run (D1's world model gets worse on held-out windows)
-        _style(ax2)
-        for n in names:
-            c = runs[n].get("pooled_nse8_curve")
-            if c:
-                ax2.plot([i / 1000 for i in c["iterations"]], [1e3 * v for v in c["nse8"]], color=RUN_COLORS[n], linewidth=2,
-                         marker="o", markersize=4, label=_data_label(runs[n]["hours_data"]))
-        ax2.set_ylim(bottom=0)
-        ax2.set_xlabel("Iteration (thousands)", color=INK2, fontsize=10)
-        ax2.set_title("Held-out (pooled) 8-step error during training", loc="left", color=INK, fontsize=11)
-        ax2.legend(frameon=False, fontsize=9, title="Training data", title_fontsize=9, loc="upper right")
         fig.tight_layout()
-        written.append(out_dir / "fig3_wm_error.png")
+        written.append(out_dir / "fig3_wm_vs_data.png")
         fig.savefig(written[-1], dpi=160, facecolor=SURFACE)
         plt.close(fig)
 
+        panels = [s for s in WM_SETS if any(s in runs[n].get("wm_sets", {}) for n in names)] + ["train"]
+        fig, axes = plt.subplots(1, len(panels), figsize=(3.4 * len(panels), 3.6), facecolor=SURFACE, squeeze=False)
+        for ax, s in zip(axes[0], panels):
+            _style(ax)
+            for n in names:
+                c = runs[n].get("online_nse8_curve") if s == "train" else runs[n].get("wm_sets", {}).get(s, {}).get("curve")
+                if c:
+                    ax.plot([i / 1000 for i in c["iterations"]], [1e3 * v for v in c["nse8"]], color=RUN_COLORS[n], linewidth=2,
+                            marker="o", markersize=4, label=_data_label(runs[n]["hours_data"]))
+            ax.set_ylim(bottom=0)
+            ax.set_title("Own training rollouts" if s == "train" else SET_LABELS[s], loc="left", color=INK, fontsize=10)
+            ax.set_xlabel("Iteration (thousands)", color=INK2, fontsize=9)
+        axes[0][0].set_ylabel("8-step error, x1e-3", color=INK2, fontsize=10)
+        handles, labels = axes[0][0].get_legend_handles_labels()
+        fig.tight_layout(rect=(0, 0.1, 1, 1))
+        fig.legend(handles, labels, frameon=False, fontsize=9, title="Training data", title_fontsize=9, loc="lower center", ncol=len(handles))
+        written.append(out_dir / "fig3b_wm_curves.png")
+        fig.savefig(written[-1], dpi=160, facecolor=SURFACE)
+        plt.close(fig)
+    else:
+        series = [("pooled_nse8", "Held-out windows (pooled)", "#2a78d6", "o"), ("online_nse8", "Own training rollouts", "#eb6834", "s")]
+        if any(runs[n].get(k) is not None for n in names for k, *_ in series):
+            fig, (ax, ax2) = plt.subplots(1, 2, figsize=(12.4, 4.2), facecolor=SURFACE, gridspec_kw={"width_ratios": [1.15, 1]})
+            _style(ax)
+            ends = []
+            for key, label, color, mk in series:
+                pts = [(runs[n]["hours_data"], 1e3 * runs[n][key]) for n in names if runs[n].get(key) is not None]
+                if pts:
+                    ax.plot(*zip(*pts), color=color, marker=mk, markersize=7, linewidth=2, markeredgecolor=SURFACE, markeredgewidth=1.5, label=label)
+                    ends.append((*pts[-1], label))
+            _hours_axis(ax, hours)
+            ax.set_xlim(min(hours) / 1.6, max(hours) * 12)
+            ax.set_ylim(bottom=0)
+            _end_labels(ax, ends)
+            ax.set_ylabel("8-step error (x1e-3, normalised)", color=INK2, fontsize=10)
+            ax.set_title(f"World-model 8-step error vs training data (last {res['last_k']} checkpoints)", loc="left", color=INK, fontsize=11)
+            ax.legend(frameon=False, fontsize=9, loc="upper right")
+            # right: the held-out error over training, per run (D1's world model gets worse on held-out windows)
+            _style(ax2)
+            for n in names:
+                c = runs[n].get("pooled_nse8_curve")
+                if c:
+                    ax2.plot([i / 1000 for i in c["iterations"]], [1e3 * v for v in c["nse8"]], color=RUN_COLORS[n], linewidth=2,
+                             marker="o", markersize=4, label=_data_label(runs[n]["hours_data"]))
+            ax2.set_ylim(bottom=0)
+            ax2.set_xlabel("Iteration (thousands)", color=INK2, fontsize=10)
+            ax2.set_title("Held-out (pooled) 8-step error during training", loc="left", color=INK, fontsize=11)
+            ax2.legend(frameon=False, fontsize=9, title="Training data", title_fontsize=9, loc="upper right")
+            fig.tight_layout()
+            written.append(out_dir / "fig3_wm_error.png")
+            fig.savefig(written[-1], dpi=160, facecolor=SURFACE)
+            plt.close(fig)
+
     # 4. compute to target, one panel per target
-    targets = [t for t in res["targets"] if t >= 0.85]
+    targets = [t for t in res["targets"] if f"{t:g}" in ("0.7", "0.85", "0.9")]
     if targets:
-        fig, axes = plt.subplots(1, len(targets), figsize=(4.2 * len(targets), 3.8), facecolor=SURFACE, sharey=True, squeeze=False)
+        fig, axes = plt.subplots(1, len(targets), figsize=(4.0 * len(targets), 3.8), facecolor=SURFACE, sharey=True, squeeze=False)
         for ax, t in zip(axes[0], targets):
             _style(ax)
             for s in sets:
@@ -392,8 +475,9 @@ def figures(res: dict, out_dir: Path) -> list[Path]:
                     ax.plot(*zip(*pts), color=SET_COLORS[s], marker=SET_MARKERS[s], markersize=7, linewidth=2,
                             markeredgecolor=SURFACE, markeredgewidth=1.5, label=SET_LABELS[s])
             _hours_axis(ax, hours)
-            ax.set_title(f"Iterations to a mean return of {t:g} (missing = never)", loc="left", color=INK, fontsize=10)
+            ax.set_title(f"To a return of {t:g}", loc="left", color=INK, fontsize=10)
         axes[0][0].set_ylabel("Iterations (thousands)", color=INK2, fontsize=10)
+        fig.suptitle("Iterations to reach a target return (missing point = never reached)", x=0.01, ha="left", color=INK, fontsize=11)
         handles, labels = {}, {}
         for ax in axes[0]:
             for h, l in zip(*ax.get_legend_handles_labels()):
@@ -407,8 +491,20 @@ def figures(res: dict, out_dir: Path) -> list[Path]:
     return written
 
 
-def main(data: Path, out_dir: Path, last_k: int = 3, targets: list[float] = [0.7, 0.8, 0.85, 0.9], no_figures: bool = False) -> None:
-    res = summarize(data, last_k, tuple(targets))
+def main(
+    data: Path,
+    out_dir: Path,
+    last_k: int = 3,
+    targets: list[float] = [0.7, 0.8, 0.85, 0.9],
+    no_figures: bool = False,
+    results_json: Path | None = None,
+) -> None:
+    """``--results-json`` starts from an earlier summary instead of the per-checkpoint files (which may live on another
+    machine) and only adds what ``data`` holds now: per-set world-model error and the training logs."""
+    if results_json is not None:
+        res = attach_wm_sets(json.loads(results_json.read_text()), data)
+    else:
+        res = summarize(data, last_k, tuple(targets))
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "results.json").write_text(json.dumps(res, indent=1))
     md = markdown(res)

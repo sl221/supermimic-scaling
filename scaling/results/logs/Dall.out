@@ -1,0 +1,977 @@
+/root/supermimic-scaling/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Setting seed: 0
+Warp 1.18.0 initialized:
+   CUDA Toolkit 13.4, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA H100 80GB HBM3" (79 GiB, sm_90, mempool enabled)
+   Kernel cache:
+     /root/.cache/warp/1.18.0
+Module mujoco_warp._src.smooth 43a6a77 load on device 'cuda:0' took 0.89 ms  (cached)
+Module _nxn_broadphase__locals__kernel_32304148 3230414 load on device 'cuda:0' took 0.35 ms  (cached)
+Module _nxn_broadphase__locals__kernel_32304148 2a885b9 load on device 'cuda:0' took 0.29 ms  (cached)
+Module _primitive_narrowphase__locals__primitive_narrowphase_1854ac15 1854ac1 load on device 'cuda:0' took 0.44 ms  (cached)
+Module mujoco_warp._src.constraint 8d4d513 load on device 'cuda:0' took 0.31 ms  (cached)
+Module _friction_dof__locals__kernel_f68ea16b f68ea16 load on device 'cuda:0' took 0.38 ms  (cached)
+Module _limit_slide_hinge__locals__kernel_263562ea 263562e load on device 'cuda:0' took 0.33 ms  (cached)
+Module _efc_contact_init__locals__kernel_db1e703e db1e703 load on device 'cuda:0' took 0.33 ms  (cached)
+Module _efc_contact_jac_sparse__locals__kernel_07447225 0744722 load on device 'cuda:0' took 0.32 ms  (cached)
+Module _efc_contact_update__locals__kernel_55b2a711 55b2a71 load on device 'cuda:0' took 0.33 ms  (cached)
+Module mujoco_warp._src.sensor 8feaecd load on device 'cuda:0' took 0.58 ms  (cached)
+Module mujoco_warp._src.forward 70fadf5 load on device 'cuda:0' took 0.52 ms  (cached)
+Module mujoco_warp._src.passive 0de6fd1 load on device 'cuda:0' took 0.53 ms  (cached)
+Module _qfrc_passive_kernel__locals__kernel_20315922 2031592 load on device 'cuda:0' took 0.31 ms  (cached)
+Module _qfrc_smooth__locals__kernel_2c4e0694 2c4e069 load on device 'cuda:0' took 0.31 ms  (cached)
+Module mujoco_warp._src.support 970ef9a load on device 'cuda:0' took 0.31 ms  (cached)
+Module _tile_cholesky_factorize_solve_block__locals__kernel_b778dc3e bc43cde load on device 'cuda:0' took 26.22 ms  (cached)
+Module _solve_init_dof__locals__kernel_a955d90a a955d90 load on device 'cuda:0' took 0.38 ms  (cached)
+Module mujoco_warp._src.solver e4420b7 load on device 'cuda:0' took 0.41 ms  (cached)
+Module _solve_init_jaref_kernel__locals__kernel_d6b74426 d6b7442 load on device 'cuda:0' took 0.33 ms  (cached)
+Module mul_m_kernel__locals___mul_m_6d916077 6d91607 load on device 'cuda:0' took 0.31 ms  (cached)
+Module _update_constraint_efc__locals__kernel_e1de18c7 e1de18c load on device 'cuda:0' took 0.33 ms  (cached)
+Module _update_constraint_init_qfrc_constraint_sparse__locals__kernel_88431482 8843148 load on device 'cuda:0' took 0.32 ms  (cached)
+Module _update_gradient_zero_grad_dot__locals__kernel_c4230897 c423089 load on device 'cuda:0' took 0.31 ms  (cached)
+Module _update_gradient_grad__locals__kernel_21379838 2137983 load on device 'cuda:0' took 0.30 ms  (cached)
+Module _update_gradient_init_h_sparse__locals__kernel_d095819a d095819 load on device 'cuda:0' took 0.32 ms  (cached)
+Module _JTDACJ_sparse__locals__kernel_83157a18 83157a1 load on device 'cuda:0' took 0.34 ms  (cached)
+Module _update_gradient_cholesky_blocked__locals__kernel_7791a7d9 a6186c5 load on device 'cuda:0' took 72.46 ms  (cached)
+Module _linesearch_jv_fused_kernel__locals__kernel_a8db60f1 a8db60f load on device 'cuda:0' took 0.39 ms  (cached)
+Module _linesearch_iterative_kernel__locals__kernel_2ed06738 2a7db7c load on device 'cuda:0' took 0.44 ms  (cached)
+Module _update_constraint_efc__locals__kernel_a341871c a341871 load on device 'cuda:0' took 0.34 ms  (cached)
+Module _update_gradient_zero_grad_dot__locals__kernel_10c2b083 10c2b08 load on device 'cuda:0' took 0.32 ms  (cached)
+Module _update_gradient_grad__locals__kernel_b8320cbe b8320cb load on device 'cuda:0' took 0.30 ms  (cached)
+Module _update_gradient_h_incremental_sparse__locals__kernel_3754d96f 3754d96 load on device 'cuda:0' took 0.33 ms  (cached)
+Module _update_gradient_cholesky_blocked_skip_unchanged__locals__kernel_4d273ac3 f19c88c load on device 'cuda:0' took 81.28 ms  (cached)
+Module _solve_done__locals__kernel_6a473e76 6a473e7 load on device 'cuda:0' took 0.45 ms  (cached)
+Module mujoco_warp._src.derivative 011f1dc load on device 'cuda:0' took 0.71 ms  (cached)
+Module _next_time_builder__locals___next_time_a5c1f1e5 a5c1f1e load on device 'cuda:0' took 0.35 ms  (cached)
+Module reset_data__locals__reset_xfrc_applied_b0a4c05b b0a4c05 load on device 'cuda:0' took 0.34 ms  (cached)
+Module reset_data__locals__reset_M_2263bd42 2263bd4 load on device 'cuda:0' took 0.29 ms  (cached)
+Module reset_data__locals__reset_mocap_8058fd6f 8058fd6 load on device 'cuda:0' took 0.28 ms  (cached)
+Module reset_data__locals__reset_contact_adcd3765 adcd376 load on device 'cuda:0' took 0.28 ms  (cached)
+Module reset_data__locals__reset_sleep_3246b46a 3246b46 load on device 'cuda:0' took 0.29 ms  (cached)
+Module reset_data__locals__reset_nworld_9d8fd945 9d8fd94 load on device 'cuda:0' took 0.30 ms  (cached)
+
++---------------------------------+
+|         Base Environment        |
++------------------------+--------+
+| Property               | Value  |
++------------------------+--------+
+| Number of environments | 4096   |
+| Environment device     | cuda:0 |
+| Environment seed       | 0      |
+| Physics step-size      | 0.005  |
+| Environment step-size  | 0.02   |
++------------------------+--------+
+
+[INFO] <EventManager> contains 1 active terms.
++---------------------------------------+
+| Active Event Terms in Mode: 'startup' |
++-----------+---------------------------+
+|   Index   | Name                      |
++-----------+---------------------------+
+|     0     | base_com                  |
+|     1     | encoder_bias              |
+|     2     | foot_friction             |
++-----------+---------------------------+
++-----------------------------+
+| Domain Randomization Fields |
++-------+---------------------+
+| Index | Field Name          |
++-------+---------------------+
+|   0   | body_ipos           |
+|   1   | body_subtreemass    |
+|   2   | dof_invweight0      |
+|   3   | body_invweight0     |
+|   4   | tendon_length0      |
+|   5   | tendon_invweight0   |
+|   6   | actuator_acc0       |
+|   7   | geom_friction       |
++-------+---------------------+
+
+Module repeat_array_kernel_31f1cdc7 ab09835 load on device 'cuda:0' took 0.42 ms  (cached)
+Module repeat_array_kernel_31f1cdc7 a2cef03 load on device 'cuda:0' took 0.40 ms  (cached)
+Module repeat_array_kernel_31f1cdc7 eb7f276 load on device 'cuda:0' took 0.39 ms  (cached)
+[INFO] MotionLibrary(compact): 125212 clips, 45785152 frames (254.362 h @50Hz), 977562 bins, 6.50 GB on cuda:0
+[INFO] <CommandManager> contains 1 active terms.
++-----------------------------------------+
+|           Active Command Terms          |
++-------+--------+------------------------+
+| Index | Name   |          Type          |
++-------+--------+------------------------+
+|   0   | motion | MultiClipMotionCommand |
++-------+--------+------------------------+
+
+[INFO] <ActionManager> contains 1 active terms.
++---------------------------------+
+| Active Action Terms (shape: 29) |
++-------+-----------+-------------+
+| Index | Name      |   Dimension |
++-------+-----------+-------------+
+|   0   | joint_pos |          29 |
++-------+-----------+-------------+
+
+[INFO] <ObservationManager> contains 2 groups.
++-------------------------------------------------------------+
+| Active Observation Terms in Group: 'policy' (shape: (930,)) |
++--------+------------------------+---------------------------+
+| Index  | Name                   |           Shape           |
++--------+------------------------+---------------------------+
+|   0    | joint_pos              |     (290,)  ← 10×(29,)    |
+|   1    | joint_vel              |     (290,)  ← 10×(29,)    |
+|   2    | base_ang_vel           |      (30,)  ← 10×(3,)     |
+|   3    | projected_gravity      |      (30,)  ← 10×(3,)     |
+|   4    | actions                |     (290,)  ← 10×(29,)    |
++--------+------------------------+---------------------------+
++-----------------------------------------------------------+
+| Active Observation Terms in Group: 'goal' (shape: (640,)) |
++-----------+-------------------------------+---------------+
+|   Index   | Name                          |     Shape     |
++-----------+-------------------------------+---------------+
+|     0     | beyondmimic_seq               |     (640,)    |
++-----------+-------------------------------+---------------+
+
+[INFO] <TerminationManager> contains 4 active terms.
++--------------------------------+
+|    Active Termination Terms    |
++-------+-------------+----------+
+| Index | Name        | Time Out |
++-------+-------------+----------+
+|   0   | time_out    |   True   |
+|   1   | clip_end    |   True   |
+|   2   | root_height |  False   |
+|   3   | root_tilt   |  False   |
++-------+-------------+----------+
+
+[INFO] <RewardManager> contains 8 active terms.
++-----------------------------------------+
+|           Active Reward Terms           |
++-------+------------------------+--------+
+| Index | Name                   | Weight |
++-------+------------------------+--------+
+|   0   | motion_global_root_pos |    0.5 |
+|   1   | motion_global_root_ori |    0.5 |
+|   2   | motion_body_pos        |    1.0 |
+|   3   | motion_body_ori        |    1.0 |
+|   4   | motion_body_lin_vel    |    1.0 |
+|   5   | motion_body_ang_vel    |    1.0 |
+|   6   | action_rate_l2         |   -0.1 |
+|   7   | joint_limit            |   -2.0 |
++-------+------------------------+--------+
+
+[INFO] <NullCurriculumManager> (inactive)
+[INFO] <NullMetricsManager> (inactive)
+[INFO] <RecorderManager> contains 1 active terms.
++-----------------------+
+| Active Recorder Terms |
++----------+------------+
+|  Index   |    Name    |
++----------+------------+
+|    0     |   replay   |
++----------+------------+
+Module mujoco_warp._src.set_const e45904e load on device 'cuda:0' took 0.76 ms  (cached)
+Module _tile_cholesky_factorize_block__locals__kernel_d4231e6f 8646b2f load on device 'cuda:0' took 24.40 ms  (cached)
+Module _tile_cholesky_solve_block__locals__kernel_dcd40028 a676a8a load on device 'cuda:0' took 24.24 ms  (cached)
+[INFO] params: world model 8.82M, policy 8.81M, critic 0.225M
+it 50 | sim steps 165 | 0.17 h | 0.1 it/s | train_ret 0.231 (n=16806) | wm nse1 0.0740 nse8 0.1765 | imag_ret 0.257 surv 0.112 | t sim/wm/pi 6.7/11.0/598.4s
+it 100 | sim steps 290 | 0.18 h | 2.3 it/s | train_ret 0.212 (n=13640) | wm nse1 0.0428 nse8 0.1461 | imag_ret 0.676 surv 0.736 | t sim/wm/pi 4.8/4.5/12.2s
+it 150 | sim steps 415 | 0.18 h | 2.3 it/s | train_ret 0.197 (n=15387) | wm nse1 0.0389 nse8 0.1379 | imag_ret 0.768 surv 0.721 | t sim/wm/pi 4.8/4.5/12.3s
+it 200 | sim steps 540 | 0.19 h | 2.3 it/s | train_ret 0.210 (n=12998) | wm nse1 0.0332 nse8 0.0919 | imag_ret 0.881 surv 0.391 | t sim/wm/pi 4.8/4.5/12.3s
+it 250 | sim steps 665 | 0.20 h | 2.3 it/s | train_ret 0.216 (n=12530) | wm nse1 0.0286 nse8 0.0687 | imag_ret 0.910 surv 0.398 | t sim/wm/pi 4.8/4.5/12.3s
+it 300 | sim steps 790 | 0.20 h | 2.3 it/s | train_ret 0.223 (n=12606) | wm nse1 0.0253 nse8 0.0598 | imag_ret 0.925 surv 0.384 | t sim/wm/pi 4.8/4.5/12.3s
+it 350 | sim steps 915 | 0.21 h | 2.3 it/s | train_ret 0.212 (n=12383) | wm nse1 0.0231 nse8 0.0444 | imag_ret 0.925 surv 0.375 | t sim/wm/pi 4.8/4.6/12.2s
+it 400 | sim steps 1040 | 0.21 h | 2.3 it/s | train_ret 0.213 (n=12261) | wm nse1 0.0213 nse8 0.0490 | imag_ret 0.943 surv 0.387 | t sim/wm/pi 4.8/4.5/12.2s
+it 450 | sim steps 1165 | 0.22 h | 2.3 it/s | train_ret 0.210 (n=11762) | wm nse1 0.0201 nse8 0.0417 | imag_ret 0.960 surv 0.409 | t sim/wm/pi 4.8/4.5/12.2s
+it 500 | sim steps 1290 | 0.23 h | 2.3 it/s | train_ret 0.212 (n=10990) | wm nse1 0.0194 nse8 0.0378 | imag_ret 0.962 surv 0.436 | t sim/wm/pi 4.7/4.5/12.2s
+it 550 | sim steps 1415 | 0.23 h | 2.3 it/s | train_ret 0.218 (n=9905) | wm nse1 0.0181 nse8 0.0310 | imag_ret 0.969 surv 0.438 | t sim/wm/pi 4.8/4.5/12.3s
+it 600 | sim steps 1540 | 0.24 h | 2.3 it/s | train_ret 0.227 (n=9081) | wm nse1 0.0174 nse8 0.0306 | imag_ret 0.997 surv 0.456 | t sim/wm/pi 4.8/4.5/12.2s
+it 650 | sim steps 1665 | 0.24 h | 2.3 it/s | train_ret 0.221 (n=8455) | wm nse1 0.0169 nse8 0.0301 | imag_ret 0.998 surv 0.472 | t sim/wm/pi 4.8/4.5/12.2s
+it 700 | sim steps 1790 | 0.25 h | 2.3 it/s | train_ret 0.221 (n=8828) | wm nse1 0.0168 nse8 0.0294 | imag_ret 1.032 surv 0.485 | t sim/wm/pi 4.8/4.5/12.2s
+it 750 | sim steps 1915 | 0.26 h | 2.3 it/s | train_ret 0.236 (n=8041) | wm nse1 0.0167 nse8 0.0310 | imag_ret 1.081 surv 0.527 | t sim/wm/pi 4.7/4.5/12.2s
+it 800 | sim steps 2040 | 0.26 h | 2.3 it/s | train_ret 0.228 (n=7555) | wm nse1 0.0165 nse8 0.0273 | imag_ret 1.102 surv 0.558 | t sim/wm/pi 4.8/4.4/12.2s
+it 850 | sim steps 2165 | 0.27 h | 2.3 it/s | train_ret 0.209 (n=8197) | wm nse1 0.0167 nse8 0.0315 | imag_ret 1.109 surv 0.590 | t sim/wm/pi 4.8/4.4/12.2s
+it 900 | sim steps 2290 | 0.27 h | 2.3 it/s | train_ret 0.183 (n=7657) | wm nse1 0.0176 nse8 0.0332 | imag_ret 1.024 surv 0.617 | t sim/wm/pi 4.8/4.4/12.2s
+it 950 | sim steps 2415 | 0.28 h | 2.3 it/s | train_ret 0.205 (n=6685) | wm nse1 0.0184 nse8 0.0334 | imag_ret 1.060 surv 0.652 | t sim/wm/pi 4.8/4.4/12.2s
+it 1000 | sim steps 2540 | 0.29 h | 2.3 it/s | train_ret 0.204 (n=5835) | wm nse1 0.0205 nse8 0.0471 | imag_ret 0.914 surv 0.722 | t sim/wm/pi 4.7/4.4/12.1s
+it 1050 | sim steps 2665 | 0.29 h | 2.3 it/s | train_ret 0.185 (n=4504) | wm nse1 0.0242 nse8 0.0521 | imag_ret 0.915 surv 0.758 | t sim/wm/pi 4.8/4.4/12.1s
+it 1100 | sim steps 2790 | 0.30 h | 2.3 it/s | train_ret 0.202 (n=3798) | wm nse1 0.0270 nse8 0.0607 | imag_ret 0.901 surv 0.818 | t sim/wm/pi 4.8/4.4/12.2s
+it 1150 | sim steps 2915 | 0.30 h | 2.3 it/s | train_ret 0.191 (n=4146) | wm nse1 0.0296 nse8 0.0663 | imag_ret 0.941 surv 0.828 | t sim/wm/pi 4.8/4.4/12.2s
+it 1200 | sim steps 3040 | 0.31 h | 2.3 it/s | train_ret 0.251 (n=3456) | wm nse1 0.0310 nse8 0.0655 | imag_ret 1.033 surv 0.869 | t sim/wm/pi 4.8/4.4/12.1s
+it 1250 | sim steps 3165 | 0.32 h | 2.3 it/s | train_ret 0.285 (n=3179) | wm nse1 0.0311 nse8 0.0636 | imag_ret 1.123 surv 0.919 | t sim/wm/pi 4.8/4.4/12.2s
+it 1300 | sim steps 3290 | 0.32 h | 2.3 it/s | train_ret 0.279 (n=3493) | wm nse1 0.0312 nse8 0.0616 | imag_ret 1.170 surv 0.932 | t sim/wm/pi 4.8/4.3/12.2s
+it 1350 | sim steps 3415 | 0.33 h | 2.3 it/s | train_ret 0.308 (n=3122) | wm nse1 0.0303 nse8 0.0773 | imag_ret 1.224 surv 0.938 | t sim/wm/pi 4.9/4.3/12.3s
+it 1400 | sim steps 3540 | 0.33 h | 2.3 it/s | train_ret 0.371 (n=2717) | wm nse1 0.0285 nse8 0.0561 | imag_ret 1.374 surv 0.954 | t sim/wm/pi 4.9/4.3/12.3s
+it 1450 | sim steps 3665 | 0.34 h | 2.3 it/s | train_ret 0.392 (n=2548) | wm nse1 0.0253 nse8 0.0477 | imag_ret 1.468 surv 0.970 | t sim/wm/pi 4.9/4.3/12.2s
+it 1500 | sim steps 3790 | 0.35 h | 2.3 it/s | train_ret 0.410 (n=2690) | wm nse1 0.0225 nse8 0.0481 | imag_ret 1.541 surv 0.976 | t sim/wm/pi 4.9/4.3/12.1s
+it 1550 | sim steps 3915 | 0.35 h | 2.3 it/s | train_ret 0.430 (n=2685) | wm nse1 0.0199 nse8 0.0472 | imag_ret 1.614 surv 0.982 | t sim/wm/pi 4.9/4.3/12.2s
+it 1600 | sim steps 4040 | 0.36 h | 2.3 it/s | train_ret 0.431 (n=2622) | wm nse1 0.0186 nse8 0.0399 | imag_ret 1.666 surv 0.984 | t sim/wm/pi 4.9/4.3/12.1s
+it 1650 | sim steps 4165 | 0.36 h | 2.3 it/s | train_ret 0.462 (n=2599) | wm nse1 0.0173 nse8 0.0484 | imag_ret 1.737 surv 0.987 | t sim/wm/pi 4.9/4.3/12.3s
+it 1700 | sim steps 4290 | 0.37 h | 2.3 it/s | train_ret 0.473 (n=2534) | wm nse1 0.0158 nse8 0.0374 | imag_ret 1.792 surv 0.989 | t sim/wm/pi 4.9/4.3/12.1s
+it 1750 | sim steps 4415 | 0.38 h | 2.3 it/s | train_ret 0.494 (n=2402) | wm nse1 0.0147 nse8 0.0445 | imag_ret 1.843 surv 0.990 | t sim/wm/pi 4.9/4.3/12.2s
+it 1800 | sim steps 4540 | 0.38 h | 2.3 it/s | train_ret 0.496 (n=2573) | wm nse1 0.0139 nse8 0.0290 | imag_ret 1.883 surv 0.991 | t sim/wm/pi 4.9/4.3/12.2s
+it 1850 | sim steps 4665 | 0.39 h | 2.3 it/s | train_ret 0.516 (n=2441) | wm nse1 0.0134 nse8 0.0226 | imag_ret 1.920 surv 0.991 | t sim/wm/pi 4.9/4.3/12.3s
+it 1900 | sim steps 4790 | 0.39 h | 2.3 it/s | train_ret 0.529 (n=2522) | wm nse1 0.0130 nse8 0.0244 | imag_ret 1.956 surv 0.992 | t sim/wm/pi 4.9/4.3/12.1s
+it 1950 | sim steps 4915 | 0.40 h | 2.3 it/s | train_ret 0.533 (n=2463) | wm nse1 0.0125 nse8 0.0251 | imag_ret 1.981 surv 0.993 | t sim/wm/pi 4.9/4.3/12.2s
+it 2000 | sim steps 5040 | 0.41 h | 2.3 it/s | train_ret 0.549 (n=2366) | wm nse1 0.0118 nse8 0.0266 | imag_ret 1.998 surv 0.994 | t sim/wm/pi 4.8/4.3/12.2s
+it 2050 | sim steps 5165 | 0.41 h | 2.3 it/s | train_ret 0.546 (n=2479) | wm nse1 0.0113 nse8 0.0282 | imag_ret 2.018 surv 0.993 | t sim/wm/pi 4.8/4.3/12.1s
+it 2100 | sim steps 5290 | 0.42 h | 2.3 it/s | train_ret 0.552 (n=2547) | wm nse1 0.0108 nse8 0.0212 | imag_ret 2.029 surv 0.994 | t sim/wm/pi 4.8/4.3/12.2s
+it 2150 | sim steps 5415 | 0.42 h | 2.3 it/s | train_ret 0.559 (n=2482) | wm nse1 0.0104 nse8 0.0184 | imag_ret 2.048 surv 0.994 | t sim/wm/pi 4.8/4.3/12.1s
+it 2200 | sim steps 5540 | 0.43 h | 2.3 it/s | train_ret 0.564 (n=2491) | wm nse1 0.0100 nse8 0.0219 | imag_ret 2.063 surv 0.994 | t sim/wm/pi 4.9/4.3/12.2s
+it 2250 | sim steps 5665 | 0.44 h | 2.3 it/s | train_ret 0.568 (n=2449) | wm nse1 0.0096 nse8 0.0231 | imag_ret 2.075 surv 0.995 | t sim/wm/pi 4.8/4.3/12.2s
+it 2300 | sim steps 5790 | 0.44 h | 2.3 it/s | train_ret 0.582 (n=2613) | wm nse1 0.0094 nse8 0.0231 | imag_ret 2.087 surv 0.995 | t sim/wm/pi 4.8/4.3/12.9s
+it 2350 | sim steps 5915 | 0.45 h | 2.3 it/s | train_ret 0.570 (n=2526) | wm nse1 0.0092 nse8 0.0190 | imag_ret 2.097 surv 0.995 | t sim/wm/pi 4.8/4.3/12.2s
+it 2400 | sim steps 6040 | 0.45 h | 2.3 it/s | train_ret 0.584 (n=2620) | wm nse1 0.0091 nse8 0.0212 | imag_ret 2.109 surv 0.995 | t sim/wm/pi 4.8/4.3/12.2s
+it 2450 | sim steps 6165 | 0.46 h | 2.3 it/s | train_ret 0.597 (n=2427) | wm nse1 0.0088 nse8 0.0201 | imag_ret 2.120 surv 0.995 | t sim/wm/pi 4.8/4.3/12.2s
+it 2500 | sim steps 6290 | 0.47 h | 2.3 it/s | train_ret 0.584 (n=2586) | wm nse1 0.0086 nse8 0.0172 | imag_ret 2.131 surv 0.995 | t sim/wm/pi 4.8/4.3/12.2s
+it 2550 | sim steps 6415 | 0.47 h | 2.3 it/s | train_ret 0.596 (n=2494) | wm nse1 0.0085 nse8 0.0140 | imag_ret 2.143 surv 0.996 | t sim/wm/pi 4.8/4.3/12.2s
+it 2600 | sim steps 6540 | 0.48 h | 2.3 it/s | train_ret 0.609 (n=2506) | wm nse1 0.0084 nse8 0.0185 | imag_ret 2.154 surv 0.995 | t sim/wm/pi 4.8/4.3/12.1s
+it 2650 | sim steps 6665 | 0.48 h | 2.3 it/s | train_ret 0.611 (n=2543) | wm nse1 0.0085 nse8 0.0144 | imag_ret 2.165 surv 0.996 | t sim/wm/pi 4.8/4.3/12.2s
+it 2700 | sim steps 6790 | 0.49 h | 2.3 it/s | train_ret 0.613 (n=2485) | wm nse1 0.0085 nse8 0.0156 | imag_ret 2.171 surv 0.995 | t sim/wm/pi 4.8/4.3/12.2s
+it 2750 | sim steps 6915 | 0.50 h | 2.3 it/s | train_ret 0.615 (n=2449) | wm nse1 0.0084 nse8 0.0222 | imag_ret 2.175 surv 0.996 | t sim/wm/pi 4.8/4.3/12.2s
+it 2800 | sim steps 7040 | 0.50 h | 2.3 it/s | train_ret 0.613 (n=2526) | wm nse1 0.0082 nse8 0.0181 | imag_ret 2.185 surv 0.995 | t sim/wm/pi 4.9/4.3/12.2s
+it 2850 | sim steps 7165 | 0.51 h | 2.3 it/s | train_ret 0.615 (n=2424) | wm nse1 0.0083 nse8 0.0195 | imag_ret 2.192 surv 0.996 | t sim/wm/pi 4.9/4.3/12.2s
+it 2900 | sim steps 7290 | 0.51 h | 2.3 it/s | train_ret 0.622 (n=2502) | wm nse1 0.0084 nse8 0.0140 | imag_ret 2.202 surv 0.996 | t sim/wm/pi 4.9/4.3/12.3s
+it 2950 | sim steps 7415 | 0.52 h | 2.3 it/s | train_ret 0.633 (n=2452) | wm nse1 0.0083 nse8 0.0165 | imag_ret 2.206 surv 0.996 | t sim/wm/pi 4.9/4.3/12.2s
+it 3000 | sim steps 7540 | 0.53 h | 2.3 it/s | train_ret 0.628 (n=2562) | wm nse1 0.0084 nse8 0.0182 | imag_ret 2.213 surv 0.996 | t sim/wm/pi 4.9/4.3/12.2s
+it 3050 | sim steps 7665 | 0.53 h | 2.3 it/s | train_ret 0.628 (n=2515) | wm nse1 0.0083 nse8 0.0158 | imag_ret 2.219 surv 0.995 | t sim/wm/pi 4.9/4.3/12.2s
+it 3100 | sim steps 7790 | 0.54 h | 2.3 it/s | train_ret 0.625 (n=2556) | wm nse1 0.0083 nse8 0.0206 | imag_ret 2.231 surv 0.995 | t sim/wm/pi 4.9/4.3/12.2s
+it 3150 | sim steps 7915 | 0.54 h | 2.3 it/s | train_ret 0.626 (n=2425) | wm nse1 0.0084 nse8 0.0164 | imag_ret 2.233 surv 0.995 | t sim/wm/pi 4.9/4.3/12.2s
+it 3200 | sim steps 8040 | 0.55 h | 2.3 it/s | train_ret 0.642 (n=2527) | wm nse1 0.0086 nse8 0.0166 | imag_ret 2.242 surv 0.995 | t sim/wm/pi 4.9/4.3/12.1s
+it 3250 | sim steps 8165 | 0.56 h | 2.3 it/s | train_ret 0.639 (n=2481) | wm nse1 0.0086 nse8 0.0168 | imag_ret 2.247 surv 0.995 | t sim/wm/pi 4.9/4.3/12.2s
+it 3300 | sim steps 8290 | 0.56 h | 2.3 it/s | train_ret 0.646 (n=2556) | wm nse1 0.0087 nse8 0.0171 | imag_ret 2.257 surv 0.995 | t sim/wm/pi 4.9/4.3/12.2s
+it 3350 | sim steps 8415 | 0.57 h | 2.3 it/s | train_ret 0.641 (n=2494) | wm nse1 0.0089 nse8 0.0163 | imag_ret 2.261 surv 0.995 | t sim/wm/pi 4.9/4.3/12.2s
+it 3400 | sim steps 8540 | 0.57 h | 2.3 it/s | train_ret 0.642 (n=2598) | wm nse1 0.0089 nse8 0.0171 | imag_ret 2.265 surv 0.995 | t sim/wm/pi 4.9/4.3/12.2s
+it 3450 | sim steps 8665 | 0.58 h | 2.3 it/s | train_ret 0.653 (n=2528) | wm nse1 0.0092 nse8 0.0168 | imag_ret 2.273 surv 0.995 | t sim/wm/pi 4.9/4.3/12.2s
+it 3500 | sim steps 8790 | 0.59 h | 2.3 it/s | train_ret 0.659 (n=2573) | wm nse1 0.0091 nse8 0.0187 | imag_ret 2.278 surv 0.995 | t sim/wm/pi 4.9/4.3/12.2s
+it 3550 | sim steps 8915 | 0.59 h | 2.3 it/s | train_ret 0.659 (n=2426) | wm nse1 0.0091 nse8 0.0188 | imag_ret 2.283 surv 0.995 | t sim/wm/pi 4.9/4.3/12.2s
+it 3600 | sim steps 9040 | 0.60 h | 2.2 it/s | train_ret 0.653 (n=2510) | wm nse1 0.0091 nse8 0.0176 | imag_ret 2.291 surv 0.995 | t sim/wm/pi 4.9/4.3/12.9s
+it 3650 | sim steps 9165 | 0.60 h | 2.3 it/s | train_ret 0.664 (n=2522) | wm nse1 0.0093 nse8 0.0217 | imag_ret 2.295 surv 0.995 | t sim/wm/pi 4.8/4.3/12.2s
+it 3700 | sim steps 9290 | 0.61 h | 2.3 it/s | train_ret 0.670 (n=2451) | wm nse1 0.0091 nse8 0.0186 | imag_ret 2.300 surv 0.995 | t sim/wm/pi 4.9/4.3/12.2s
+it 3750 | sim steps 9415 | 0.62 h | 2.3 it/s | train_ret 0.676 (n=2413) | wm nse1 0.0091 nse8 0.0189 | imag_ret 2.307 surv 0.996 | t sim/wm/pi 4.9/4.3/12.2s
+it 3800 | sim steps 9540 | 0.62 h | 2.3 it/s | train_ret 0.673 (n=2481) | wm nse1 0.0092 nse8 0.0160 | imag_ret 2.313 surv 0.996 | t sim/wm/pi 4.9/4.3/12.2s
+it 3850 | sim steps 9665 | 0.63 h | 2.3 it/s | train_ret 0.679 (n=2476) | wm nse1 0.0091 nse8 0.0211 | imag_ret 2.316 surv 0.996 | t sim/wm/pi 4.9/4.3/12.3s
+it 3900 | sim steps 9790 | 0.63 h | 2.3 it/s | train_ret 0.671 (n=2507) | wm nse1 0.0092 nse8 0.0198 | imag_ret 2.322 surv 0.996 | t sim/wm/pi 4.9/4.3/12.2s
+it 3950 | sim steps 9915 | 0.64 h | 2.3 it/s | train_ret 0.674 (n=2403) | wm nse1 0.0092 nse8 0.0192 | imag_ret 2.328 surv 0.996 | t sim/wm/pi 4.9/4.3/12.3s
+it 4000 | sim steps 10040 | 0.65 h | 2.3 it/s | train_ret 0.684 (n=2460) | wm nse1 0.0091 nse8 0.0197 | imag_ret 2.330 surv 0.996 | t sim/wm/pi 4.9/4.3/12.2s
+it 4050 | sim steps 10165 | 0.65 h | 2.3 it/s | train_ret 0.674 (n=2459) | wm nse1 0.0091 nse8 0.0185 | imag_ret 2.340 surv 0.996 | t sim/wm/pi 4.8/4.3/12.2s
+it 4100 | sim steps 10290 | 0.66 h | 2.3 it/s | train_ret 0.674 (n=2524) | wm nse1 0.0090 nse8 0.0167 | imag_ret 2.345 surv 0.996 | t sim/wm/pi 4.9/4.3/12.3s
+it 4150 | sim steps 10415 | 0.66 h | 2.3 it/s | train_ret 0.675 (n=2300) | wm nse1 0.0091 nse8 0.0177 | imag_ret 2.347 surv 0.996 | t sim/wm/pi 4.9/4.3/12.3s
+it 4200 | sim steps 10540 | 0.67 h | 2.3 it/s | train_ret 0.676 (n=2506) | wm nse1 0.0091 nse8 0.0150 | imag_ret 2.351 surv 0.996 | t sim/wm/pi 4.9/4.3/12.2s
+it 4250 | sim steps 10665 | 0.68 h | 2.3 it/s | train_ret 0.667 (n=2452) | wm nse1 0.0092 nse8 0.0250 | imag_ret 2.352 surv 0.996 | t sim/wm/pi 4.8/4.3/12.2s
+it 4300 | sim steps 10790 | 0.68 h | 2.3 it/s | train_ret 0.672 (n=2517) | wm nse1 0.0092 nse8 0.0187 | imag_ret 2.355 surv 0.996 | t sim/wm/pi 4.8/4.3/12.2s
+it 4350 | sim steps 10915 | 0.69 h | 2.3 it/s | train_ret 0.677 (n=2540) | wm nse1 0.0092 nse8 0.0179 | imag_ret 2.361 surv 0.996 | t sim/wm/pi 4.9/4.3/12.2s
+it 4400 | sim steps 11040 | 0.69 h | 2.3 it/s | train_ret 0.681 (n=2510) | wm nse1 0.0092 nse8 0.0161 | imag_ret 2.363 surv 0.996 | t sim/wm/pi 4.8/4.3/12.1s
+it 4450 | sim steps 11165 | 0.70 h | 2.3 it/s | train_ret 0.683 (n=2549) | wm nse1 0.0093 nse8 0.0229 | imag_ret 2.366 surv 0.996 | t sim/wm/pi 4.9/4.3/12.3s
+it 4500 | sim steps 11290 | 0.71 h | 2.3 it/s | train_ret 0.677 (n=2547) | wm nse1 0.0093 nse8 0.0207 | imag_ret 2.367 surv 0.996 | t sim/wm/pi 4.8/4.3/12.2s
+it 4550 | sim steps 11415 | 0.71 h | 2.3 it/s | train_ret 0.681 (n=2550) | wm nse1 0.0093 nse8 0.0206 | imag_ret 2.371 surv 0.996 | t sim/wm/pi 4.8/4.3/12.2s
+it 4600 | sim steps 11540 | 0.72 h | 2.3 it/s | train_ret 0.684 (n=2481) | wm nse1 0.0095 nse8 0.0193 | imag_ret 2.369 surv 0.996 | t sim/wm/pi 4.9/4.3/12.3s
+it 4650 | sim steps 11665 | 0.72 h | 2.3 it/s | train_ret 0.691 (n=2512) | wm nse1 0.0093 nse8 0.0161 | imag_ret 2.378 surv 0.996 | t sim/wm/pi 4.9/4.3/12.3s
+it 4700 | sim steps 11790 | 0.73 h | 2.3 it/s | train_ret 0.696 (n=2441) | wm nse1 0.0093 nse8 0.0186 | imag_ret 2.384 surv 0.997 | t sim/wm/pi 4.9/4.3/12.2s
+it 4750 | sim steps 11915 | 0.74 h | 2.2 it/s | train_ret 0.689 (n=2510) | wm nse1 0.0092 nse8 0.0173 | imag_ret 2.389 surv 0.997 | t sim/wm/pi 4.9/4.3/12.9s
+it 4800 | sim steps 12040 | 0.74 h | 2.3 it/s | train_ret 0.688 (n=2463) | wm nse1 0.0091 nse8 0.0178 | imag_ret 2.396 surv 0.997 | t sim/wm/pi 4.8/4.3/12.2s
+it 4850 | sim steps 12165 | 0.75 h | 2.3 it/s | train_ret 0.689 (n=2564) | wm nse1 0.0090 nse8 0.0224 | imag_ret 2.399 surv 0.997 | t sim/wm/pi 4.8/4.3/12.2s
+it 4900 | sim steps 12290 | 0.75 h | 2.3 it/s | train_ret 0.694 (n=2559) | wm nse1 0.0090 nse8 0.0163 | imag_ret 2.403 surv 0.997 | t sim/wm/pi 4.9/4.3/12.2s
+it 4950 | sim steps 12415 | 0.76 h | 2.3 it/s | train_ret 0.692 (n=2554) | wm nse1 0.0089 nse8 0.0209 | imag_ret 2.410 surv 0.997 | t sim/wm/pi 4.9/4.3/12.3s
+it 5000 | sim steps 12540 | 0.77 h | 2.3 it/s | train_ret 0.694 (n=2426) | wm nse1 0.0088 nse8 0.0196 | imag_ret 2.417 surv 0.997 | t sim/wm/pi 4.9/4.3/12.3s
+it 5050 | sim steps 12665 | 0.77 h | 2.3 it/s | train_ret 0.699 (n=2405) | wm nse1 0.0088 nse8 0.0173 | imag_ret 2.418 surv 0.997 | t sim/wm/pi 4.9/4.3/12.3s
+it 5100 | sim steps 12790 | 0.78 h | 2.3 it/s | train_ret 0.694 (n=2559) | wm nse1 0.0087 nse8 0.0190 | imag_ret 2.424 surv 0.997 | t sim/wm/pi 4.9/4.3/12.3s
+it 5150 | sim steps 12915 | 0.78 h | 2.3 it/s | train_ret 0.696 (n=2504) | wm nse1 0.0088 nse8 0.0164 | imag_ret 2.426 surv 0.997 | t sim/wm/pi 4.9/4.3/12.2s
+it 5200 | sim steps 13040 | 0.79 h | 2.3 it/s | train_ret 0.694 (n=2540) | wm nse1 0.0088 nse8 0.0191 | imag_ret 2.435 surv 0.997 | t sim/wm/pi 4.9/4.3/12.2s
+it 5250 | sim steps 13165 | 0.80 h | 2.3 it/s | train_ret 0.705 (n=2525) | wm nse1 0.0088 nse8 0.0231 | imag_ret 2.439 surv 0.997 | t sim/wm/pi 4.9/4.3/12.3s
+it 5300 | sim steps 13290 | 0.80 h | 2.3 it/s | train_ret 0.708 (n=2507) | wm nse1 0.0089 nse8 0.0184 | imag_ret 2.449 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 5350 | sim steps 13415 | 0.81 h | 2.3 it/s | train_ret 0.701 (n=2589) | wm nse1 0.0089 nse8 0.0168 | imag_ret 2.456 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 5400 | sim steps 13540 | 0.81 h | 2.3 it/s | train_ret 0.711 (n=2601) | wm nse1 0.0089 nse8 0.0205 | imag_ret 2.461 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 5450 | sim steps 13665 | 0.82 h | 2.3 it/s | train_ret 0.710 (n=2527) | wm nse1 0.0090 nse8 0.0194 | imag_ret 2.466 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 5500 | sim steps 13790 | 0.83 h | 2.3 it/s | train_ret 0.710 (n=2551) | wm nse1 0.0090 nse8 0.0210 | imag_ret 2.469 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 5550 | sim steps 13915 | 0.83 h | 2.3 it/s | train_ret 0.712 (n=2457) | wm nse1 0.0090 nse8 0.0215 | imag_ret 2.474 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 5600 | sim steps 14040 | 0.84 h | 2.3 it/s | train_ret 0.718 (n=2623) | wm nse1 0.0091 nse8 0.0163 | imag_ret 2.477 surv 0.998 | t sim/wm/pi 5.0/4.3/12.4s
+it 5650 | sim steps 14165 | 0.84 h | 2.3 it/s | train_ret 0.713 (n=2544) | wm nse1 0.0091 nse8 0.0189 | imag_ret 2.483 surv 0.998 | t sim/wm/pi 5.0/4.3/12.5s
+it 5700 | sim steps 14290 | 0.85 h | 2.2 it/s | train_ret 0.712 (n=2518) | wm nse1 0.0094 nse8 0.0234 | imag_ret 2.482 surv 0.998 | t sim/wm/pi 4.9/4.3/13.1s
+it 5750 | sim steps 14415 | 0.86 h | 2.3 it/s | train_ret 0.723 (n=2560) | wm nse1 0.0095 nse8 0.0171 | imag_ret 2.482 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 5800 | sim steps 14540 | 0.86 h | 2.3 it/s | train_ret 0.712 (n=2620) | wm nse1 0.0096 nse8 0.0207 | imag_ret 2.486 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 5850 | sim steps 14665 | 0.87 h | 2.3 it/s | train_ret 0.714 (n=2551) | wm nse1 0.0096 nse8 0.0226 | imag_ret 2.492 surv 0.999 | t sim/wm/pi 5.0/4.3/12.6s
+it 5900 | sim steps 14790 | 0.87 h | 2.3 it/s | train_ret 0.718 (n=2474) | wm nse1 0.0097 nse8 0.0249 | imag_ret 2.494 surv 0.998 | t sim/wm/pi 5.0/4.3/12.4s
+it 5950 | sim steps 14915 | 0.88 h | 2.3 it/s | train_ret 0.718 (n=2537) | wm nse1 0.0097 nse8 0.0236 | imag_ret 2.498 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 6000 | sim steps 15040 | 0.89 h | 2.3 it/s | train_ret 0.720 (n=2597) | wm nse1 0.0098 nse8 0.0184 | imag_ret 2.500 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 6050 | sim steps 15165 | 0.89 h | 2.3 it/s | train_ret 0.717 (n=2490) | wm nse1 0.0097 nse8 0.0249 | imag_ret 2.500 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 6100 | sim steps 15290 | 0.90 h | 2.3 it/s | train_ret 0.719 (n=2543) | wm nse1 0.0098 nse8 0.0201 | imag_ret 2.503 surv 0.998 | t sim/wm/pi 5.0/4.3/12.7s
+it 6150 | sim steps 15415 | 0.90 h | 2.3 it/s | train_ret 0.712 (n=2568) | wm nse1 0.0099 nse8 0.0244 | imag_ret 2.510 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 6200 | sim steps 15540 | 0.91 h | 2.3 it/s | train_ret 0.723 (n=2444) | wm nse1 0.0098 nse8 0.0220 | imag_ret 2.507 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 6250 | sim steps 15665 | 0.92 h | 2.3 it/s | train_ret 0.728 (n=2480) | wm nse1 0.0098 nse8 0.0189 | imag_ret 2.514 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 6300 | sim steps 15790 | 0.92 h | 2.3 it/s | train_ret 0.715 (n=2542) | wm nse1 0.0097 nse8 0.0279 | imag_ret 2.517 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 6350 | sim steps 15915 | 0.93 h | 2.3 it/s | train_ret 0.724 (n=2509) | wm nse1 0.0097 nse8 0.0226 | imag_ret 2.519 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 6400 | sim steps 16040 | 0.93 h | 2.3 it/s | train_ret 0.731 (n=2511) | wm nse1 0.0096 nse8 0.0210 | imag_ret 2.524 surv 0.999 | t sim/wm/pi 4.9/4.3/12.2s
+it 6450 | sim steps 16165 | 0.94 h | 2.3 it/s | train_ret 0.715 (n=2558) | wm nse1 0.0097 nse8 0.0290 | imag_ret 2.528 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 6500 | sim steps 16290 | 0.95 h | 2.3 it/s | train_ret 0.728 (n=2454) | wm nse1 0.0096 nse8 0.0224 | imag_ret 2.536 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 6550 | sim steps 16415 | 0.95 h | 2.3 it/s | train_ret 0.740 (n=2468) | wm nse1 0.0095 nse8 0.0225 | imag_ret 2.541 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 6600 | sim steps 16540 | 0.96 h | 2.3 it/s | train_ret 0.735 (n=2537) | wm nse1 0.0093 nse8 0.0256 | imag_ret 2.545 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 6650 | sim steps 16665 | 0.96 h | 2.3 it/s | train_ret 0.731 (n=2477) | wm nse1 0.0093 nse8 0.0226 | imag_ret 2.545 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 6700 | sim steps 16790 | 0.97 h | 2.3 it/s | train_ret 0.734 (n=2505) | wm nse1 0.0092 nse8 0.0234 | imag_ret 2.546 surv 0.999 | t sim/wm/pi 4.9/4.3/12.0s
+it 6750 | sim steps 16915 | 0.98 h | 2.6 it/s | train_ret 0.725 (n=2423) | wm nse1 0.0092 nse8 0.0187 | imag_ret 2.549 surv 0.999 | t sim/wm/pi 4.5/4.3/10.6s
+it 6800 | sim steps 17040 | 0.98 h | 2.4 it/s | train_ret 0.739 (n=2400) | wm nse1 0.0091 nse8 0.0204 | imag_ret 2.554 surv 0.999 | t sim/wm/pi 4.7/4.3/11.6s
+it 6850 | sim steps 17165 | 0.99 h | 2.3 it/s | train_ret 0.747 (n=2487) | wm nse1 0.0090 nse8 0.0206 | imag_ret 2.559 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 6900 | sim steps 17290 | 0.99 h | 2.3 it/s | train_ret 0.739 (n=2386) | wm nse1 0.0089 nse8 0.0203 | imag_ret 2.566 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 6950 | sim steps 17415 | 1.00 h | 2.4 it/s | train_ret 0.743 (n=2425) | wm nse1 0.0088 nse8 0.0201 | imag_ret 2.567 surv 0.999 | t sim/wm/pi 4.8/4.3/11.9s
+it 7000 | sim steps 17540 | 1.01 h | 2.3 it/s | train_ret 0.744 (n=2528) | wm nse1 0.0087 nse8 0.0193 | imag_ret 2.572 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 7050 | sim steps 17665 | 1.01 h | 2.3 it/s | train_ret 0.747 (n=2507) | wm nse1 0.0086 nse8 0.0200 | imag_ret 2.574 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 7100 | sim steps 17790 | 1.02 h | 2.3 it/s | train_ret 0.744 (n=2557) | wm nse1 0.0086 nse8 0.0140 | imag_ret 2.577 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 7150 | sim steps 17915 | 1.02 h | 2.3 it/s | train_ret 0.732 (n=2535) | wm nse1 0.0085 nse8 0.0197 | imag_ret 2.582 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 7200 | sim steps 18040 | 1.03 h | 2.3 it/s | train_ret 0.739 (n=2549) | wm nse1 0.0084 nse8 0.0163 | imag_ret 2.587 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 7250 | sim steps 18165 | 1.03 h | 2.3 it/s | train_ret 0.747 (n=2509) | wm nse1 0.0084 nse8 0.0147 | imag_ret 2.589 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 7300 | sim steps 18290 | 1.04 h | 2.3 it/s | train_ret 0.738 (n=2593) | wm nse1 0.0084 nse8 0.0223 | imag_ret 2.589 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 7350 | sim steps 18415 | 1.05 h | 2.3 it/s | train_ret 0.746 (n=2610) | wm nse1 0.0084 nse8 0.0225 | imag_ret 2.595 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 7400 | sim steps 18540 | 1.05 h | 2.3 it/s | train_ret 0.750 (n=2537) | wm nse1 0.0085 nse8 0.0172 | imag_ret 2.596 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 7450 | sim steps 18665 | 1.06 h | 2.3 it/s | train_ret 0.746 (n=2550) | wm nse1 0.0085 nse8 0.0240 | imag_ret 2.598 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 7500 | sim steps 18790 | 1.06 h | 2.3 it/s | train_ret 0.748 (n=2613) | wm nse1 0.0084 nse8 0.0194 | imag_ret 2.602 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 7550 | sim steps 18915 | 1.07 h | 2.3 it/s | train_ret 0.737 (n=2515) | wm nse1 0.0084 nse8 0.0179 | imag_ret 2.602 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 7600 | sim steps 19040 | 1.08 h | 2.3 it/s | train_ret 0.742 (n=2628) | wm nse1 0.0084 nse8 0.0174 | imag_ret 2.606 surv 1.000 | t sim/wm/pi 4.8/4.3/12.0s
+it 7650 | sim steps 19165 | 1.08 h | 2.3 it/s | train_ret 0.747 (n=2583) | wm nse1 0.0084 nse8 0.0161 | imag_ret 2.610 surv 1.000 | t sim/wm/pi 4.8/4.3/12.0s
+it 7700 | sim steps 19290 | 1.09 h | 2.3 it/s | train_ret 0.745 (n=2534) | wm nse1 0.0083 nse8 0.0178 | imag_ret 2.614 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 7750 | sim steps 19415 | 1.09 h | 2.4 it/s | train_ret 0.743 (n=2508) | wm nse1 0.0083 nse8 0.0190 | imag_ret 2.614 surv 0.999 | t sim/wm/pi 4.8/4.3/11.9s
+it 7800 | sim steps 19540 | 1.10 h | 2.3 it/s | train_ret 0.743 (n=2630) | wm nse1 0.0083 nse8 0.0199 | imag_ret 2.616 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 7850 | sim steps 19665 | 1.11 h | 2.3 it/s | train_ret 0.746 (n=2558) | wm nse1 0.0082 nse8 0.0162 | imag_ret 2.616 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 7900 | sim steps 19790 | 1.11 h | 2.4 it/s | train_ret 0.749 (n=2569) | wm nse1 0.0082 nse8 0.0170 | imag_ret 2.620 surv 0.999 | t sim/wm/pi 4.7/4.3/11.6s
+it 7950 | sim steps 19915 | 1.12 h | 2.2 it/s | train_ret 0.743 (n=2506) | wm nse1 0.0081 nse8 0.0142 | imag_ret 2.624 surv 1.000 | t sim/wm/pi 4.9/4.3/13.0s
+it 8000 | sim steps 20040 | 1.12 h | 2.3 it/s | train_ret 0.745 (n=2661) | wm nse1 0.0081 nse8 0.0152 | imag_ret 2.627 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 8050 | sim steps 20165 | 1.13 h | 2.2 it/s | train_ret 0.748 (n=2595) | wm nse1 0.0082 nse8 0.0219 | imag_ret 2.630 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 8100 | sim steps 20290 | 1.14 h | 2.3 it/s | train_ret 0.747 (n=2536) | wm nse1 0.0082 nse8 0.0191 | imag_ret 2.633 surv 0.999 | t sim/wm/pi 4.9/4.3/12.6s
+it 8150 | sim steps 20415 | 1.14 h | 2.3 it/s | train_ret 0.754 (n=2639) | wm nse1 0.0081 nse8 0.0160 | imag_ret 2.637 surv 1.000 | t sim/wm/pi 5.0/4.3/12.6s
+it 8200 | sim steps 20540 | 1.15 h | 2.3 it/s | train_ret 0.749 (n=2666) | wm nse1 0.0082 nse8 0.0153 | imag_ret 2.633 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 8250 | sim steps 20665 | 1.15 h | 2.3 it/s | train_ret 0.744 (n=2700) | wm nse1 0.0083 nse8 0.0189 | imag_ret 2.635 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 8300 | sim steps 20790 | 1.16 h | 2.3 it/s | train_ret 0.747 (n=2623) | wm nse1 0.0083 nse8 0.0188 | imag_ret 2.637 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 8350 | sim steps 20915 | 1.17 h | 2.3 it/s | train_ret 0.749 (n=2703) | wm nse1 0.0082 nse8 0.0166 | imag_ret 2.638 surv 0.999 | t sim/wm/pi 4.9/4.3/12.2s
+it 8400 | sim steps 21040 | 1.17 h | 2.3 it/s | train_ret 0.752 (n=2534) | wm nse1 0.0082 nse8 0.0196 | imag_ret 2.644 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 8450 | sim steps 21165 | 1.18 h | 2.3 it/s | train_ret 0.751 (n=2634) | wm nse1 0.0082 nse8 0.0167 | imag_ret 2.650 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 8500 | sim steps 21290 | 1.18 h | 2.3 it/s | train_ret 0.752 (n=2709) | wm nse1 0.0081 nse8 0.0212 | imag_ret 2.654 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 8550 | sim steps 21415 | 1.19 h | 2.3 it/s | train_ret 0.754 (n=2693) | wm nse1 0.0081 nse8 0.0158 | imag_ret 2.656 surv 1.000 | t sim/wm/pi 4.8/4.3/12.0s
+it 8600 | sim steps 21540 | 1.20 h | 2.3 it/s | train_ret 0.753 (n=2593) | wm nse1 0.0081 nse8 0.0153 | imag_ret 2.659 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 8650 | sim steps 21665 | 1.20 h | 2.3 it/s | train_ret 0.749 (n=2741) | wm nse1 0.0081 nse8 0.0181 | imag_ret 2.660 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 8700 | sim steps 21790 | 1.21 h | 2.3 it/s | train_ret 0.754 (n=2650) | wm nse1 0.0081 nse8 0.0149 | imag_ret 2.662 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 8750 | sim steps 21915 | 1.21 h | 2.3 it/s | train_ret 0.748 (n=2683) | wm nse1 0.0081 nse8 0.0192 | imag_ret 2.664 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 8800 | sim steps 22040 | 1.22 h | 2.3 it/s | train_ret 0.752 (n=2670) | wm nse1 0.0082 nse8 0.0163 | imag_ret 2.663 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 8850 | sim steps 22165 | 1.23 h | 2.3 it/s | train_ret 0.752 (n=2664) | wm nse1 0.0082 nse8 0.0143 | imag_ret 2.668 surv 1.000 | t sim/wm/pi 4.9/4.3/12.2s
+it 8900 | sim steps 22290 | 1.23 h | 2.3 it/s | train_ret 0.744 (n=2708) | wm nse1 0.0083 nse8 0.0240 | imag_ret 2.663 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 8950 | sim steps 22415 | 1.24 h | 2.3 it/s | train_ret 0.748 (n=2777) | wm nse1 0.0084 nse8 0.0183 | imag_ret 2.664 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 9000 | sim steps 22540 | 1.24 h | 2.3 it/s | train_ret 0.752 (n=2684) | wm nse1 0.0085 nse8 0.0184 | imag_ret 2.663 surv 1.000 | t sim/wm/pi 4.9/4.3/12.2s
+it 9050 | sim steps 22665 | 1.25 h | 2.3 it/s | train_ret 0.748 (n=2721) | wm nse1 0.0086 nse8 0.0183 | imag_ret 2.664 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 9100 | sim steps 22790 | 1.26 h | 2.3 it/s | train_ret 0.749 (n=2876) | wm nse1 0.0087 nse8 0.0193 | imag_ret 2.664 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 9150 | sim steps 22915 | 1.26 h | 2.3 it/s | train_ret 0.750 (n=2628) | wm nse1 0.0086 nse8 0.0217 | imag_ret 2.665 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 9200 | sim steps 23040 | 1.27 h | 2.3 it/s | train_ret 0.762 (n=2636) | wm nse1 0.0086 nse8 0.0214 | imag_ret 2.667 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 9250 | sim steps 23165 | 1.27 h | 2.3 it/s | train_ret 0.760 (n=2702) | wm nse1 0.0086 nse8 0.0170 | imag_ret 2.670 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 9300 | sim steps 23290 | 1.28 h | 2.3 it/s | train_ret 0.748 (n=2700) | wm nse1 0.0085 nse8 0.0177 | imag_ret 2.674 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 9350 | sim steps 23415 | 1.29 h | 2.3 it/s | train_ret 0.757 (n=2698) | wm nse1 0.0083 nse8 0.0179 | imag_ret 2.675 surv 1.000 | t sim/wm/pi 4.9/4.3/12.3s
+it 9400 | sim steps 23540 | 1.29 h | 2.3 it/s | train_ret 0.751 (n=2799) | wm nse1 0.0083 nse8 0.0154 | imag_ret 2.679 surv 1.000 | t sim/wm/pi 4.9/4.3/12.3s
+it 9450 | sim steps 23665 | 1.30 h | 2.3 it/s | train_ret 0.751 (n=2571) | wm nse1 0.0082 nse8 0.0157 | imag_ret 2.682 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 9500 | sim steps 23790 | 1.30 h | 2.3 it/s | train_ret 0.755 (n=2734) | wm nse1 0.0081 nse8 0.0178 | imag_ret 2.687 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 9550 | sim steps 23915 | 1.31 h | 2.3 it/s | train_ret 0.767 (n=2613) | wm nse1 0.0080 nse8 0.0193 | imag_ret 2.683 surv 1.000 | t sim/wm/pi 4.9/4.3/12.3s
+it 9600 | sim steps 24040 | 1.32 h | 2.3 it/s | train_ret 0.761 (n=2720) | wm nse1 0.0079 nse8 0.0144 | imag_ret 2.685 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 9650 | sim steps 24165 | 1.32 h | 2.3 it/s | train_ret 0.752 (n=2760) | wm nse1 0.0079 nse8 0.0186 | imag_ret 2.687 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 9700 | sim steps 24290 | 1.33 h | 2.3 it/s | train_ret 0.745 (n=2750) | wm nse1 0.0079 nse8 0.0167 | imag_ret 2.687 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 9750 | sim steps 24415 | 1.33 h | 2.3 it/s | train_ret 0.748 (n=2836) | wm nse1 0.0078 nse8 0.0159 | imag_ret 2.689 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 9800 | sim steps 24540 | 1.34 h | 2.3 it/s | train_ret 0.753 (n=2844) | wm nse1 0.0078 nse8 0.0173 | imag_ret 2.688 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 9850 | sim steps 24665 | 1.35 h | 2.3 it/s | train_ret 0.756 (n=2750) | wm nse1 0.0077 nse8 0.0154 | imag_ret 2.690 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 9900 | sim steps 24790 | 1.35 h | 2.3 it/s | train_ret 0.760 (n=2776) | wm nse1 0.0077 nse8 0.0158 | imag_ret 2.692 surv 1.000 | t sim/wm/pi 4.8/4.3/12.0s
+it 9950 | sim steps 24915 | 1.36 h | 2.3 it/s | train_ret 0.762 (n=2703) | wm nse1 0.0077 nse8 0.0178 | imag_ret 2.695 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 10000 | sim steps 25040 | 1.36 h | 2.3 it/s | train_ret 0.761 (n=2823) | wm nse1 0.0077 nse8 0.0145 | imag_ret 2.701 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 10050 | sim steps 25165 | 1.37 h | 2.3 it/s | train_ret 0.768 (n=2637) | wm nse1 0.0076 nse8 0.0179 | imag_ret 2.705 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 10100 | sim steps 25290 | 1.38 h | 2.3 it/s | train_ret 0.764 (n=2758) | wm nse1 0.0076 nse8 0.0161 | imag_ret 2.706 surv 1.000 | t sim/wm/pi 4.8/4.3/12.9s
+it 10150 | sim steps 25415 | 1.38 h | 2.3 it/s | train_ret 0.763 (n=2697) | wm nse1 0.0076 nse8 0.0136 | imag_ret 2.709 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 10200 | sim steps 25540 | 1.39 h | 2.3 it/s | train_ret 0.760 (n=2780) | wm nse1 0.0075 nse8 0.0169 | imag_ret 2.708 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 10250 | sim steps 25665 | 1.39 h | 2.3 it/s | train_ret 0.754 (n=2729) | wm nse1 0.0076 nse8 0.0159 | imag_ret 2.710 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 10300 | sim steps 25790 | 1.40 h | 2.3 it/s | train_ret 0.761 (n=2800) | wm nse1 0.0076 nse8 0.0196 | imag_ret 2.709 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 10350 | sim steps 25915 | 1.41 h | 2.4 it/s | train_ret 0.758 (n=2809) | wm nse1 0.0077 nse8 0.0207 | imag_ret 2.707 surv 0.999 | t sim/wm/pi 4.7/4.3/11.8s
+it 10400 | sim steps 26040 | 1.41 h | 2.3 it/s | train_ret 0.757 (n=2769) | wm nse1 0.0078 nse8 0.0142 | imag_ret 2.706 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 10450 | sim steps 26165 | 1.42 h | 2.3 it/s | train_ret 0.754 (n=2720) | wm nse1 0.0079 nse8 0.0150 | imag_ret 2.704 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 10500 | sim steps 26290 | 1.42 h | 2.3 it/s | train_ret 0.752 (n=2717) | wm nse1 0.0080 nse8 0.0163 | imag_ret 2.705 surv 0.998 | t sim/wm/pi 4.8/4.3/12.1s
+it 10550 | sim steps 26415 | 1.43 h | 2.3 it/s | train_ret 0.767 (n=2795) | wm nse1 0.0080 nse8 0.0162 | imag_ret 2.704 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 10600 | sim steps 26540 | 1.44 h | 2.3 it/s | train_ret 0.760 (n=2670) | wm nse1 0.0080 nse8 0.0159 | imag_ret 2.703 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 10650 | sim steps 26665 | 1.44 h | 2.3 it/s | train_ret 0.765 (n=2726) | wm nse1 0.0080 nse8 0.0199 | imag_ret 2.707 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 10700 | sim steps 26790 | 1.45 h | 2.3 it/s | train_ret 0.769 (n=2661) | wm nse1 0.0080 nse8 0.0152 | imag_ret 2.706 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 10750 | sim steps 26915 | 1.45 h | 2.3 it/s | train_ret 0.760 (n=2746) | wm nse1 0.0080 nse8 0.0173 | imag_ret 2.707 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 10800 | sim steps 27040 | 1.46 h | 2.3 it/s | train_ret 0.762 (n=2628) | wm nse1 0.0079 nse8 0.0161 | imag_ret 2.709 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 10850 | sim steps 27165 | 1.47 h | 2.3 it/s | train_ret 0.765 (n=2704) | wm nse1 0.0079 nse8 0.0155 | imag_ret 2.713 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 10900 | sim steps 27290 | 1.47 h | 2.3 it/s | train_ret 0.765 (n=2666) | wm nse1 0.0078 nse8 0.0194 | imag_ret 2.716 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 10950 | sim steps 27415 | 1.48 h | 2.3 it/s | train_ret 0.769 (n=2661) | wm nse1 0.0078 nse8 0.0147 | imag_ret 2.717 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 11000 | sim steps 27540 | 1.48 h | 2.3 it/s | train_ret 0.754 (n=2724) | wm nse1 0.0079 nse8 0.0166 | imag_ret 2.715 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 11050 | sim steps 27665 | 1.49 h | 2.3 it/s | train_ret 0.750 (n=2820) | wm nse1 0.0079 nse8 0.0161 | imag_ret 2.714 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 11100 | sim steps 27790 | 1.50 h | 2.3 it/s | train_ret 0.768 (n=2710) | wm nse1 0.0079 nse8 0.0170 | imag_ret 2.714 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 11150 | sim steps 27915 | 1.50 h | 2.3 it/s | train_ret 0.758 (n=2691) | wm nse1 0.0081 nse8 0.0217 | imag_ret 2.710 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 11200 | sim steps 28040 | 1.51 h | 2.3 it/s | train_ret 0.760 (n=2658) | wm nse1 0.0081 nse8 0.0225 | imag_ret 2.707 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 11250 | sim steps 28165 | 1.51 h | 2.3 it/s | train_ret 0.760 (n=2721) | wm nse1 0.0081 nse8 0.0190 | imag_ret 2.708 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 11300 | sim steps 28290 | 1.52 h | 2.3 it/s | train_ret 0.755 (n=2710) | wm nse1 0.0083 nse8 0.0244 | imag_ret 2.705 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 11350 | sim steps 28415 | 1.53 h | 2.2 it/s | train_ret 0.754 (n=2829) | wm nse1 0.0084 nse8 0.0202 | imag_ret 2.703 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 11400 | sim steps 28540 | 1.53 h | 2.3 it/s | train_ret 0.754 (n=2754) | wm nse1 0.0086 nse8 0.0156 | imag_ret 2.700 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 11450 | sim steps 28665 | 1.54 h | 2.3 it/s | train_ret 0.758 (n=2792) | wm nse1 0.0085 nse8 0.0190 | imag_ret 2.700 surv 0.999 | t sim/wm/pi 4.8/4.3/12.8s
+it 11500 | sim steps 28790 | 1.54 h | 2.3 it/s | train_ret 0.756 (n=2743) | wm nse1 0.0085 nse8 0.0183 | imag_ret 2.695 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 11550 | sim steps 28915 | 1.55 h | 2.3 it/s | train_ret 0.750 (n=2769) | wm nse1 0.0086 nse8 0.0149 | imag_ret 2.696 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 11600 | sim steps 29040 | 1.56 h | 2.3 it/s | train_ret 0.742 (n=2839) | wm nse1 0.0087 nse8 0.0228 | imag_ret 2.692 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 11650 | sim steps 29165 | 1.56 h | 2.3 it/s | train_ret 0.753 (n=2787) | wm nse1 0.0087 nse8 0.0158 | imag_ret 2.696 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 11700 | sim steps 29290 | 1.57 h | 2.3 it/s | train_ret 0.748 (n=2677) | wm nse1 0.0087 nse8 0.0184 | imag_ret 2.702 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 11750 | sim steps 29415 | 1.57 h | 2.3 it/s | train_ret 0.759 (n=2799) | wm nse1 0.0086 nse8 0.0203 | imag_ret 2.700 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 11800 | sim steps 29540 | 1.58 h | 2.3 it/s | train_ret 0.751 (n=2671) | wm nse1 0.0086 nse8 0.0214 | imag_ret 2.703 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 11850 | sim steps 29665 | 1.59 h | 2.3 it/s | train_ret 0.753 (n=2879) | wm nse1 0.0086 nse8 0.0167 | imag_ret 2.702 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 11900 | sim steps 29790 | 1.59 h | 2.3 it/s | train_ret 0.754 (n=2772) | wm nse1 0.0086 nse8 0.0184 | imag_ret 2.701 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 11950 | sim steps 29915 | 1.60 h | 2.3 it/s | train_ret 0.758 (n=2771) | wm nse1 0.0086 nse8 0.0166 | imag_ret 2.701 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 12000 | sim steps 30040 | 1.60 h | 2.3 it/s | train_ret 0.757 (n=2802) | wm nse1 0.0085 nse8 0.0180 | imag_ret 2.705 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 12050 | sim steps 30165 | 1.61 h | 2.2 it/s | train_ret 0.757 (n=2715) | wm nse1 0.0085 nse8 0.0153 | imag_ret 2.705 surv 0.999 | t sim/wm/pi 4.8/4.3/12.4s
+it 12100 | sim steps 30290 | 1.62 h | 2.3 it/s | train_ret 0.742 (n=2797) | wm nse1 0.0083 nse8 0.0146 | imag_ret 2.704 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 12150 | sim steps 30415 | 1.62 h | 2.3 it/s | train_ret 0.747 (n=2725) | wm nse1 0.0085 nse8 0.0196 | imag_ret 2.700 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 12200 | sim steps 30540 | 1.63 h | 2.3 it/s | train_ret 0.745 (n=2813) | wm nse1 0.0085 nse8 0.0197 | imag_ret 2.703 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 12250 | sim steps 30665 | 1.63 h | 2.3 it/s | train_ret 0.753 (n=2788) | wm nse1 0.0085 nse8 0.0162 | imag_ret 2.700 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 12300 | sim steps 30790 | 1.64 h | 2.3 it/s | train_ret 0.750 (n=2776) | wm nse1 0.0085 nse8 0.0208 | imag_ret 2.702 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 12350 | sim steps 30915 | 1.65 h | 2.3 it/s | train_ret 0.751 (n=2771) | wm nse1 0.0085 nse8 0.0200 | imag_ret 2.696 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 12400 | sim steps 31040 | 1.65 h | 2.3 it/s | train_ret 0.748 (n=2851) | wm nse1 0.0085 nse8 0.0152 | imag_ret 2.696 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 12450 | sim steps 31165 | 1.66 h | 2.3 it/s | train_ret 0.747 (n=2835) | wm nse1 0.0085 nse8 0.0174 | imag_ret 2.697 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 12500 | sim steps 31290 | 1.66 h | 2.3 it/s | train_ret 0.750 (n=2781) | wm nse1 0.0085 nse8 0.0180 | imag_ret 2.697 surv 0.999 | t sim/wm/pi 4.9/4.3/12.9s
+it 12550 | sim steps 31415 | 1.67 h | 2.3 it/s | train_ret 0.741 (n=2821) | wm nse1 0.0085 nse8 0.0185 | imag_ret 2.699 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 12600 | sim steps 31540 | 1.68 h | 2.3 it/s | train_ret 0.750 (n=2865) | wm nse1 0.0086 nse8 0.0186 | imag_ret 2.702 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 12650 | sim steps 31665 | 1.68 h | 2.3 it/s | train_ret 0.750 (n=2759) | wm nse1 0.0084 nse8 0.0195 | imag_ret 2.699 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 12700 | sim steps 31790 | 1.69 h | 2.3 it/s | train_ret 0.746 (n=2864) | wm nse1 0.0083 nse8 0.0188 | imag_ret 2.700 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 12750 | sim steps 31915 | 1.69 h | 2.3 it/s | train_ret 0.741 (n=2862) | wm nse1 0.0083 nse8 0.0150 | imag_ret 2.700 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 12800 | sim steps 32040 | 1.70 h | 2.3 it/s | train_ret 0.754 (n=2849) | wm nse1 0.0083 nse8 0.0167 | imag_ret 2.701 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 12850 | sim steps 32165 | 1.71 h | 2.3 it/s | train_ret 0.749 (n=2677) | wm nse1 0.0082 nse8 0.0171 | imag_ret 2.702 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 12900 | sim steps 32290 | 1.71 h | 2.3 it/s | train_ret 0.753 (n=2834) | wm nse1 0.0081 nse8 0.0160 | imag_ret 2.707 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 12950 | sim steps 32415 | 1.72 h | 2.3 it/s | train_ret 0.748 (n=2953) | wm nse1 0.0081 nse8 0.0175 | imag_ret 2.705 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 13000 | sim steps 32540 | 1.72 h | 2.3 it/s | train_ret 0.745 (n=2879) | wm nse1 0.0080 nse8 0.0218 | imag_ret 2.707 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 13050 | sim steps 32665 | 1.73 h | 2.3 it/s | train_ret 0.755 (n=2691) | wm nse1 0.0080 nse8 0.0161 | imag_ret 2.710 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 13100 | sim steps 32790 | 1.74 h | 2.3 it/s | train_ret 0.749 (n=2835) | wm nse1 0.0079 nse8 0.0228 | imag_ret 2.713 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 13150 | sim steps 32915 | 1.74 h | 2.3 it/s | train_ret 0.748 (n=2890) | wm nse1 0.0079 nse8 0.0155 | imag_ret 2.715 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 13200 | sim steps 33040 | 1.75 h | 2.3 it/s | train_ret 0.753 (n=2775) | wm nse1 0.0078 nse8 0.0173 | imag_ret 2.718 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 13250 | sim steps 33165 | 1.75 h | 2.3 it/s | train_ret 0.753 (n=2788) | wm nse1 0.0078 nse8 0.0144 | imag_ret 2.720 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 13300 | sim steps 33290 | 1.76 h | 2.3 it/s | train_ret 0.758 (n=2774) | wm nse1 0.0078 nse8 0.0168 | imag_ret 2.718 surv 0.999 | t sim/wm/pi 4.9/4.3/12.2s
+it 13350 | sim steps 33415 | 1.77 h | 2.3 it/s | train_ret 0.756 (n=2776) | wm nse1 0.0078 nse8 0.0194 | imag_ret 2.722 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 13400 | sim steps 33540 | 1.77 h | 2.3 it/s | train_ret 0.748 (n=2893) | wm nse1 0.0077 nse8 0.0199 | imag_ret 2.722 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 13450 | sim steps 33665 | 1.78 h | 2.3 it/s | train_ret 0.752 (n=2762) | wm nse1 0.0078 nse8 0.0163 | imag_ret 2.723 surv 0.999 | t sim/wm/pi 4.8/4.3/12.9s
+it 13500 | sim steps 33790 | 1.78 h | 2.3 it/s | train_ret 0.748 (n=2867) | wm nse1 0.0078 nse8 0.0142 | imag_ret 2.721 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 13550 | sim steps 33915 | 1.79 h | 2.3 it/s | train_ret 0.753 (n=2819) | wm nse1 0.0078 nse8 0.0176 | imag_ret 2.724 surv 0.999 | t sim/wm/pi 4.8/4.3/12.4s
+it 13600 | sim steps 34040 | 1.80 h | 2.3 it/s | train_ret 0.755 (n=2825) | wm nse1 0.0078 nse8 0.0136 | imag_ret 2.724 surv 0.999 | t sim/wm/pi 4.8/4.3/12.4s
+it 13650 | sim steps 34165 | 1.80 h | 2.3 it/s | train_ret 0.745 (n=2927) | wm nse1 0.0078 nse8 0.0137 | imag_ret 2.723 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 13700 | sim steps 34290 | 1.81 h | 2.3 it/s | train_ret 0.757 (n=2893) | wm nse1 0.0078 nse8 0.0191 | imag_ret 2.725 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 13750 | sim steps 34415 | 1.81 h | 2.3 it/s | train_ret 0.758 (n=2850) | wm nse1 0.0079 nse8 0.0152 | imag_ret 2.725 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 13800 | sim steps 34540 | 1.82 h | 2.3 it/s | train_ret 0.746 (n=2890) | wm nse1 0.0079 nse8 0.0170 | imag_ret 2.724 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 13850 | sim steps 34665 | 1.83 h | 2.3 it/s | train_ret 0.756 (n=2883) | wm nse1 0.0079 nse8 0.0163 | imag_ret 2.726 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 13900 | sim steps 34790 | 1.83 h | 2.3 it/s | train_ret 0.740 (n=2820) | wm nse1 0.0079 nse8 0.0194 | imag_ret 2.725 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 13950 | sim steps 34915 | 1.84 h | 2.3 it/s | train_ret 0.743 (n=2899) | wm nse1 0.0078 nse8 0.0135 | imag_ret 2.722 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 14000 | sim steps 35040 | 1.84 h | 2.3 it/s | train_ret 0.746 (n=2886) | wm nse1 0.0080 nse8 0.0167 | imag_ret 2.723 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 14050 | sim steps 35165 | 1.85 h | 2.3 it/s | train_ret 0.752 (n=2853) | wm nse1 0.0080 nse8 0.0190 | imag_ret 2.721 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 14100 | sim steps 35290 | 1.86 h | 2.3 it/s | train_ret 0.748 (n=2965) | wm nse1 0.0079 nse8 0.0151 | imag_ret 2.719 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 14150 | sim steps 35415 | 1.86 h | 2.3 it/s | train_ret 0.742 (n=2929) | wm nse1 0.0079 nse8 0.0159 | imag_ret 2.722 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 14200 | sim steps 35540 | 1.87 h | 2.3 it/s | train_ret 0.740 (n=2896) | wm nse1 0.0079 nse8 0.0170 | imag_ret 2.724 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 14250 | sim steps 35665 | 1.87 h | 2.3 it/s | train_ret 0.749 (n=2823) | wm nse1 0.0079 nse8 0.0152 | imag_ret 2.724 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 14300 | sim steps 35790 | 1.88 h | 2.2 it/s | train_ret 0.742 (n=2972) | wm nse1 0.0079 nse8 0.0168 | imag_ret 2.721 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 14350 | sim steps 35915 | 1.89 h | 2.3 it/s | train_ret 0.742 (n=2913) | wm nse1 0.0080 nse8 0.0151 | imag_ret 2.724 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 14400 | sim steps 36040 | 1.89 h | 2.2 it/s | train_ret 0.736 (n=2921) | wm nse1 0.0079 nse8 0.0160 | imag_ret 2.726 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 14450 | sim steps 36165 | 1.90 h | 2.3 it/s | train_ret 0.748 (n=2986) | wm nse1 0.0078 nse8 0.0154 | imag_ret 2.728 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 14500 | sim steps 36290 | 1.90 h | 2.3 it/s | train_ret 0.749 (n=2898) | wm nse1 0.0079 nse8 0.0203 | imag_ret 2.729 surv 0.999 | t sim/wm/pi 5.0/4.3/12.5s
+it 14550 | sim steps 36415 | 1.91 h | 2.3 it/s | train_ret 0.743 (n=2875) | wm nse1 0.0079 nse8 0.0212 | imag_ret 2.730 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 14600 | sim steps 36540 | 1.92 h | 2.3 it/s | train_ret 0.740 (n=2900) | wm nse1 0.0079 nse8 0.0139 | imag_ret 2.727 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 14650 | sim steps 36665 | 1.92 h | 2.3 it/s | train_ret 0.755 (n=2928) | wm nse1 0.0079 nse8 0.0190 | imag_ret 2.729 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 14700 | sim steps 36790 | 1.93 h | 2.3 it/s | train_ret 0.750 (n=2885) | wm nse1 0.0080 nse8 0.0169 | imag_ret 2.734 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 14750 | sim steps 36915 | 1.93 h | 2.3 it/s | train_ret 0.746 (n=3046) | wm nse1 0.0080 nse8 0.0213 | imag_ret 2.729 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 14800 | sim steps 37040 | 1.94 h | 2.3 it/s | train_ret 0.747 (n=2863) | wm nse1 0.0079 nse8 0.0155 | imag_ret 2.727 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 14850 | sim steps 37165 | 1.95 h | 2.3 it/s | train_ret 0.744 (n=2900) | wm nse1 0.0079 nse8 0.0186 | imag_ret 2.725 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 14900 | sim steps 37290 | 1.95 h | 2.3 it/s | train_ret 0.749 (n=2888) | wm nse1 0.0078 nse8 0.0149 | imag_ret 2.726 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 14950 | sim steps 37415 | 1.96 h | 2.3 it/s | train_ret 0.752 (n=2953) | wm nse1 0.0078 nse8 0.0170 | imag_ret 2.725 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 15000 | sim steps 37540 | 1.96 h | 2.3 it/s | train_ret 0.747 (n=2876) | wm nse1 0.0078 nse8 0.0176 | imag_ret 2.723 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 15050 | sim steps 37665 | 1.97 h | 2.3 it/s | train_ret 0.755 (n=2927) | wm nse1 0.0078 nse8 0.0196 | imag_ret 2.726 surv 0.999 | t sim/wm/pi 4.9/4.3/12.2s
+it 15100 | sim steps 37790 | 1.98 h | 2.3 it/s | train_ret 0.759 (n=2889) | wm nse1 0.0078 nse8 0.0213 | imag_ret 2.725 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 15150 | sim steps 37915 | 1.98 h | 2.3 it/s | train_ret 0.757 (n=2939) | wm nse1 0.0077 nse8 0.0170 | imag_ret 2.727 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 15200 | sim steps 38040 | 1.99 h | 2.3 it/s | train_ret 0.753 (n=2954) | wm nse1 0.0077 nse8 0.0156 | imag_ret 2.728 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 15250 | sim steps 38165 | 1.99 h | 2.3 it/s | train_ret 0.758 (n=2930) | wm nse1 0.0077 nse8 0.0145 | imag_ret 2.726 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 15300 | sim steps 38290 | 2.00 h | 2.3 it/s | train_ret 0.758 (n=2833) | wm nse1 0.0077 nse8 0.0139 | imag_ret 2.733 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 15350 | sim steps 38415 | 2.01 h | 2.3 it/s | train_ret 0.750 (n=2832) | wm nse1 0.0076 nse8 0.0176 | imag_ret 2.728 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 15400 | sim steps 38540 | 2.01 h | 2.3 it/s | train_ret 0.754 (n=2967) | wm nse1 0.0077 nse8 0.0197 | imag_ret 2.735 surv 0.999 | t sim/wm/pi 4.9/4.3/12.5s
+it 15450 | sim steps 38665 | 2.02 h | 2.3 it/s | train_ret 0.756 (n=2885) | wm nse1 0.0077 nse8 0.0153 | imag_ret 2.730 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 15500 | sim steps 38790 | 2.02 h | 2.3 it/s | train_ret 0.751 (n=2971) | wm nse1 0.0077 nse8 0.0153 | imag_ret 2.729 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 15550 | sim steps 38915 | 2.03 h | 2.3 it/s | train_ret 0.754 (n=2966) | wm nse1 0.0077 nse8 0.0183 | imag_ret 2.732 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 15600 | sim steps 39040 | 2.04 h | 2.3 it/s | train_ret 0.758 (n=2903) | wm nse1 0.0076 nse8 0.0160 | imag_ret 2.732 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 15650 | sim steps 39165 | 2.04 h | 2.3 it/s | train_ret 0.758 (n=2757) | wm nse1 0.0077 nse8 0.0164 | imag_ret 2.732 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 15700 | sim steps 39290 | 2.05 h | 2.2 it/s | train_ret 0.767 (n=2885) | wm nse1 0.0077 nse8 0.0158 | imag_ret 2.735 surv 0.998 | t sim/wm/pi 4.9/4.3/13.1s
+it 15750 | sim steps 39415 | 2.05 h | 2.3 it/s | train_ret 0.775 (n=2661) | wm nse1 0.0076 nse8 0.0157 | imag_ret 2.738 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 15800 | sim steps 39540 | 2.06 h | 2.3 it/s | train_ret 0.777 (n=2730) | wm nse1 0.0076 nse8 0.0143 | imag_ret 2.742 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 15850 | sim steps 39665 | 2.07 h | 2.3 it/s | train_ret 0.774 (n=2740) | wm nse1 0.0076 nse8 0.0142 | imag_ret 2.744 surv 0.998 | t sim/wm/pi 4.8/4.3/12.0s
+it 15900 | sim steps 39790 | 2.07 h | 2.3 it/s | train_ret 0.782 (n=2754) | wm nse1 0.0074 nse8 0.0197 | imag_ret 2.747 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 15950 | sim steps 39915 | 2.08 h | 2.3 it/s | train_ret 0.783 (n=2750) | wm nse1 0.0075 nse8 0.0163 | imag_ret 2.747 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 16000 | sim steps 40040 | 2.09 h | 2.3 it/s | train_ret 0.783 (n=2661) | wm nse1 0.0074 nse8 0.0132 | imag_ret 2.751 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 16050 | sim steps 40165 | 2.09 h | 2.2 it/s | train_ret 0.787 (n=2604) | wm nse1 0.0075 nse8 0.0165 | imag_ret 2.751 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 16100 | sim steps 40290 | 2.10 h | 2.3 it/s | train_ret 0.783 (n=2747) | wm nse1 0.0075 nse8 0.0139 | imag_ret 2.754 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 16150 | sim steps 40415 | 2.10 h | 2.3 it/s | train_ret 0.778 (n=2719) | wm nse1 0.0075 nse8 0.0160 | imag_ret 2.754 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 16200 | sim steps 40540 | 2.11 h | 2.3 it/s | train_ret 0.777 (n=2798) | wm nse1 0.0075 nse8 0.0142 | imag_ret 2.753 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 16250 | sim steps 40665 | 2.12 h | 2.3 it/s | train_ret 0.782 (n=2696) | wm nse1 0.0075 nse8 0.0159 | imag_ret 2.748 surv 0.999 | t sim/wm/pi 5.2/4.3/12.3s
+it 16300 | sim steps 40790 | 2.12 h | 2.3 it/s | train_ret 0.785 (n=2778) | wm nse1 0.0075 nse8 0.0143 | imag_ret 2.750 surv 0.999 | t sim/wm/pi 4.9/4.3/12.2s
+it 16350 | sim steps 40915 | 2.13 h | 2.3 it/s | train_ret 0.780 (n=2714) | wm nse1 0.0074 nse8 0.0144 | imag_ret 2.751 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 16400 | sim steps 41040 | 2.13 h | 2.3 it/s | train_ret 0.786 (n=2679) | wm nse1 0.0074 nse8 0.0154 | imag_ret 2.750 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 16450 | sim steps 41165 | 2.14 h | 2.3 it/s | train_ret 0.780 (n=2709) | wm nse1 0.0075 nse8 0.0135 | imag_ret 2.751 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 16500 | sim steps 41290 | 2.15 h | 2.3 it/s | train_ret 0.776 (n=2760) | wm nse1 0.0075 nse8 0.0153 | imag_ret 2.749 surv 0.999 | t sim/wm/pi 4.9/4.3/12.5s
+it 16550 | sim steps 41415 | 2.15 h | 2.3 it/s | train_ret 0.782 (n=2787) | wm nse1 0.0074 nse8 0.0134 | imag_ret 2.750 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 16600 | sim steps 41540 | 2.16 h | 2.3 it/s | train_ret 0.776 (n=2678) | wm nse1 0.0074 nse8 0.0156 | imag_ret 2.751 surv 0.999 | t sim/wm/pi 4.9/4.3/12.5s
+it 16650 | sim steps 41665 | 2.16 h | 2.3 it/s | train_ret 0.782 (n=2723) | wm nse1 0.0075 nse8 0.0163 | imag_ret 2.752 surv 0.999 | t sim/wm/pi 5.0/4.3/12.4s
+it 16700 | sim steps 41790 | 2.17 h | 2.3 it/s | train_ret 0.785 (n=2733) | wm nse1 0.0074 nse8 0.0130 | imag_ret 2.757 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 16750 | sim steps 41915 | 2.18 h | 2.4 it/s | train_ret 0.781 (n=2787) | wm nse1 0.0075 nse8 0.0127 | imag_ret 2.755 surv 0.998 | t sim/wm/pi 4.8/4.3/11.9s
+it 16800 | sim steps 42040 | 2.18 h | 2.3 it/s | train_ret 0.785 (n=2658) | wm nse1 0.0074 nse8 0.0161 | imag_ret 2.758 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 16850 | sim steps 42165 | 2.19 h | 2.3 it/s | train_ret 0.780 (n=2747) | wm nse1 0.0075 nse8 0.0162 | imag_ret 2.761 surv 0.998 | t sim/wm/pi 4.8/4.3/12.1s
+it 16900 | sim steps 42290 | 2.19 h | 2.3 it/s | train_ret 0.781 (n=2662) | wm nse1 0.0075 nse8 0.0170 | imag_ret 2.760 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 16950 | sim steps 42415 | 2.20 h | 2.3 it/s | train_ret 0.778 (n=2900) | wm nse1 0.0074 nse8 0.0147 | imag_ret 2.761 surv 0.998 | t sim/wm/pi 4.8/4.3/12.1s
+it 17000 | sim steps 42540 | 2.21 h | 2.3 it/s | train_ret 0.779 (n=2757) | wm nse1 0.0074 nse8 0.0159 | imag_ret 2.763 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 17050 | sim steps 42665 | 2.21 h | 2.3 it/s | train_ret 0.776 (n=2738) | wm nse1 0.0074 nse8 0.0170 | imag_ret 2.762 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 17100 | sim steps 42790 | 2.22 h | 2.3 it/s | train_ret 0.780 (n=2765) | wm nse1 0.0073 nse8 0.0174 | imag_ret 2.762 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 17150 | sim steps 42915 | 2.22 h | 2.3 it/s | train_ret 0.785 (n=2681) | wm nse1 0.0073 nse8 0.0139 | imag_ret 2.763 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 17200 | sim steps 43040 | 2.23 h | 2.3 it/s | train_ret 0.779 (n=2793) | wm nse1 0.0072 nse8 0.0149 | imag_ret 2.767 surv 0.998 | t sim/wm/pi 4.8/4.3/12.1s
+it 17250 | sim steps 43165 | 2.24 h | 2.3 it/s | train_ret 0.773 (n=2807) | wm nse1 0.0072 nse8 0.0143 | imag_ret 2.767 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 17300 | sim steps 43290 | 2.24 h | 2.3 it/s | train_ret 0.779 (n=2719) | wm nse1 0.0071 nse8 0.0144 | imag_ret 2.765 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 17350 | sim steps 43415 | 2.25 h | 2.3 it/s | train_ret 0.791 (n=2660) | wm nse1 0.0072 nse8 0.0136 | imag_ret 2.769 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 17400 | sim steps 43540 | 2.25 h | 2.3 it/s | train_ret 0.776 (n=2797) | wm nse1 0.0071 nse8 0.0142 | imag_ret 2.771 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 17450 | sim steps 43665 | 2.26 h | 2.3 it/s | train_ret 0.780 (n=2812) | wm nse1 0.0071 nse8 0.0210 | imag_ret 2.770 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 17500 | sim steps 43790 | 2.27 h | 2.3 it/s | train_ret 0.771 (n=2786) | wm nse1 0.0071 nse8 0.0170 | imag_ret 2.770 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 17550 | sim steps 43915 | 2.27 h | 2.3 it/s | train_ret 0.786 (n=2635) | wm nse1 0.0072 nse8 0.0149 | imag_ret 2.768 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 17600 | sim steps 44040 | 2.28 h | 2.3 it/s | train_ret 0.784 (n=2712) | wm nse1 0.0071 nse8 0.0144 | imag_ret 2.771 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 17650 | sim steps 44165 | 2.28 h | 2.3 it/s | train_ret 0.780 (n=2657) | wm nse1 0.0071 nse8 0.0167 | imag_ret 2.768 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 17700 | sim steps 44290 | 2.29 h | 2.2 it/s | train_ret 0.780 (n=2798) | wm nse1 0.0071 nse8 0.0148 | imag_ret 2.773 surv 0.999 | t sim/wm/pi 4.8/4.3/13.0s
+it 17750 | sim steps 44415 | 2.30 h | 2.3 it/s | train_ret 0.774 (n=2836) | wm nse1 0.0072 nse8 0.0147 | imag_ret 2.770 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 17800 | sim steps 44540 | 2.30 h | 2.3 it/s | train_ret 0.776 (n=2782) | wm nse1 0.0072 nse8 0.0162 | imag_ret 2.770 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 17850 | sim steps 44665 | 2.31 h | 2.3 it/s | train_ret 0.779 (n=2709) | wm nse1 0.0072 nse8 0.0177 | imag_ret 2.767 surv 0.999 | t sim/wm/pi 4.9/4.3/12.2s
+it 17900 | sim steps 44790 | 2.31 h | 2.4 it/s | train_ret 0.778 (n=2661) | wm nse1 0.0072 nse8 0.0137 | imag_ret 2.768 surv 0.999 | t sim/wm/pi 4.8/4.3/11.5s
+it 17950 | sim steps 44915 | 2.32 h | 2.3 it/s | train_ret 0.772 (n=2713) | wm nse1 0.0071 nse8 0.0141 | imag_ret 2.762 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 18000 | sim steps 45040 | 2.33 h | 2.3 it/s | train_ret 0.776 (n=2752) | wm nse1 0.0072 nse8 0.0157 | imag_ret 2.762 surv 0.998 | t sim/wm/pi 5.0/4.3/12.6s
+it 18050 | sim steps 45165 | 2.33 h | 2.3 it/s | train_ret 0.780 (n=2763) | wm nse1 0.0073 nse8 0.0167 | imag_ret 2.762 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 18100 | sim steps 45290 | 2.34 h | 2.3 it/s | train_ret 0.780 (n=2687) | wm nse1 0.0073 nse8 0.0133 | imag_ret 2.760 surv 0.998 | t sim/wm/pi 5.0/4.3/12.4s
+it 18150 | sim steps 45415 | 2.34 h | 2.3 it/s | train_ret 0.770 (n=2781) | wm nse1 0.0073 nse8 0.0137 | imag_ret 2.758 surv 0.998 | t sim/wm/pi 5.0/4.3/12.3s
+it 18200 | sim steps 45540 | 2.35 h | 2.4 it/s | train_ret 0.769 (n=2834) | wm nse1 0.0074 nse8 0.0147 | imag_ret 2.759 surv 0.998 | t sim/wm/pi 4.8/4.3/11.9s
+it 18250 | sim steps 45665 | 2.36 h | 2.3 it/s | train_ret 0.772 (n=2686) | wm nse1 0.0074 nse8 0.0135 | imag_ret 2.756 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 18300 | sim steps 45790 | 2.36 h | 2.3 it/s | train_ret 0.776 (n=2755) | wm nse1 0.0075 nse8 0.0250 | imag_ret 2.757 surv 0.998 | t sim/wm/pi 5.0/4.3/12.5s
+it 18350 | sim steps 45915 | 2.37 h | 2.3 it/s | train_ret 0.762 (n=2788) | wm nse1 0.0075 nse8 0.0154 | imag_ret 2.756 surv 0.998 | t sim/wm/pi 5.0/4.3/12.5s
+it 18400 | sim steps 46040 | 2.37 h | 2.2 it/s | train_ret 0.771 (n=2861) | wm nse1 0.0076 nse8 0.0148 | imag_ret 2.754 surv 0.998 | t sim/wm/pi 5.0/4.3/12.7s
+it 18450 | sim steps 46165 | 2.38 h | 2.4 it/s | train_ret 0.766 (n=2773) | wm nse1 0.0076 nse8 0.0171 | imag_ret 2.755 surv 0.998 | t sim/wm/pi 4.9/4.3/11.7s
+it 18500 | sim steps 46290 | 2.39 h | 2.4 it/s | train_ret 0.770 (n=2850) | wm nse1 0.0077 nse8 0.0178 | imag_ret 2.755 surv 0.998 | t sim/wm/pi 4.7/4.3/11.3s
+it 18550 | sim steps 46415 | 2.39 h | 2.5 it/s | train_ret 0.768 (n=2802) | wm nse1 0.0077 nse8 0.0157 | imag_ret 2.757 surv 0.998 | t sim/wm/pi 4.6/4.3/10.8s
+it 18600 | sim steps 46540 | 2.40 h | 2.4 it/s | train_ret 0.780 (n=2743) | wm nse1 0.0077 nse8 0.0189 | imag_ret 2.758 surv 0.998 | t sim/wm/pi 4.7/4.3/11.4s
+it 18650 | sim steps 46665 | 2.40 h | 2.5 it/s | train_ret 0.778 (n=2834) | wm nse1 0.0077 nse8 0.0157 | imag_ret 2.759 surv 0.998 | t sim/wm/pi 4.6/4.3/11.2s
+it 18700 | sim steps 46790 | 2.41 h | 2.4 it/s | train_ret 0.771 (n=2779) | wm nse1 0.0076 nse8 0.0141 | imag_ret 2.757 surv 0.998 | t sim/wm/pi 4.7/4.3/11.3s
+it 18750 | sim steps 46915 | 2.41 h | 2.4 it/s | train_ret 0.765 (n=2837) | wm nse1 0.0076 nse8 0.0155 | imag_ret 2.761 surv 0.998 | t sim/wm/pi 4.8/4.3/11.7s
+it 18800 | sim steps 47040 | 2.42 h | 2.5 it/s | train_ret 0.769 (n=2749) | wm nse1 0.0075 nse8 0.0143 | imag_ret 2.763 surv 0.998 | t sim/wm/pi 4.6/4.3/10.9s
+it 18850 | sim steps 47165 | 2.43 h | 2.4 it/s | train_ret 0.774 (n=2828) | wm nse1 0.0075 nse8 0.0146 | imag_ret 2.764 surv 0.998 | t sim/wm/pi 4.7/4.3/11.4s
+it 18900 | sim steps 47290 | 2.43 h | 2.4 it/s | train_ret 0.774 (n=2809) | wm nse1 0.0074 nse8 0.0136 | imag_ret 2.768 surv 0.998 | t sim/wm/pi 4.7/4.3/11.7s
+it 18950 | sim steps 47415 | 2.44 h | 2.4 it/s | train_ret 0.772 (n=2844) | wm nse1 0.0074 nse8 0.0155 | imag_ret 2.767 surv 0.998 | t sim/wm/pi 4.7/4.3/11.3s
+it 19000 | sim steps 47540 | 2.44 h | 2.4 it/s | train_ret 0.771 (n=2699) | wm nse1 0.0073 nse8 0.0172 | imag_ret 2.769 surv 0.998 | t sim/wm/pi 4.7/4.3/11.5s
+it 19050 | sim steps 47665 | 2.45 h | 2.3 it/s | train_ret 0.775 (n=2811) | wm nse1 0.0073 nse8 0.0149 | imag_ret 2.771 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 19100 | sim steps 47790 | 2.45 h | 2.4 it/s | train_ret 0.771 (n=2774) | wm nse1 0.0072 nse8 0.0134 | imag_ret 2.773 surv 0.998 | t sim/wm/pi 4.8/4.3/11.6s
+it 19150 | sim steps 47915 | 2.46 h | 2.4 it/s | train_ret 0.775 (n=2854) | wm nse1 0.0072 nse8 0.0129 | imag_ret 2.772 surv 0.998 | t sim/wm/pi 4.7/4.3/11.6s
+it 19200 | sim steps 48040 | 2.47 h | 2.4 it/s | train_ret 0.774 (n=2775) | wm nse1 0.0072 nse8 0.0155 | imag_ret 2.769 surv 0.998 | t sim/wm/pi 4.7/4.3/11.5s
+it 19250 | sim steps 48165 | 2.47 h | 2.4 it/s | train_ret 0.760 (n=2863) | wm nse1 0.0071 nse8 0.0143 | imag_ret 2.769 surv 0.998 | t sim/wm/pi 4.8/4.3/11.7s
+it 19300 | sim steps 48290 | 2.48 h | 2.2 it/s | train_ret 0.773 (n=2807) | wm nse1 0.0072 nse8 0.0136 | imag_ret 2.767 surv 0.998 | t sim/wm/pi 4.8/4.3/12.0s
+it 19350 | sim steps 48415 | 2.48 h | 2.3 it/s | train_ret 0.761 (n=2756) | wm nse1 0.0072 nse8 0.0133 | imag_ret 2.764 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 19400 | sim steps 48540 | 2.49 h | 2.3 it/s | train_ret 0.769 (n=2866) | wm nse1 0.0073 nse8 0.0143 | imag_ret 2.762 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 19450 | sim steps 48665 | 2.50 h | 2.3 it/s | train_ret 0.774 (n=2778) | wm nse1 0.0072 nse8 0.0166 | imag_ret 2.764 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 19500 | sim steps 48790 | 2.50 h | 2.3 it/s | train_ret 0.763 (n=2839) | wm nse1 0.0072 nse8 0.0156 | imag_ret 2.762 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 19550 | sim steps 48915 | 2.51 h | 2.3 it/s | train_ret 0.760 (n=2892) | wm nse1 0.0073 nse8 0.0148 | imag_ret 2.764 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 19600 | sim steps 49040 | 2.51 h | 2.3 it/s | train_ret 0.768 (n=2796) | wm nse1 0.0072 nse8 0.0162 | imag_ret 2.763 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 19650 | sim steps 49165 | 2.52 h | 2.3 it/s | train_ret 0.765 (n=2824) | wm nse1 0.0073 nse8 0.0158 | imag_ret 2.763 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 19700 | sim steps 49290 | 2.53 h | 2.3 it/s | train_ret 0.763 (n=2862) | wm nse1 0.0073 nse8 0.0131 | imag_ret 2.760 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 19750 | sim steps 49415 | 2.53 h | 2.3 it/s | train_ret 0.765 (n=2928) | wm nse1 0.0073 nse8 0.0135 | imag_ret 2.761 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 19800 | sim steps 49540 | 2.54 h | 2.3 it/s | train_ret 0.765 (n=2913) | wm nse1 0.0073 nse8 0.0150 | imag_ret 2.761 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 19850 | sim steps 49665 | 2.54 h | 2.3 it/s | train_ret 0.765 (n=2780) | wm nse1 0.0074 nse8 0.0138 | imag_ret 2.762 surv 0.998 | t sim/wm/pi 4.8/4.3/12.0s
+it 19900 | sim steps 49790 | 2.55 h | 2.3 it/s | train_ret 0.762 (n=2678) | wm nse1 0.0075 nse8 0.0138 | imag_ret 2.762 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 19950 | sim steps 49915 | 2.56 h | 2.2 it/s | train_ret 0.760 (n=2756) | wm nse1 0.0074 nse8 0.0143 | imag_ret 2.763 surv 0.998 | t sim/wm/pi 4.9/4.3/13.1s
+it 20000 | sim steps 50040 | 2.56 h | 2.3 it/s | train_ret 0.768 (n=2914) | wm nse1 0.0074 nse8 0.0114 | imag_ret 2.763 surv 0.998 | t sim/wm/pi 4.9/4.3/12.5s
+it 20050 | sim steps 50165 | 2.57 h | 2.3 it/s | train_ret 0.775 (n=2973) | wm nse1 0.0074 nse8 0.0124 | imag_ret 2.764 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 20100 | sim steps 50290 | 2.58 h | 2.3 it/s | train_ret 0.768 (n=2809) | wm nse1 0.0075 nse8 0.0159 | imag_ret 2.762 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 20150 | sim steps 50415 | 2.58 h | 2.3 it/s | train_ret 0.762 (n=2724) | wm nse1 0.0074 nse8 0.0163 | imag_ret 2.760 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 20200 | sim steps 50540 | 2.59 h | 2.3 it/s | train_ret 0.764 (n=2825) | wm nse1 0.0075 nse8 0.0138 | imag_ret 2.759 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 20250 | sim steps 50665 | 2.59 h | 2.3 it/s | train_ret 0.763 (n=2800) | wm nse1 0.0076 nse8 0.0142 | imag_ret 2.761 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 20300 | sim steps 50790 | 2.60 h | 2.3 it/s | train_ret 0.757 (n=2875) | wm nse1 0.0076 nse8 0.0181 | imag_ret 2.761 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 20350 | sim steps 50915 | 2.61 h | 2.3 it/s | train_ret 0.755 (n=2932) | wm nse1 0.0076 nse8 0.0138 | imag_ret 2.760 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 20400 | sim steps 51040 | 2.61 h | 2.3 it/s | train_ret 0.762 (n=2872) | wm nse1 0.0077 nse8 0.0164 | imag_ret 2.760 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 20450 | sim steps 51165 | 2.62 h | 2.3 it/s | train_ret 0.763 (n=2881) | wm nse1 0.0076 nse8 0.0166 | imag_ret 2.762 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 20500 | sim steps 51290 | 2.62 h | 2.3 it/s | train_ret 0.768 (n=2855) | wm nse1 0.0076 nse8 0.0156 | imag_ret 2.762 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 20550 | sim steps 51415 | 2.63 h | 2.3 it/s | train_ret 0.765 (n=2855) | wm nse1 0.0077 nse8 0.0171 | imag_ret 2.767 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 20600 | sim steps 51540 | 2.63 h | 2.7 it/s | train_ret 0.762 (n=2937) | wm nse1 0.0077 nse8 0.0130 | imag_ret 2.762 surv 0.998 | t sim/wm/pi 4.3/4.3/9.8s
+it 20650 | sim steps 51665 | 2.64 h | 2.7 it/s | train_ret 0.759 (n=2889) | wm nse1 0.0076 nse8 0.0166 | imag_ret 2.768 surv 0.998 | t sim/wm/pi 4.3/4.3/9.8s
+it 20700 | sim steps 51790 | 2.64 h | 2.7 it/s | train_ret 0.769 (n=2930) | wm nse1 0.0076 nse8 0.0189 | imag_ret 2.766 surv 0.998 | t sim/wm/pi 4.4/4.3/9.9s
+it 20750 | sim steps 51915 | 2.65 h | 2.3 it/s | train_ret 0.760 (n=2914) | wm nse1 0.0075 nse8 0.0152 | imag_ret 2.769 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 20800 | sim steps 52040 | 2.66 h | 2.3 it/s | train_ret 0.765 (n=2891) | wm nse1 0.0075 nse8 0.0169 | imag_ret 2.768 surv 0.999 | t sim/wm/pi 4.9/4.3/12.5s
+it 20850 | sim steps 52165 | 2.66 h | 2.3 it/s | train_ret 0.772 (n=2845) | wm nse1 0.0075 nse8 0.0180 | imag_ret 2.768 surv 0.999 | t sim/wm/pi 4.9/4.3/12.5s
+it 20900 | sim steps 52290 | 2.67 h | 2.3 it/s | train_ret 0.762 (n=2972) | wm nse1 0.0075 nse8 0.0137 | imag_ret 2.769 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 20950 | sim steps 52415 | 2.68 h | 2.3 it/s | train_ret 0.755 (n=2974) | wm nse1 0.0074 nse8 0.0153 | imag_ret 2.769 surv 0.998 | t sim/wm/pi 5.0/4.3/12.4s
+it 21000 | sim steps 52540 | 2.68 h | 2.3 it/s | train_ret 0.759 (n=2933) | wm nse1 0.0074 nse8 0.0152 | imag_ret 2.772 surv 0.998 | t sim/wm/pi 5.0/4.3/12.4s
+it 21050 | sim steps 52665 | 2.69 h | 2.3 it/s | train_ret 0.763 (n=2916) | wm nse1 0.0073 nse8 0.0200 | imag_ret 2.772 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 21100 | sim steps 52790 | 2.69 h | 2.3 it/s | train_ret 0.755 (n=2955) | wm nse1 0.0074 nse8 0.0144 | imag_ret 2.769 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 21150 | sim steps 52915 | 2.70 h | 2.3 it/s | train_ret 0.757 (n=2958) | wm nse1 0.0073 nse8 0.0138 | imag_ret 2.767 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 21200 | sim steps 53040 | 2.71 h | 2.3 it/s | train_ret 0.757 (n=2860) | wm nse1 0.0075 nse8 0.0166 | imag_ret 2.768 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 21250 | sim steps 53165 | 2.71 h | 2.4 it/s | train_ret 0.754 (n=2959) | wm nse1 0.0074 nse8 0.0145 | imag_ret 2.770 surv 0.998 | t sim/wm/pi 4.9/4.3/11.7s
+it 21300 | sim steps 53290 | 2.72 h | 2.3 it/s | train_ret 0.759 (n=2900) | wm nse1 0.0074 nse8 0.0157 | imag_ret 2.769 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 21350 | sim steps 53415 | 2.72 h | 2.3 it/s | train_ret 0.752 (n=2970) | wm nse1 0.0074 nse8 0.0170 | imag_ret 2.774 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 21400 | sim steps 53540 | 2.73 h | 2.3 it/s | train_ret 0.750 (n=2989) | wm nse1 0.0074 nse8 0.0174 | imag_ret 2.773 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 21450 | sim steps 53665 | 2.74 h | 2.3 it/s | train_ret 0.744 (n=2859) | wm nse1 0.0074 nse8 0.0166 | imag_ret 2.775 surv 0.998 | t sim/wm/pi 5.0/4.3/12.5s
+it 21500 | sim steps 53790 | 2.74 h | 2.3 it/s | train_ret 0.759 (n=2891) | wm nse1 0.0074 nse8 0.0171 | imag_ret 2.776 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 21550 | sim steps 53915 | 2.75 h | 2.3 it/s | train_ret 0.758 (n=2794) | wm nse1 0.0073 nse8 0.0141 | imag_ret 2.779 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 21600 | sim steps 54040 | 2.75 h | 2.3 it/s | train_ret 0.757 (n=3070) | wm nse1 0.0073 nse8 0.0134 | imag_ret 2.779 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 21650 | sim steps 54165 | 2.76 h | 2.2 it/s | train_ret 0.757 (n=2957) | wm nse1 0.0073 nse8 0.0134 | imag_ret 2.778 surv 0.998 | t sim/wm/pi 4.8/4.3/13.0s
+it 21700 | sim steps 54290 | 2.77 h | 2.3 it/s | train_ret 0.750 (n=3003) | wm nse1 0.0074 nse8 0.0149 | imag_ret 2.781 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 21750 | sim steps 54415 | 2.77 h | 2.3 it/s | train_ret 0.748 (n=2913) | wm nse1 0.0074 nse8 0.0132 | imag_ret 2.781 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 21800 | sim steps 54540 | 2.78 h | 2.3 it/s | train_ret 0.749 (n=2917) | wm nse1 0.0074 nse8 0.0131 | imag_ret 2.781 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 21850 | sim steps 54665 | 2.78 h | 2.3 it/s | train_ret 0.747 (n=2928) | wm nse1 0.0074 nse8 0.0139 | imag_ret 2.778 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 21900 | sim steps 54790 | 2.79 h | 2.3 it/s | train_ret 0.753 (n=2941) | wm nse1 0.0074 nse8 0.0171 | imag_ret 2.779 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 21950 | sim steps 54915 | 2.80 h | 2.3 it/s | train_ret 0.750 (n=3009) | wm nse1 0.0073 nse8 0.0155 | imag_ret 2.781 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 22000 | sim steps 55040 | 2.80 h | 2.3 it/s | train_ret 0.758 (n=2974) | wm nse1 0.0074 nse8 0.0129 | imag_ret 2.780 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 22050 | sim steps 55165 | 2.81 h | 2.3 it/s | train_ret 0.753 (n=2977) | wm nse1 0.0073 nse8 0.0133 | imag_ret 2.781 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 22100 | sim steps 55290 | 2.81 h | 2.2 it/s | train_ret 0.758 (n=2841) | wm nse1 0.0073 nse8 0.0128 | imag_ret 2.780 surv 0.998 | t sim/wm/pi 5.0/4.3/12.8s
+it 22150 | sim steps 55415 | 2.82 h | 2.3 it/s | train_ret 0.758 (n=3015) | wm nse1 0.0073 nse8 0.0135 | imag_ret 2.780 surv 0.998 | t sim/wm/pi 4.9/4.3/12.5s
+it 22200 | sim steps 55540 | 2.83 h | 2.3 it/s | train_ret 0.749 (n=2999) | wm nse1 0.0074 nse8 0.0177 | imag_ret 2.779 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 22250 | sim steps 55665 | 2.83 h | 2.3 it/s | train_ret 0.755 (n=3003) | wm nse1 0.0073 nse8 0.0157 | imag_ret 2.778 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 22300 | sim steps 55790 | 2.84 h | 2.3 it/s | train_ret 0.747 (n=3152) | wm nse1 0.0073 nse8 0.0137 | imag_ret 2.777 surv 0.998 | t sim/wm/pi 4.8/4.3/12.2s
+it 22350 | sim steps 55915 | 2.84 h | 2.3 it/s | train_ret 0.747 (n=2961) | wm nse1 0.0074 nse8 0.0185 | imag_ret 2.778 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 22400 | sim steps 56040 | 2.85 h | 2.2 it/s | train_ret 0.745 (n=3136) | wm nse1 0.0073 nse8 0.0149 | imag_ret 2.779 surv 0.998 | t sim/wm/pi 5.1/4.3/13.1s
+it 22450 | sim steps 56165 | 2.86 h | 2.3 it/s | train_ret 0.750 (n=2977) | wm nse1 0.0074 nse8 0.0157 | imag_ret 2.781 surv 0.998 | t sim/wm/pi 5.0/4.3/12.6s
+it 22500 | sim steps 56290 | 2.86 h | 2.2 it/s | train_ret 0.761 (n=2863) | wm nse1 0.0073 nse8 0.0183 | imag_ret 2.781 surv 0.998 | t sim/wm/pi 5.2/4.4/13.1s
+it 22550 | sim steps 56415 | 2.87 h | 2.2 it/s | train_ret 0.752 (n=2971) | wm nse1 0.0073 nse8 0.0162 | imag_ret 2.781 surv 0.998 | t sim/wm/pi 5.2/4.3/13.1s
+it 22600 | sim steps 56540 | 2.88 h | 2.2 it/s | train_ret 0.755 (n=2882) | wm nse1 0.0073 nse8 0.0135 | imag_ret 2.785 surv 0.998 | t sim/wm/pi 5.2/4.4/13.2s
+it 22650 | sim steps 56665 | 2.88 h | 2.2 it/s | train_ret 0.754 (n=2983) | wm nse1 0.0073 nse8 0.0120 | imag_ret 2.787 surv 0.998 | t sim/wm/pi 5.2/4.4/13.2s
+it 22700 | sim steps 56790 | 2.89 h | 2.2 it/s | train_ret 0.750 (n=2925) | wm nse1 0.0074 nse8 0.0132 | imag_ret 2.787 surv 0.998 | t sim/wm/pi 5.1/4.4/13.1s
+it 22750 | sim steps 56915 | 2.89 h | 2.3 it/s | train_ret 0.749 (n=2884) | wm nse1 0.0073 nse8 0.0155 | imag_ret 2.787 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 22800 | sim steps 57040 | 2.90 h | 2.3 it/s | train_ret 0.745 (n=3081) | wm nse1 0.0073 nse8 0.0136 | imag_ret 2.785 surv 0.998 | t sim/wm/pi 4.9/4.3/12.2s
+it 22850 | sim steps 57165 | 2.91 h | 2.3 it/s | train_ret 0.745 (n=3005) | wm nse1 0.0073 nse8 0.0177 | imag_ret 2.780 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 22900 | sim steps 57290 | 2.91 h | 2.3 it/s | train_ret 0.752 (n=2995) | wm nse1 0.0073 nse8 0.0137 | imag_ret 2.779 surv 0.997 | t sim/wm/pi 4.9/4.3/12.4s
+it 22950 | sim steps 57415 | 2.92 h | 2.2 it/s | train_ret 0.744 (n=3005) | wm nse1 0.0074 nse8 0.0154 | imag_ret 2.780 surv 0.997 | t sim/wm/pi 4.9/4.3/13.2s
+it 23000 | sim steps 57540 | 2.93 h | 2.3 it/s | train_ret 0.747 (n=2939) | wm nse1 0.0074 nse8 0.0140 | imag_ret 2.777 surv 0.997 | t sim/wm/pi 4.9/4.3/12.4s
+it 23050 | sim steps 57665 | 2.93 h | 2.3 it/s | train_ret 0.742 (n=2949) | wm nse1 0.0074 nse8 0.0192 | imag_ret 2.779 surv 0.998 | t sim/wm/pi 4.9/4.3/12.5s
+it 23100 | sim steps 57790 | 2.94 h | 2.3 it/s | train_ret 0.749 (n=3033) | wm nse1 0.0074 nse8 0.0130 | imag_ret 2.781 surv 0.998 | t sim/wm/pi 4.9/4.3/12.3s
+it 23150 | sim steps 57915 | 2.94 h | 2.3 it/s | train_ret 0.745 (n=2854) | wm nse1 0.0073 nse8 0.0169 | imag_ret 2.779 surv 0.997 | t sim/wm/pi 4.8/4.3/12.2s
+it 23200 | sim steps 58040 | 2.95 h | 2.3 it/s | train_ret 0.762 (n=3014) | wm nse1 0.0073 nse8 0.0133 | imag_ret 2.786 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 23250 | sim steps 58165 | 2.96 h | 2.3 it/s | train_ret 0.747 (n=3009) | wm nse1 0.0072 nse8 0.0150 | imag_ret 2.785 surv 0.997 | t sim/wm/pi 4.9/4.3/12.4s
+it 23300 | sim steps 58290 | 2.96 h | 2.3 it/s | train_ret 0.754 (n=2942) | wm nse1 0.0072 nse8 0.0151 | imag_ret 2.788 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 23350 | sim steps 58415 | 2.97 h | 2.3 it/s | train_ret 0.755 (n=2957) | wm nse1 0.0072 nse8 0.0164 | imag_ret 2.789 surv 0.997 | t sim/wm/pi 4.9/4.3/12.3s
+it 23400 | sim steps 58540 | 2.97 h | 2.3 it/s | train_ret 0.770 (n=2914) | wm nse1 0.0072 nse8 0.0150 | imag_ret 2.790 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 23450 | sim steps 58665 | 2.98 h | 2.3 it/s | train_ret 0.756 (n=2991) | wm nse1 0.0072 nse8 0.0138 | imag_ret 2.789 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 23500 | sim steps 58790 | 2.99 h | 2.3 it/s | train_ret 0.751 (n=3033) | wm nse1 0.0072 nse8 0.0150 | imag_ret 2.789 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 23550 | sim steps 58915 | 2.99 h | 2.3 it/s | train_ret 0.752 (n=2950) | wm nse1 0.0073 nse8 0.0131 | imag_ret 2.784 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 23600 | sim steps 59040 | 3.00 h | 2.3 it/s | train_ret 0.747 (n=2992) | wm nse1 0.0073 nse8 0.0130 | imag_ret 2.778 surv 0.997 | t sim/wm/pi 4.9/4.3/12.4s
+it 23650 | sim steps 59165 | 3.00 h | 2.3 it/s | train_ret 0.748 (n=3058) | wm nse1 0.0074 nse8 0.0152 | imag_ret 2.780 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 23700 | sim steps 59290 | 3.01 h | 2.3 it/s | train_ret 0.743 (n=3048) | wm nse1 0.0075 nse8 0.0171 | imag_ret 2.781 surv 0.998 | t sim/wm/pi 4.8/4.3/12.4s
+it 23750 | sim steps 59415 | 3.02 h | 2.3 it/s | train_ret 0.750 (n=3008) | wm nse1 0.0074 nse8 0.0207 | imag_ret 2.780 surv 0.998 | t sim/wm/pi 4.8/4.3/12.3s
+it 23800 | sim steps 59540 | 3.02 h | 2.3 it/s | train_ret 0.754 (n=2980) | wm nse1 0.0074 nse8 0.0194 | imag_ret 2.779 surv 0.997 | t sim/wm/pi 4.9/4.3/12.3s
+it 23850 | sim steps 59665 | 3.03 h | 2.3 it/s | train_ret 0.751 (n=2930) | wm nse1 0.0074 nse8 0.0134 | imag_ret 2.777 surv 0.997 | t sim/wm/pi 4.8/4.3/12.3s
+it 23900 | sim steps 59790 | 3.03 h | 2.2 it/s | train_ret 0.751 (n=3073) | wm nse1 0.0075 nse8 0.0222 | imag_ret 2.781 surv 0.997 | t sim/wm/pi 4.8/4.3/12.9s
+it 23950 | sim steps 59915 | 3.04 h | 2.3 it/s | train_ret 0.754 (n=2997) | wm nse1 0.0075 nse8 0.0146 | imag_ret 2.782 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 24000 | sim steps 60040 | 3.05 h | 2.3 it/s | train_ret 0.754 (n=3086) | wm nse1 0.0075 nse8 0.0158 | imag_ret 2.780 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 24050 | sim steps 60165 | 3.05 h | 2.2 it/s | train_ret 0.744 (n=2886) | wm nse1 0.0075 nse8 0.0191 | imag_ret 2.783 surv 0.998 | t sim/wm/pi 4.8/4.3/12.4s
+it 24100 | sim steps 60290 | 3.06 h | 2.2 it/s | train_ret 0.755 (n=3016) | wm nse1 0.0075 nse8 0.0133 | imag_ret 2.783 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 24150 | sim steps 60415 | 3.06 h | 2.3 it/s | train_ret 0.750 (n=2953) | wm nse1 0.0074 nse8 0.0121 | imag_ret 2.785 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 24200 | sim steps 60540 | 3.07 h | 2.3 it/s | train_ret 0.755 (n=3157) | wm nse1 0.0074 nse8 0.0114 | imag_ret 2.787 surv 0.998 | t sim/wm/pi 4.9/4.3/12.5s
+it 24250 | sim steps 60665 | 3.08 h | 2.3 it/s | train_ret 0.756 (n=2916) | wm nse1 0.0074 nse8 0.0143 | imag_ret 2.791 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 24300 | sim steps 60790 | 3.08 h | 2.3 it/s | train_ret 0.754 (n=2984) | wm nse1 0.0073 nse8 0.0159 | imag_ret 2.793 surv 0.998 | t sim/wm/pi 4.9/4.3/12.5s
+it 24350 | sim steps 60915 | 3.09 h | 2.3 it/s | train_ret 0.756 (n=2950) | wm nse1 0.0073 nse8 0.0186 | imag_ret 2.794 surv 0.998 | t sim/wm/pi 4.9/4.3/12.6s
+it 24400 | sim steps 61040 | 3.09 h | 2.3 it/s | train_ret 0.761 (n=2995) | wm nse1 0.0074 nse8 0.0209 | imag_ret 2.796 surv 0.998 | t sim/wm/pi 4.9/4.3/12.6s
+it 24450 | sim steps 61165 | 3.10 h | 2.3 it/s | train_ret 0.757 (n=3020) | wm nse1 0.0073 nse8 0.0142 | imag_ret 2.797 surv 0.997 | t sim/wm/pi 4.9/4.3/12.4s
+it 24500 | sim steps 61290 | 3.11 h | 2.3 it/s | train_ret 0.760 (n=3047) | wm nse1 0.0073 nse8 0.0133 | imag_ret 2.797 surv 0.997 | t sim/wm/pi 4.9/4.3/12.6s
+it 24550 | sim steps 61415 | 3.11 h | 2.3 it/s | train_ret 0.757 (n=2975) | wm nse1 0.0073 nse8 0.0127 | imag_ret 2.799 surv 0.998 | t sim/wm/pi 4.9/4.3/12.1s
+it 24600 | sim steps 61540 | 3.12 h | 2.3 it/s | train_ret 0.758 (n=3111) | wm nse1 0.0074 nse8 0.0165 | imag_ret 2.796 surv 0.998 | t sim/wm/pi 4.9/4.3/12.5s
+it 24650 | sim steps 61665 | 3.12 h | 2.3 it/s | train_ret 0.747 (n=2903) | wm nse1 0.0074 nse8 0.0158 | imag_ret 2.796 surv 0.998 | t sim/wm/pi 4.8/4.3/12.1s
+it 24700 | sim steps 61790 | 3.13 h | 2.3 it/s | train_ret 0.755 (n=3021) | wm nse1 0.0073 nse8 0.0150 | imag_ret 2.795 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 24750 | sim steps 61915 | 3.14 h | 2.3 it/s | train_ret 0.752 (n=3093) | wm nse1 0.0074 nse8 0.0169 | imag_ret 2.796 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 24800 | sim steps 62040 | 3.14 h | 2.3 it/s | train_ret 0.750 (n=3083) | wm nse1 0.0074 nse8 0.0158 | imag_ret 2.794 surv 0.998 | t sim/wm/pi 4.9/4.3/12.4s
+it 24850 | sim steps 62165 | 3.15 h | 2.3 it/s | train_ret 0.750 (n=3136) | wm nse1 0.0075 nse8 0.0165 | imag_ret 2.791 surv 0.997 | t sim/wm/pi 4.9/4.3/12.4s
+it 24900 | sim steps 62290 | 3.16 h | 2.2 it/s | train_ret 0.749 (n=3078) | wm nse1 0.0076 nse8 0.0164 | imag_ret 2.793 surv 0.997 | t sim/wm/pi 4.9/4.3/13.1s
+it 24950 | sim steps 62415 | 3.16 h | 2.3 it/s | train_ret 0.740 (n=3207) | wm nse1 0.0075 nse8 0.0193 | imag_ret 2.790 surv 0.997 | t sim/wm/pi 4.9/4.3/12.4s
+it 25000 | sim steps 62540 | 3.17 h | 2.3 it/s | train_ret 0.748 (n=3024) | wm nse1 0.0075 nse8 0.0146 | imag_ret 2.792 surv 0.997 | t sim/wm/pi 4.9/4.3/12.7s
+it 25050 | sim steps 62665 | 3.17 h | 2.3 it/s | train_ret 0.754 (n=3132) | wm nse1 0.0075 nse8 0.0129 | imag_ret 2.794 surv 0.997 | t sim/wm/pi 4.9/4.3/12.6s
+it 25100 | sim steps 62790 | 3.18 h | 2.3 it/s | train_ret 0.765 (n=3000) | wm nse1 0.0075 nse8 0.0161 | imag_ret 2.795 surv 0.998 | t sim/wm/pi 4.9/4.3/12.5s
+it 25150 | sim steps 62915 | 3.19 h | 2.3 it/s | train_ret 0.754 (n=3072) | wm nse1 0.0075 nse8 0.0158 | imag_ret 2.796 surv 0.997 | t sim/wm/pi 4.9/4.3/12.3s
+it 25200 | sim steps 63040 | 3.19 h | 2.3 it/s | train_ret 0.749 (n=3033) | wm nse1 0.0075 nse8 0.0165 | imag_ret 2.797 surv 0.997 | t sim/wm/pi 4.8/4.3/12.2s
+it 25250 | sim steps 63165 | 3.20 h | 2.6 it/s | train_ret 0.755 (n=3096) | wm nse1 0.0074 nse8 0.0161 | imag_ret 2.794 surv 0.998 | t sim/wm/pi 4.5/4.3/10.2s
+it 25300 | sim steps 63290 | 3.20 h | 2.3 it/s | train_ret 0.755 (n=3199) | wm nse1 0.0074 nse8 0.0134 | imag_ret 2.797 surv 0.998 | t sim/wm/pi 4.8/4.3/12.1s
+it 25350 | sim steps 63415 | 3.21 h | 2.4 it/s | train_ret 0.758 (n=3042) | wm nse1 0.0074 nse8 0.0162 | imag_ret 2.800 surv 0.999 | t sim/wm/pi 4.8/4.3/11.8s
+it 25400 | sim steps 63540 | 3.21 h | 2.4 it/s | train_ret 0.757 (n=3063) | wm nse1 0.0075 nse8 0.0167 | imag_ret 2.799 surv 0.999 | t sim/wm/pi 4.8/4.3/11.6s
+it 25450 | sim steps 63665 | 3.22 h | 2.5 it/s | train_ret 0.760 (n=3068) | wm nse1 0.0076 nse8 0.0160 | imag_ret 2.796 surv 0.999 | t sim/wm/pi 4.7/4.3/11.1s
+it 25500 | sim steps 63790 | 3.23 h | 2.3 it/s | train_ret 0.757 (n=3023) | wm nse1 0.0077 nse8 0.0169 | imag_ret 2.796 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 25550 | sim steps 63915 | 3.23 h | 2.3 it/s | train_ret 0.761 (n=2966) | wm nse1 0.0078 nse8 0.0145 | imag_ret 2.799 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 25600 | sim steps 64040 | 3.24 h | 2.3 it/s | train_ret 0.756 (n=3010) | wm nse1 0.0079 nse8 0.0237 | imag_ret 2.795 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 25650 | sim steps 64165 | 3.24 h | 2.3 it/s | train_ret 0.758 (n=3108) | wm nse1 0.0080 nse8 0.0172 | imag_ret 2.793 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 25700 | sim steps 64290 | 3.25 h | 2.3 it/s | train_ret 0.757 (n=3070) | wm nse1 0.0081 nse8 0.0151 | imag_ret 2.795 surv 0.999 | t sim/wm/pi 4.9/4.3/12.1s
+it 25750 | sim steps 64415 | 3.26 h | 2.3 it/s | train_ret 0.750 (n=3032) | wm nse1 0.0082 nse8 0.0141 | imag_ret 2.792 surv 0.999 | t sim/wm/pi 4.9/4.3/12.5s
+it 25800 | sim steps 64540 | 3.26 h | 2.3 it/s | train_ret 0.761 (n=3068) | wm nse1 0.0083 nse8 0.0164 | imag_ret 2.794 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 25850 | sim steps 64665 | 3.27 h | 2.3 it/s | train_ret 0.763 (n=3074) | wm nse1 0.0082 nse8 0.0178 | imag_ret 2.794 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 25900 | sim steps 64790 | 3.27 h | 2.3 it/s | train_ret 0.757 (n=3109) | wm nse1 0.0083 nse8 0.0232 | imag_ret 2.793 surv 0.999 | t sim/wm/pi 4.9/4.3/12.6s
+it 25950 | sim steps 64915 | 3.28 h | 2.3 it/s | train_ret 0.757 (n=2983) | wm nse1 0.0083 nse8 0.0209 | imag_ret 2.788 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 26000 | sim steps 65040 | 3.29 h | 2.3 it/s | train_ret 0.755 (n=3145) | wm nse1 0.0084 nse8 0.0184 | imag_ret 2.791 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 26050 | sim steps 65165 | 3.29 h | 2.3 it/s | train_ret 0.753 (n=3019) | wm nse1 0.0084 nse8 0.0229 | imag_ret 2.789 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 26100 | sim steps 65290 | 3.30 h | 2.3 it/s | train_ret 0.757 (n=3074) | wm nse1 0.0083 nse8 0.0212 | imag_ret 2.787 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 26150 | sim steps 65415 | 3.30 h | 2.3 it/s | train_ret 0.762 (n=2859) | wm nse1 0.0084 nse8 0.0154 | imag_ret 2.788 surv 0.999 | t sim/wm/pi 5.0/4.3/12.5s
+it 26200 | sim steps 65540 | 3.31 h | 2.3 it/s | train_ret 0.755 (n=3128) | wm nse1 0.0083 nse8 0.0190 | imag_ret 2.783 surv 0.999 | t sim/wm/pi 5.0/4.3/12.6s
+it 26250 | sim steps 65665 | 3.32 h | 2.5 it/s | train_ret 0.752 (n=2961) | wm nse1 0.0083 nse8 0.0248 | imag_ret 2.783 surv 0.999 | t sim/wm/pi 4.6/4.3/10.7s
+it 26300 | sim steps 65790 | 3.32 h | 2.3 it/s | train_ret 0.755 (n=3106) | wm nse1 0.0083 nse8 0.0159 | imag_ret 2.783 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 26350 | sim steps 65915 | 3.33 h | 2.3 it/s | train_ret 0.760 (n=3013) | wm nse1 0.0082 nse8 0.0173 | imag_ret 2.785 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 26400 | sim steps 66040 | 3.33 h | 2.3 it/s | train_ret 0.763 (n=2920) | wm nse1 0.0082 nse8 0.0170 | imag_ret 2.787 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 26450 | sim steps 66165 | 3.34 h | 2.3 it/s | train_ret 0.761 (n=2930) | wm nse1 0.0082 nse8 0.0136 | imag_ret 2.787 surv 0.999 | t sim/wm/pi 5.0/4.3/12.5s
+it 26500 | sim steps 66290 | 3.35 h | 2.4 it/s | train_ret 0.760 (n=2961) | wm nse1 0.0082 nse8 0.0156 | imag_ret 2.782 surv 0.999 | t sim/wm/pi 4.7/4.3/11.1s
+it 26550 | sim steps 66415 | 3.35 h | 2.3 it/s | train_ret 0.761 (n=2906) | wm nse1 0.0081 nse8 0.0164 | imag_ret 2.785 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 26600 | sim steps 66540 | 3.36 h | 2.3 it/s | train_ret 0.755 (n=3067) | wm nse1 0.0082 nse8 0.0200 | imag_ret 2.783 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 26650 | sim steps 66665 | 3.36 h | 2.3 it/s | train_ret 0.752 (n=3148) | wm nse1 0.0081 nse8 0.0233 | imag_ret 2.783 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 26700 | sim steps 66790 | 3.37 h | 2.3 it/s | train_ret 0.756 (n=3022) | wm nse1 0.0081 nse8 0.0199 | imag_ret 2.785 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 26750 | sim steps 66915 | 3.38 h | 2.3 it/s | train_ret 0.759 (n=3054) | wm nse1 0.0080 nse8 0.0170 | imag_ret 2.784 surv 0.999 | t sim/wm/pi 4.8/4.3/12.4s
+it 26800 | sim steps 67040 | 3.38 h | 2.3 it/s | train_ret 0.755 (n=2951) | wm nse1 0.0082 nse8 0.0192 | imag_ret 2.784 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 26850 | sim steps 67165 | 3.39 h | 2.3 it/s | train_ret 0.753 (n=3163) | wm nse1 0.0081 nse8 0.0164 | imag_ret 2.784 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 26900 | sim steps 67290 | 3.39 h | 2.3 it/s | train_ret 0.753 (n=3037) | wm nse1 0.0081 nse8 0.0163 | imag_ret 2.783 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 26950 | sim steps 67415 | 3.40 h | 2.4 it/s | train_ret 0.764 (n=2971) | wm nse1 0.0081 nse8 0.0156 | imag_ret 2.786 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 27000 | sim steps 67540 | 3.41 h | 2.3 it/s | train_ret 0.762 (n=3009) | wm nse1 0.0081 nse8 0.0199 | imag_ret 2.789 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 27050 | sim steps 67665 | 3.41 h | 2.3 it/s | train_ret 0.759 (n=3118) | wm nse1 0.0079 nse8 0.0191 | imag_ret 2.791 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 27100 | sim steps 67790 | 3.42 h | 2.3 it/s | train_ret 0.750 (n=2907) | wm nse1 0.0079 nse8 0.0145 | imag_ret 2.785 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 27150 | sim steps 67915 | 3.42 h | 2.2 it/s | train_ret 0.755 (n=3001) | wm nse1 0.0081 nse8 0.0199 | imag_ret 2.785 surv 0.999 | t sim/wm/pi 4.8/4.3/12.9s
+it 27200 | sim steps 68040 | 3.43 h | 2.4 it/s | train_ret 0.750 (n=3026) | wm nse1 0.0080 nse8 0.0179 | imag_ret 2.789 surv 0.999 | t sim/wm/pi 4.8/4.3/11.7s
+it 27250 | sim steps 68165 | 3.44 h | 2.3 it/s | train_ret 0.749 (n=3139) | wm nse1 0.0081 nse8 0.0180 | imag_ret 2.791 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 27300 | sim steps 68290 | 3.44 h | 2.3 it/s | train_ret 0.755 (n=2878) | wm nse1 0.0079 nse8 0.0171 | imag_ret 2.790 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 27350 | sim steps 68415 | 3.45 h | 2.3 it/s | train_ret 0.755 (n=3020) | wm nse1 0.0080 nse8 0.0247 | imag_ret 2.788 surv 0.999 | t sim/wm/pi 5.0/4.3/12.5s
+it 27400 | sim steps 68540 | 3.46 h | 2.2 it/s | train_ret 0.753 (n=3133) | wm nse1 0.0081 nse8 0.0190 | imag_ret 2.786 surv 0.999 | t sim/wm/pi 5.9/4.6/12.3s
+it 27450 | sim steps 68665 | 3.46 h | 2.3 it/s | train_ret 0.759 (n=2983) | wm nse1 0.0083 nse8 0.0216 | imag_ret 2.785 surv 0.999 | t sim/wm/pi 5.0/4.5/12.3s
+it 27500 | sim steps 68790 | 3.47 h | 2.3 it/s | train_ret 0.752 (n=3011) | wm nse1 0.0084 nse8 0.0190 | imag_ret 2.787 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 27550 | sim steps 68915 | 3.47 h | 2.2 it/s | train_ret 0.753 (n=3055) | wm nse1 0.0084 nse8 0.0154 | imag_ret 2.787 surv 0.999 | t sim/wm/pi 5.6/4.6/12.4s
+it 27600 | sim steps 69040 | 3.48 h | 2.3 it/s | train_ret 0.748 (n=2908) | wm nse1 0.0084 nse8 0.0156 | imag_ret 2.783 surv 0.999 | t sim/wm/pi 5.1/4.4/12.0s
+it 27650 | sim steps 69165 | 3.49 h | 2.3 it/s | train_ret 0.757 (n=3063) | wm nse1 0.0084 nse8 0.0162 | imag_ret 2.780 surv 0.999 | t sim/wm/pi 5.0/4.4/12.2s
+it 27700 | sim steps 69290 | 3.49 h | 2.3 it/s | train_ret 0.756 (n=2976) | wm nse1 0.0084 nse8 0.0155 | imag_ret 2.779 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 27750 | sim steps 69415 | 3.50 h | 2.3 it/s | train_ret 0.753 (n=2907) | wm nse1 0.0085 nse8 0.0187 | imag_ret 2.778 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 27800 | sim steps 69540 | 3.50 h | 2.4 it/s | train_ret 0.753 (n=3010) | wm nse1 0.0085 nse8 0.0293 | imag_ret 2.779 surv 0.999 | t sim/wm/pi 4.8/4.3/11.9s
+it 27850 | sim steps 69665 | 3.51 h | 2.5 it/s | train_ret 0.749 (n=3043) | wm nse1 0.0083 nse8 0.0163 | imag_ret 2.780 surv 0.999 | t sim/wm/pi 4.7/4.3/11.2s
+it 27900 | sim steps 69790 | 3.52 h | 2.3 it/s | train_ret 0.749 (n=2996) | wm nse1 0.0083 nse8 0.0201 | imag_ret 2.781 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 27950 | sim steps 69915 | 3.52 h | 2.3 it/s | train_ret 0.749 (n=3047) | wm nse1 0.0081 nse8 0.0165 | imag_ret 2.777 surv 0.999 | t sim/wm/pi 4.9/4.3/12.5s
+it 28000 | sim steps 70040 | 3.53 h | 2.3 it/s | train_ret 0.759 (n=3007) | wm nse1 0.0082 nse8 0.0169 | imag_ret 2.779 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 28050 | sim steps 70165 | 3.53 h | 2.3 it/s | train_ret 0.748 (n=3102) | wm nse1 0.0081 nse8 0.0160 | imag_ret 2.779 surv 0.999 | t sim/wm/pi 4.8/4.3/11.9s
+it 28100 | sim steps 70290 | 3.54 h | 2.3 it/s | train_ret 0.749 (n=3127) | wm nse1 0.0083 nse8 0.0235 | imag_ret 2.778 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 28150 | sim steps 70415 | 3.55 h | 2.3 it/s | train_ret 0.745 (n=3035) | wm nse1 0.0082 nse8 0.0184 | imag_ret 2.777 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 28200 | sim steps 70540 | 3.55 h | 2.3 it/s | train_ret 0.754 (n=2987) | wm nse1 0.0082 nse8 0.0176 | imag_ret 2.776 surv 0.999 | t sim/wm/pi 4.9/4.3/12.5s
+it 28250 | sim steps 70665 | 3.56 h | 2.3 it/s | train_ret 0.755 (n=3069) | wm nse1 0.0081 nse8 0.0193 | imag_ret 2.779 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 28300 | sim steps 70790 | 3.56 h | 2.3 it/s | train_ret 0.755 (n=3018) | wm nse1 0.0082 nse8 0.0206 | imag_ret 2.780 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 28350 | sim steps 70915 | 3.57 h | 2.3 it/s | train_ret 0.747 (n=3116) | wm nse1 0.0082 nse8 0.0163 | imag_ret 2.780 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 28400 | sim steps 71040 | 3.58 h | 2.2 it/s | train_ret 0.750 (n=2990) | wm nse1 0.0082 nse8 0.0152 | imag_ret 2.781 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 28450 | sim steps 71165 | 3.58 h | 2.2 it/s | train_ret 0.750 (n=3037) | wm nse1 0.0081 nse8 0.0170 | imag_ret 2.775 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 28500 | sim steps 71290 | 3.59 h | 2.3 it/s | train_ret 0.761 (n=2922) | wm nse1 0.0083 nse8 0.0173 | imag_ret 2.774 surv 0.999 | t sim/wm/pi 4.7/4.3/11.5s
+it 28550 | sim steps 71415 | 3.59 h | 2.3 it/s | train_ret 0.759 (n=2966) | wm nse1 0.0082 nse8 0.0201 | imag_ret 2.777 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 28600 | sim steps 71540 | 3.60 h | 2.3 it/s | train_ret 0.762 (n=3062) | wm nse1 0.0083 nse8 0.0173 | imag_ret 2.778 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 28650 | sim steps 71665 | 3.61 h | 2.3 it/s | train_ret 0.749 (n=3087) | wm nse1 0.0083 nse8 0.0164 | imag_ret 2.776 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 28700 | sim steps 71790 | 3.61 h | 2.3 it/s | train_ret 0.762 (n=2936) | wm nse1 0.0083 nse8 0.0195 | imag_ret 2.776 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 28750 | sim steps 71915 | 3.62 h | 2.3 it/s | train_ret 0.758 (n=3080) | wm nse1 0.0082 nse8 0.0192 | imag_ret 2.773 surv 0.999 | t sim/wm/pi 5.1/4.4/12.3s
+it 28800 | sim steps 72040 | 3.63 h | 1.3 it/s | train_ret 0.760 (n=2825) | wm nse1 0.0083 nse8 0.0170 | imag_ret 2.773 surv 0.999 | t sim/wm/pi 15.6/5.9/16.5s
+it 28850 | sim steps 72165 | 3.64 h | 1.3 it/s | train_ret 0.754 (n=2924) | wm nse1 0.0080 nse8 0.0220 | imag_ret 2.781 surv 0.999 | t sim/wm/pi 15.2/5.5/16.2s
+it 28900 | sim steps 72290 | 3.65 h | 1.3 it/s | train_ret 0.751 (n=3110) | wm nse1 0.0080 nse8 0.0195 | imag_ret 2.779 surv 0.999 | t sim/wm/pi 17.0/6.3/14.3s
+it 28950 | sim steps 72415 | 3.66 h | 1.3 it/s | train_ret 0.758 (n=2846) | wm nse1 0.0080 nse8 0.0152 | imag_ret 2.777 surv 0.999 | t sim/wm/pi 16.3/5.7/15.4s
+it 29000 | sim steps 72540 | 3.67 h | 1.4 it/s | train_ret 0.755 (n=3035) | wm nse1 0.0080 nse8 0.0202 | imag_ret 2.774 surv 0.999 | t sim/wm/pi 14.1/4.8/15.8s
+it 29050 | sim steps 72665 | 3.68 h | 2.3 it/s | train_ret 0.756 (n=2951) | wm nse1 0.0079 nse8 0.0175 | imag_ret 2.778 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 29100 | sim steps 72790 | 3.68 h | 2.3 it/s | train_ret 0.749 (n=3180) | wm nse1 0.0079 nse8 0.0187 | imag_ret 2.777 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 29150 | sim steps 72915 | 3.69 h | 2.3 it/s | train_ret 0.747 (n=3112) | wm nse1 0.0079 nse8 0.0157 | imag_ret 2.779 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 29200 | sim steps 73040 | 3.69 h | 2.3 it/s | train_ret 0.766 (n=2988) | wm nse1 0.0079 nse8 0.0151 | imag_ret 2.781 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 29250 | sim steps 73165 | 3.70 h | 2.3 it/s | train_ret 0.762 (n=3147) | wm nse1 0.0078 nse8 0.0132 | imag_ret 2.783 surv 1.000 | t sim/wm/pi 4.9/4.3/12.4s
+it 29300 | sim steps 73290 | 3.71 h | 2.3 it/s | train_ret 0.759 (n=3122) | wm nse1 0.0078 nse8 0.0225 | imag_ret 2.784 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 29350 | sim steps 73415 | 3.71 h | 2.4 it/s | train_ret 0.761 (n=2980) | wm nse1 0.0077 nse8 0.0146 | imag_ret 2.785 surv 1.000 | t sim/wm/pi 4.7/4.3/11.7s
+it 29400 | sim steps 73540 | 3.72 h | 2.3 it/s | train_ret 0.758 (n=2965) | wm nse1 0.0078 nse8 0.0175 | imag_ret 2.789 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 29450 | sim steps 73665 | 3.72 h | 2.3 it/s | train_ret 0.770 (n=2899) | wm nse1 0.0077 nse8 0.0153 | imag_ret 2.792 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 29500 | sim steps 73790 | 3.73 h | 2.3 it/s | train_ret 0.770 (n=2946) | wm nse1 0.0077 nse8 0.0195 | imag_ret 2.794 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 29550 | sim steps 73915 | 3.74 h | 2.3 it/s | train_ret 0.760 (n=2916) | wm nse1 0.0077 nse8 0.0168 | imag_ret 2.793 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 29600 | sim steps 74040 | 3.74 h | 2.3 it/s | train_ret 0.756 (n=2928) | wm nse1 0.0078 nse8 0.0234 | imag_ret 2.791 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 29650 | sim steps 74165 | 3.75 h | 2.3 it/s | train_ret 0.765 (n=2997) | wm nse1 0.0078 nse8 0.0150 | imag_ret 2.792 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 29700 | sim steps 74290 | 3.75 h | 2.3 it/s | train_ret 0.762 (n=3066) | wm nse1 0.0077 nse8 0.0194 | imag_ret 2.786 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 29750 | sim steps 74415 | 3.76 h | 2.3 it/s | train_ret 0.753 (n=3005) | wm nse1 0.0078 nse8 0.0159 | imag_ret 2.786 surv 1.000 | t sim/wm/pi 4.9/4.3/12.4s
+it 29800 | sim steps 74540 | 3.77 h | 2.3 it/s | train_ret 0.763 (n=3068) | wm nse1 0.0077 nse8 0.0170 | imag_ret 2.789 surv 1.000 | t sim/wm/pi 4.9/4.3/12.3s
+it 29850 | sim steps 74665 | 3.77 h | 2.4 it/s | train_ret 0.764 (n=3058) | wm nse1 0.0078 nse8 0.0151 | imag_ret 2.787 surv 0.999 | t sim/wm/pi 4.7/4.3/11.3s
+it 29900 | sim steps 74790 | 3.78 h | 2.4 it/s | train_ret 0.757 (n=3047) | wm nse1 0.0078 nse8 0.0140 | imag_ret 2.787 surv 0.999 | t sim/wm/pi 4.6/4.3/11.8s
+it 29950 | sim steps 74915 | 3.78 h | 2.4 it/s | train_ret 0.762 (n=3013) | wm nse1 0.0077 nse8 0.0145 | imag_ret 2.785 surv 0.999 | t sim/wm/pi 4.7/4.3/11.8s
+it 30000 | sim steps 75040 | 3.79 h | 2.4 it/s | train_ret 0.753 (n=3152) | wm nse1 0.0077 nse8 0.0142 | imag_ret 2.789 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 30050 | sim steps 75165 | 3.80 h | 2.4 it/s | train_ret 0.764 (n=3045) | wm nse1 0.0077 nse8 0.0126 | imag_ret 2.791 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 30100 | sim steps 75290 | 3.80 h | 2.2 it/s | train_ret 0.754 (n=3020) | wm nse1 0.0077 nse8 0.0162 | imag_ret 2.793 surv 0.999 | t sim/wm/pi 4.8/4.3/13.0s
+it 30150 | sim steps 75415 | 3.81 h | 2.3 it/s | train_ret 0.769 (n=3047) | wm nse1 0.0076 nse8 0.0165 | imag_ret 2.798 surv 0.999 | t sim/wm/pi 4.8/4.3/12.4s
+it 30200 | sim steps 75540 | 3.81 h | 2.3 it/s | train_ret 0.757 (n=3152) | wm nse1 0.0076 nse8 0.0194 | imag_ret 2.797 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 30250 | sim steps 75665 | 3.82 h | 2.3 it/s | train_ret 0.762 (n=3037) | wm nse1 0.0075 nse8 0.0142 | imag_ret 2.801 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 30300 | sim steps 75790 | 3.83 h | 2.3 it/s | train_ret 0.750 (n=3046) | wm nse1 0.0075 nse8 0.0173 | imag_ret 2.798 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 30350 | sim steps 75915 | 3.83 h | 2.3 it/s | train_ret 0.755 (n=3099) | wm nse1 0.0075 nse8 0.0144 | imag_ret 2.800 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 30400 | sim steps 76040 | 3.84 h | 2.3 it/s | train_ret 0.753 (n=3086) | wm nse1 0.0075 nse8 0.0133 | imag_ret 2.801 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 30450 | sim steps 76165 | 3.84 h | 2.3 it/s | train_ret 0.742 (n=3030) | wm nse1 0.0075 nse8 0.0157 | imag_ret 2.798 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 30500 | sim steps 76290 | 3.85 h | 2.3 it/s | train_ret 0.751 (n=3093) | wm nse1 0.0075 nse8 0.0128 | imag_ret 2.797 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 30550 | sim steps 76415 | 3.86 h | 2.3 it/s | train_ret 0.749 (n=3085) | wm nse1 0.0076 nse8 0.0196 | imag_ret 2.794 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 30600 | sim steps 76540 | 3.86 h | 2.3 it/s | train_ret 0.752 (n=3120) | wm nse1 0.0076 nse8 0.0152 | imag_ret 2.791 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 30650 | sim steps 76665 | 3.87 h | 2.3 it/s | train_ret 0.750 (n=3038) | wm nse1 0.0078 nse8 0.0127 | imag_ret 2.793 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 30700 | sim steps 76790 | 3.87 h | 2.3 it/s | train_ret 0.746 (n=3083) | wm nse1 0.0077 nse8 0.0178 | imag_ret 2.791 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 30750 | sim steps 76915 | 3.88 h | 2.3 it/s | train_ret 0.740 (n=3144) | wm nse1 0.0077 nse8 0.0129 | imag_ret 2.788 surv 0.999 | t sim/wm/pi 4.9/4.3/12.2s
+it 30800 | sim steps 77040 | 3.89 h | 2.3 it/s | train_ret 0.751 (n=3094) | wm nse1 0.0077 nse8 0.0163 | imag_ret 2.788 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 30850 | sim steps 77165 | 3.89 h | 2.3 it/s | train_ret 0.752 (n=3134) | wm nse1 0.0076 nse8 0.0167 | imag_ret 2.790 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 30900 | sim steps 77290 | 3.90 h | 2.3 it/s | train_ret 0.746 (n=3072) | wm nse1 0.0076 nse8 0.0165 | imag_ret 2.791 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 30950 | sim steps 77415 | 3.90 h | 2.3 it/s | train_ret 0.741 (n=3133) | wm nse1 0.0076 nse8 0.0145 | imag_ret 2.795 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 31000 | sim steps 77540 | 3.91 h | 2.3 it/s | train_ret 0.747 (n=3126) | wm nse1 0.0076 nse8 0.0146 | imag_ret 2.796 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 31050 | sim steps 77665 | 3.92 h | 2.3 it/s | train_ret 0.751 (n=3030) | wm nse1 0.0075 nse8 0.0160 | imag_ret 2.796 surv 0.999 | t sim/wm/pi 4.8/4.3/12.9s
+it 31100 | sim steps 77790 | 3.92 h | 2.3 it/s | train_ret 0.750 (n=3166) | wm nse1 0.0074 nse8 0.0148 | imag_ret 2.799 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 31150 | sim steps 77915 | 3.93 h | 2.3 it/s | train_ret 0.739 (n=3050) | wm nse1 0.0075 nse8 0.0133 | imag_ret 2.800 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 31200 | sim steps 78040 | 3.93 h | 2.3 it/s | train_ret 0.751 (n=3135) | wm nse1 0.0074 nse8 0.0122 | imag_ret 2.800 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 31250 | sim steps 78165 | 3.94 h | 2.3 it/s | train_ret 0.747 (n=3054) | wm nse1 0.0074 nse8 0.0159 | imag_ret 2.804 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 31300 | sim steps 78290 | 3.95 h | 2.3 it/s | train_ret 0.738 (n=3204) | wm nse1 0.0074 nse8 0.0173 | imag_ret 2.802 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 31350 | sim steps 78415 | 3.95 h | 2.3 it/s | train_ret 0.739 (n=3175) | wm nse1 0.0075 nse8 0.0158 | imag_ret 2.800 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 31400 | sim steps 78540 | 3.96 h | 2.3 it/s | train_ret 0.746 (n=3088) | wm nse1 0.0075 nse8 0.0169 | imag_ret 2.798 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 31450 | sim steps 78665 | 3.96 h | 2.3 it/s | train_ret 0.748 (n=3178) | wm nse1 0.0074 nse8 0.0140 | imag_ret 2.798 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 31500 | sim steps 78790 | 3.97 h | 2.3 it/s | train_ret 0.747 (n=3136) | wm nse1 0.0075 nse8 0.0169 | imag_ret 2.799 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 31550 | sim steps 78915 | 3.98 h | 2.3 it/s | train_ret 0.739 (n=3186) | wm nse1 0.0074 nse8 0.0152 | imag_ret 2.798 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 31600 | sim steps 79040 | 3.98 h | 2.3 it/s | train_ret 0.744 (n=3044) | wm nse1 0.0074 nse8 0.0155 | imag_ret 2.798 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 31650 | sim steps 79165 | 3.99 h | 2.3 it/s | train_ret 0.752 (n=3020) | wm nse1 0.0073 nse8 0.0115 | imag_ret 2.802 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 31700 | sim steps 79290 | 3.99 h | 2.3 it/s | train_ret 0.747 (n=3178) | wm nse1 0.0073 nse8 0.0155 | imag_ret 2.804 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 31750 | sim steps 79415 | 4.00 h | 2.3 it/s | train_ret 0.760 (n=3168) | wm nse1 0.0072 nse8 0.0145 | imag_ret 2.807 surv 1.000 | t sim/wm/pi 4.7/4.3/12.1s
+it 31800 | sim steps 79540 | 4.01 h | 2.3 it/s | train_ret 0.752 (n=3100) | wm nse1 0.0072 nse8 0.0144 | imag_ret 2.806 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 31850 | sim steps 79665 | 4.01 h | 2.3 it/s | train_ret 0.755 (n=3164) | wm nse1 0.0071 nse8 0.0148 | imag_ret 2.808 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 31900 | sim steps 79790 | 4.02 h | 2.3 it/s | train_ret 0.745 (n=3192) | wm nse1 0.0071 nse8 0.0142 | imag_ret 2.805 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 31950 | sim steps 79915 | 4.02 h | 2.3 it/s | train_ret 0.748 (n=3291) | wm nse1 0.0072 nse8 0.0167 | imag_ret 2.806 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 32000 | sim steps 80040 | 4.03 h | 2.3 it/s | train_ret 0.745 (n=3124) | wm nse1 0.0071 nse8 0.0187 | imag_ret 2.805 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 32050 | sim steps 80165 | 4.04 h | 2.3 it/s | train_ret 0.747 (n=3102) | wm nse1 0.0071 nse8 0.0130 | imag_ret 2.807 surv 1.000 | t sim/wm/pi 4.7/4.3/12.1s
+it 32100 | sim steps 80290 | 4.04 h | 2.3 it/s | train_ret 0.748 (n=3174) | wm nse1 0.0071 nse8 0.0156 | imag_ret 2.804 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 32150 | sim steps 80415 | 4.05 h | 2.3 it/s | train_ret 0.750 (n=3118) | wm nse1 0.0071 nse8 0.0139 | imag_ret 2.803 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 32200 | sim steps 80540 | 4.05 h | 2.3 it/s | train_ret 0.755 (n=3133) | wm nse1 0.0071 nse8 0.0212 | imag_ret 2.802 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 32250 | sim steps 80665 | 4.06 h | 2.3 it/s | train_ret 0.755 (n=3073) | wm nse1 0.0071 nse8 0.0151 | imag_ret 2.800 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 32300 | sim steps 80790 | 4.06 h | 2.3 it/s | train_ret 0.743 (n=3206) | wm nse1 0.0071 nse8 0.0146 | imag_ret 2.803 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 32350 | sim steps 80915 | 4.07 h | 2.3 it/s | train_ret 0.747 (n=3130) | wm nse1 0.0070 nse8 0.0131 | imag_ret 2.807 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 32400 | sim steps 81040 | 4.08 h | 2.3 it/s | train_ret 0.752 (n=3074) | wm nse1 0.0071 nse8 0.0140 | imag_ret 2.806 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 32450 | sim steps 81165 | 4.08 h | 2.3 it/s | train_ret 0.748 (n=3170) | wm nse1 0.0071 nse8 0.0141 | imag_ret 2.806 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 32500 | sim steps 81290 | 4.09 h | 2.3 it/s | train_ret 0.750 (n=3255) | wm nse1 0.0070 nse8 0.0120 | imag_ret 2.806 surv 1.000 | t sim/wm/pi 4.9/4.3/12.5s
+it 32550 | sim steps 81415 | 4.10 h | 2.3 it/s | train_ret 0.742 (n=3109) | wm nse1 0.0070 nse8 0.0146 | imag_ret 2.804 surv 1.000 | t sim/wm/pi 4.8/4.3/12.8s
+it 32600 | sim steps 81540 | 4.10 h | 2.3 it/s | train_ret 0.751 (n=3060) | wm nse1 0.0070 nse8 0.0151 | imag_ret 2.806 surv 1.000 | t sim/wm/pi 4.9/4.3/12.4s
+it 32650 | sim steps 81665 | 4.11 h | 2.3 it/s | train_ret 0.748 (n=3212) | wm nse1 0.0069 nse8 0.0301 | imag_ret 2.809 surv 1.000 | t sim/wm/pi 5.0/4.3/12.6s
+it 32700 | sim steps 81790 | 4.11 h | 2.3 it/s | train_ret 0.753 (n=3136) | wm nse1 0.0069 nse8 0.0122 | imag_ret 2.811 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 32750 | sim steps 81915 | 4.12 h | 2.3 it/s | train_ret 0.758 (n=3139) | wm nse1 0.0069 nse8 0.0108 | imag_ret 2.810 surv 1.000 | t sim/wm/pi 4.9/4.3/12.4s
+it 32800 | sim steps 82040 | 4.13 h | 2.3 it/s | train_ret 0.759 (n=3095) | wm nse1 0.0069 nse8 0.0119 | imag_ret 2.811 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 32850 | sim steps 82165 | 4.13 h | 2.4 it/s | train_ret 0.757 (n=3083) | wm nse1 0.0069 nse8 0.0145 | imag_ret 2.814 surv 1.000 | t sim/wm/pi 4.7/4.3/11.5s
+it 32900 | sim steps 82290 | 4.14 h | 2.3 it/s | train_ret 0.758 (n=3065) | wm nse1 0.0069 nse8 0.0123 | imag_ret 2.815 surv 1.000 | t sim/wm/pi 4.8/4.3/12.0s
+it 32950 | sim steps 82415 | 4.14 h | 2.3 it/s | train_ret 0.752 (n=3135) | wm nse1 0.0069 nse8 0.0138 | imag_ret 2.813 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 33000 | sim steps 82540 | 4.15 h | 2.3 it/s | train_ret 0.763 (n=3032) | wm nse1 0.0069 nse8 0.0126 | imag_ret 2.813 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 33050 | sim steps 82665 | 4.16 h | 2.3 it/s | train_ret 0.753 (n=3159) | wm nse1 0.0069 nse8 0.0196 | imag_ret 2.815 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 33100 | sim steps 82790 | 4.16 h | 2.3 it/s | train_ret 0.753 (n=3122) | wm nse1 0.0069 nse8 0.0150 | imag_ret 2.816 surv 1.000 | t sim/wm/pi 4.9/4.3/12.3s
+it 33150 | sim steps 82915 | 4.17 h | 2.4 it/s | train_ret 0.749 (n=3167) | wm nse1 0.0070 nse8 0.0126 | imag_ret 2.812 surv 1.000 | t sim/wm/pi 4.7/4.3/11.9s
+it 33200 | sim steps 83040 | 4.17 h | 2.3 it/s | train_ret 0.754 (n=3153) | wm nse1 0.0070 nse8 0.0139 | imag_ret 2.813 surv 1.000 | t sim/wm/pi 4.9/4.3/12.4s
+it 33250 | sim steps 83165 | 4.18 h | 2.3 it/s | train_ret 0.755 (n=3164) | wm nse1 0.0070 nse8 0.0134 | imag_ret 2.812 surv 1.000 | t sim/wm/pi 4.9/4.3/12.5s
+it 33300 | sim steps 83290 | 4.19 h | 2.3 it/s | train_ret 0.752 (n=3096) | wm nse1 0.0070 nse8 0.0136 | imag_ret 2.814 surv 1.000 | t sim/wm/pi 4.9/4.3/12.2s
+it 33350 | sim steps 83415 | 4.19 h | 2.4 it/s | train_ret 0.755 (n=3050) | wm nse1 0.0070 nse8 0.0140 | imag_ret 2.813 surv 1.000 | t sim/wm/pi 4.8/4.3/11.8s
+it 33400 | sim steps 83540 | 4.20 h | 2.3 it/s | train_ret 0.754 (n=3177) | wm nse1 0.0070 nse8 0.0135 | imag_ret 2.813 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 33450 | sim steps 83665 | 4.20 h | 2.4 it/s | train_ret 0.752 (n=3141) | wm nse1 0.0070 nse8 0.0127 | imag_ret 2.813 surv 1.000 | t sim/wm/pi 4.7/4.3/12.0s
+it 33500 | sim steps 83790 | 4.21 h | 2.3 it/s | train_ret 0.750 (n=3263) | wm nse1 0.0070 nse8 0.0145 | imag_ret 2.812 surv 1.000 | t sim/wm/pi 4.7/4.3/12.2s
+it 33550 | sim steps 83915 | 4.21 h | 2.3 it/s | train_ret 0.758 (n=3154) | wm nse1 0.0069 nse8 0.0141 | imag_ret 2.812 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 33600 | sim steps 84040 | 4.22 h | 2.3 it/s | train_ret 0.754 (n=3155) | wm nse1 0.0069 nse8 0.0123 | imag_ret 2.813 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 33650 | sim steps 84165 | 4.23 h | 2.3 it/s | train_ret 0.747 (n=3176) | wm nse1 0.0069 nse8 0.0140 | imag_ret 2.813 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 33700 | sim steps 84290 | 4.23 h | 2.3 it/s | train_ret 0.754 (n=3202) | wm nse1 0.0069 nse8 0.0172 | imag_ret 2.816 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 33750 | sim steps 84415 | 4.24 h | 2.3 it/s | train_ret 0.750 (n=3108) | wm nse1 0.0069 nse8 0.0124 | imag_ret 2.816 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 33800 | sim steps 84540 | 4.24 h | 2.3 it/s | train_ret 0.759 (n=3017) | wm nse1 0.0069 nse8 0.0122 | imag_ret 2.815 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 33850 | sim steps 84665 | 4.25 h | 2.3 it/s | train_ret 0.762 (n=3193) | wm nse1 0.0069 nse8 0.0103 | imag_ret 2.814 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 33900 | sim steps 84790 | 4.26 h | 2.3 it/s | train_ret 0.764 (n=3072) | wm nse1 0.0070 nse8 0.0119 | imag_ret 2.817 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 33950 | sim steps 84915 | 4.26 h | 2.3 it/s | train_ret 0.755 (n=3155) | wm nse1 0.0070 nse8 0.0131 | imag_ret 2.816 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 34000 | sim steps 85040 | 4.27 h | 2.3 it/s | train_ret 0.748 (n=3213) | wm nse1 0.0070 nse8 0.0130 | imag_ret 2.818 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 34050 | sim steps 85165 | 4.27 h | 2.3 it/s | train_ret 0.764 (n=3142) | wm nse1 0.0069 nse8 0.0153 | imag_ret 2.818 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 34100 | sim steps 85290 | 4.28 h | 2.4 it/s | train_ret 0.760 (n=3065) | wm nse1 0.0069 nse8 0.0122 | imag_ret 2.817 surv 1.000 | t sim/wm/pi 4.7/4.3/12.0s
+it 34150 | sim steps 85415 | 4.29 h | 2.3 it/s | train_ret 0.758 (n=3206) | wm nse1 0.0069 nse8 0.0168 | imag_ret 2.822 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 34200 | sim steps 85540 | 4.29 h | 2.3 it/s | train_ret 0.755 (n=3233) | wm nse1 0.0069 nse8 0.0142 | imag_ret 2.822 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 34250 | sim steps 85665 | 4.30 h | 2.3 it/s | train_ret 0.761 (n=3218) | wm nse1 0.0068 nse8 0.0116 | imag_ret 2.821 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 34300 | sim steps 85790 | 4.30 h | 2.3 it/s | train_ret 0.758 (n=3084) | wm nse1 0.0069 nse8 0.0147 | imag_ret 2.820 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 34350 | sim steps 85915 | 4.31 h | 2.4 it/s | train_ret 0.755 (n=3225) | wm nse1 0.0069 nse8 0.0121 | imag_ret 2.822 surv 1.000 | t sim/wm/pi 4.7/4.3/11.9s
+it 34400 | sim steps 86040 | 4.32 h | 2.3 it/s | train_ret 0.752 (n=3153) | wm nse1 0.0069 nse8 0.0143 | imag_ret 2.821 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 34450 | sim steps 86165 | 4.32 h | 2.3 it/s | train_ret 0.752 (n=3257) | wm nse1 0.0069 nse8 0.0130 | imag_ret 2.821 surv 1.000 | t sim/wm/pi 4.7/4.3/12.1s
+it 34500 | sim steps 86290 | 4.33 h | 2.4 it/s | train_ret 0.749 (n=3117) | wm nse1 0.0068 nse8 0.0121 | imag_ret 2.819 surv 1.000 | t sim/wm/pi 4.5/4.3/11.7s
+it 34550 | sim steps 86415 | 4.33 h | 2.3 it/s | train_ret 0.753 (n=3220) | wm nse1 0.0069 nse8 0.0135 | imag_ret 2.820 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 34600 | sim steps 86540 | 4.34 h | 2.4 it/s | train_ret 0.751 (n=3190) | wm nse1 0.0068 nse8 0.0157 | imag_ret 2.820 surv 1.000 | t sim/wm/pi 4.8/4.3/11.9s
+it 34650 | sim steps 86665 | 4.35 h | 2.3 it/s | train_ret 0.740 (n=3282) | wm nse1 0.0069 nse8 0.0133 | imag_ret 2.819 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 34700 | sim steps 86790 | 4.35 h | 2.3 it/s | train_ret 0.750 (n=3179) | wm nse1 0.0068 nse8 0.0175 | imag_ret 2.818 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 34750 | sim steps 86915 | 4.36 h | 2.3 it/s | train_ret 0.752 (n=3212) | wm nse1 0.0069 nse8 0.0118 | imag_ret 2.819 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 34800 | sim steps 87040 | 4.36 h | 2.3 it/s | train_ret 0.741 (n=3252) | wm nse1 0.0069 nse8 0.0142 | imag_ret 2.815 surv 1.000 | t sim/wm/pi 4.8/4.3/12.8s
+it 34850 | sim steps 87165 | 4.37 h | 2.4 it/s | train_ret 0.751 (n=3232) | wm nse1 0.0069 nse8 0.0111 | imag_ret 2.817 surv 1.000 | t sim/wm/pi 4.8/4.3/11.9s
+it 34900 | sim steps 87290 | 4.38 h | 2.3 it/s | train_ret 0.749 (n=3138) | wm nse1 0.0069 nse8 0.0107 | imag_ret 2.816 surv 1.000 | t sim/wm/pi 4.9/4.3/12.4s
+it 34950 | sim steps 87415 | 4.38 h | 2.3 it/s | train_ret 0.748 (n=3127) | wm nse1 0.0068 nse8 0.0114 | imag_ret 2.817 surv 1.000 | t sim/wm/pi 4.9/4.3/12.3s
+it 35000 | sim steps 87540 | 4.39 h | 2.3 it/s | train_ret 0.750 (n=3220) | wm nse1 0.0069 nse8 0.0171 | imag_ret 2.820 surv 1.000 | t sim/wm/pi 4.9/4.3/12.1s
+it 35050 | sim steps 87665 | 4.39 h | 2.5 it/s | train_ret 0.744 (n=3161) | wm nse1 0.0068 nse8 0.0125 | imag_ret 2.822 surv 1.000 | t sim/wm/pi 4.7/4.3/11.0s
+it 35100 | sim steps 87790 | 4.40 h | 2.3 it/s | train_ret 0.743 (n=3241) | wm nse1 0.0067 nse8 0.0165 | imag_ret 2.820 surv 1.000 | t sim/wm/pi 4.9/4.3/12.3s
+it 35150 | sim steps 87915 | 4.41 h | 2.4 it/s | train_ret 0.743 (n=3214) | wm nse1 0.0068 nse8 0.0160 | imag_ret 2.817 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 35200 | sim steps 88040 | 4.41 h | 2.3 it/s | train_ret 0.736 (n=3214) | wm nse1 0.0067 nse8 0.0117 | imag_ret 2.820 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 35250 | sim steps 88165 | 4.42 h | 2.4 it/s | train_ret 0.740 (n=3197) | wm nse1 0.0067 nse8 0.0137 | imag_ret 2.819 surv 0.999 | t sim/wm/pi 4.7/4.3/11.7s
+it 35300 | sim steps 88290 | 4.42 h | 2.4 it/s | train_ret 0.732 (n=3290) | wm nse1 0.0067 nse8 0.0130 | imag_ret 2.819 surv 0.999 | t sim/wm/pi 4.7/4.3/11.4s
+it 35350 | sim steps 88415 | 4.43 h | 2.3 it/s | train_ret 0.739 (n=3262) | wm nse1 0.0067 nse8 0.0138 | imag_ret 2.821 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 35400 | sim steps 88540 | 4.43 h | 2.4 it/s | train_ret 0.746 (n=3186) | wm nse1 0.0067 nse8 0.0146 | imag_ret 2.822 surv 0.999 | t sim/wm/pi 4.8/4.3/11.8s
+it 35450 | sim steps 88665 | 4.44 h | 2.3 it/s | train_ret 0.754 (n=3133) | wm nse1 0.0068 nse8 0.0115 | imag_ret 2.824 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 35500 | sim steps 88790 | 4.45 h | 2.3 it/s | train_ret 0.753 (n=3094) | wm nse1 0.0068 nse8 0.0110 | imag_ret 2.819 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 35550 | sim steps 88915 | 4.45 h | 2.3 it/s | train_ret 0.739 (n=3331) | wm nse1 0.0068 nse8 0.0158 | imag_ret 2.820 surv 0.999 | t sim/wm/pi 4.9/4.3/12.6s
+it 35600 | sim steps 89040 | 4.46 h | 2.2 it/s | train_ret 0.752 (n=3156) | wm nse1 0.0068 nse8 0.0116 | imag_ret 2.825 surv 0.999 | t sim/wm/pi 4.9/4.3/12.5s
+it 35650 | sim steps 89165 | 4.47 h | 2.4 it/s | train_ret 0.740 (n=3270) | wm nse1 0.0069 nse8 0.0129 | imag_ret 2.823 surv 0.999 | t sim/wm/pi 4.8/4.3/11.6s
+it 35700 | sim steps 89290 | 4.47 h | 2.4 it/s | train_ret 0.763 (n=3156) | wm nse1 0.0069 nse8 0.0129 | imag_ret 2.816 surv 0.999 | t sim/wm/pi 4.7/4.3/11.5s
+it 35750 | sim steps 89415 | 4.48 h | 2.3 it/s | train_ret 0.745 (n=3280) | wm nse1 0.0070 nse8 0.0148 | imag_ret 2.815 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 35800 | sim steps 89540 | 4.48 h | 2.3 it/s | train_ret 0.741 (n=3280) | wm nse1 0.0072 nse8 0.0160 | imag_ret 2.815 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 35850 | sim steps 89665 | 4.49 h | 2.3 it/s | train_ret 0.742 (n=3126) | wm nse1 0.0071 nse8 0.0133 | imag_ret 2.814 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 35900 | sim steps 89790 | 4.49 h | 2.3 it/s | train_ret 0.743 (n=3181) | wm nse1 0.0072 nse8 0.0135 | imag_ret 2.813 surv 0.999 | t sim/wm/pi 4.7/4.3/12.2s
+it 35950 | sim steps 89915 | 4.50 h | 2.3 it/s | train_ret 0.751 (n=3246) | wm nse1 0.0072 nse8 0.0130 | imag_ret 2.812 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 36000 | sim steps 90040 | 4.51 h | 2.3 it/s | train_ret 0.745 (n=3336) | wm nse1 0.0072 nse8 0.0161 | imag_ret 2.810 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 36050 | sim steps 90165 | 4.51 h | 2.3 it/s | train_ret 0.743 (n=3200) | wm nse1 0.0071 nse8 0.0145 | imag_ret 2.808 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 36100 | sim steps 90290 | 4.52 h | 2.3 it/s | train_ret 0.743 (n=3363) | wm nse1 0.0071 nse8 0.0153 | imag_ret 2.811 surv 0.999 | t sim/wm/pi 4.7/4.3/12.1s
+it 36150 | sim steps 90415 | 4.52 h | 2.3 it/s | train_ret 0.743 (n=3305) | wm nse1 0.0070 nse8 0.0155 | imag_ret 2.810 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 36200 | sim steps 90540 | 4.53 h | 2.3 it/s | train_ret 0.743 (n=3290) | wm nse1 0.0070 nse8 0.0143 | imag_ret 2.814 surv 0.999 | t sim/wm/pi 4.8/4.3/12.8s
+it 36250 | sim steps 90665 | 4.54 h | 2.3 it/s | train_ret 0.737 (n=3320) | wm nse1 0.0070 nse8 0.0137 | imag_ret 2.812 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 36300 | sim steps 90790 | 4.54 h | 2.3 it/s | train_ret 0.740 (n=3289) | wm nse1 0.0069 nse8 0.0178 | imag_ret 2.816 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 36350 | sim steps 90915 | 4.55 h | 2.3 it/s | train_ret 0.739 (n=3206) | wm nse1 0.0069 nse8 0.0131 | imag_ret 2.817 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 36400 | sim steps 91040 | 4.55 h | 2.3 it/s | train_ret 0.742 (n=3220) | wm nse1 0.0068 nse8 0.0176 | imag_ret 2.820 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 36450 | sim steps 91165 | 4.56 h | 2.3 it/s | train_ret 0.739 (n=3435) | wm nse1 0.0068 nse8 0.0144 | imag_ret 2.819 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 36500 | sim steps 91290 | 4.57 h | 2.3 it/s | train_ret 0.738 (n=3287) | wm nse1 0.0067 nse8 0.0193 | imag_ret 2.822 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 36550 | sim steps 91415 | 4.57 h | 2.3 it/s | train_ret 0.733 (n=3351) | wm nse1 0.0068 nse8 0.0149 | imag_ret 2.823 surv 0.999 | t sim/wm/pi 4.7/4.3/12.1s
+it 36600 | sim steps 91540 | 4.58 h | 2.3 it/s | train_ret 0.741 (n=3272) | wm nse1 0.0067 nse8 0.0141 | imag_ret 2.824 surv 0.999 | t sim/wm/pi 4.8/4.3/12.1s
+it 36650 | sim steps 91665 | 4.58 h | 2.3 it/s | train_ret 0.737 (n=3418) | wm nse1 0.0067 nse8 0.0105 | imag_ret 2.823 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 36700 | sim steps 91790 | 4.59 h | 2.3 it/s | train_ret 0.734 (n=3287) | wm nse1 0.0068 nse8 0.0138 | imag_ret 2.822 surv 0.999 | t sim/wm/pi 4.9/4.3/12.4s
+it 36750 | sim steps 91915 | 4.60 h | 2.3 it/s | train_ret 0.738 (n=3476) | wm nse1 0.0069 nse8 0.0141 | imag_ret 2.820 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 36800 | sim steps 92040 | 4.60 h | 2.3 it/s | train_ret 0.731 (n=3506) | wm nse1 0.0068 nse8 0.0140 | imag_ret 2.824 surv 0.999 | t sim/wm/pi 4.9/4.3/12.3s
+it 36850 | sim steps 92165 | 4.61 h | 2.4 it/s | train_ret 0.738 (n=3438) | wm nse1 0.0069 nse8 0.0119 | imag_ret 2.822 surv 0.999 | t sim/wm/pi 4.8/4.3/11.9s
+it 36900 | sim steps 92290 | 4.61 h | 2.3 it/s | train_ret 0.744 (n=3248) | wm nse1 0.0068 nse8 0.0142 | imag_ret 2.823 surv 0.999 | t sim/wm/pi 4.7/4.3/12.2s
+it 36950 | sim steps 92415 | 4.62 h | 2.3 it/s | train_ret 0.740 (n=3207) | wm nse1 0.0068 nse8 0.0136 | imag_ret 2.825 surv 0.999 | t sim/wm/pi 4.8/4.3/12.0s
+it 37000 | sim steps 92540 | 4.63 h | 2.3 it/s | train_ret 0.738 (n=3360) | wm nse1 0.0068 nse8 0.0130 | imag_ret 2.823 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 37050 | sim steps 92665 | 4.63 h | 2.5 it/s | train_ret 0.739 (n=3283) | wm nse1 0.0067 nse8 0.0141 | imag_ret 2.820 surv 0.999 | t sim/wm/pi 4.6/4.3/11.2s
+it 37100 | sim steps 92790 | 4.64 h | 2.7 it/s | train_ret 0.743 (n=3433) | wm nse1 0.0068 nse8 0.0142 | imag_ret 2.820 surv 0.999 | t sim/wm/pi 4.3/4.3/10.0s
+it 37150 | sim steps 92915 | 4.64 h | 2.3 it/s | train_ret 0.745 (n=3296) | wm nse1 0.0067 nse8 0.0141 | imag_ret 2.826 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 37200 | sim steps 93040 | 4.65 h | 2.3 it/s | train_ret 0.751 (n=3309) | wm nse1 0.0068 nse8 0.0129 | imag_ret 2.824 surv 0.999 | t sim/wm/pi 4.8/4.3/12.4s
+it 37250 | sim steps 93165 | 4.66 h | 2.3 it/s | train_ret 0.736 (n=3289) | wm nse1 0.0067 nse8 0.0143 | imag_ret 2.825 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 37300 | sim steps 93290 | 4.66 h | 2.3 it/s | train_ret 0.748 (n=3500) | wm nse1 0.0068 nse8 0.0133 | imag_ret 2.821 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 37350 | sim steps 93415 | 4.67 h | 2.3 it/s | train_ret 0.739 (n=3290) | wm nse1 0.0069 nse8 0.0155 | imag_ret 2.816 surv 1.000 | t sim/wm/pi 4.8/4.3/12.4s
+it 37400 | sim steps 93540 | 4.67 h | 2.3 it/s | train_ret 0.748 (n=3321) | wm nse1 0.0069 nse8 0.0160 | imag_ret 2.815 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 37450 | sim steps 93665 | 4.68 h | 2.3 it/s | train_ret 0.751 (n=3253) | wm nse1 0.0068 nse8 0.0152 | imag_ret 2.816 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 37500 | sim steps 93790 | 4.69 h | 2.3 it/s | train_ret 0.749 (n=3240) | wm nse1 0.0069 nse8 0.0160 | imag_ret 2.818 surv 1.000 | t sim/wm/pi 4.8/4.3/12.8s
+it 37550 | sim steps 93915 | 4.69 h | 2.3 it/s | train_ret 0.747 (n=3289) | wm nse1 0.0068 nse8 0.0149 | imag_ret 2.821 surv 1.000 | t sim/wm/pi 4.7/4.3/12.2s
+it 37600 | sim steps 94040 | 4.70 h | 2.4 it/s | train_ret 0.745 (n=3350) | wm nse1 0.0069 nse8 0.0151 | imag_ret 2.820 surv 1.000 | t sim/wm/pi 4.7/4.3/12.1s
+it 37650 | sim steps 94165 | 4.70 h | 2.3 it/s | train_ret 0.744 (n=3323) | wm nse1 0.0068 nse8 0.0116 | imag_ret 2.823 surv 1.000 | t sim/wm/pi 4.7/4.3/12.1s
+it 37700 | sim steps 94290 | 4.71 h | 2.3 it/s | train_ret 0.743 (n=3295) | wm nse1 0.0068 nse8 0.0124 | imag_ret 2.825 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 37750 | sim steps 94415 | 4.71 h | 2.4 it/s | train_ret 0.752 (n=3207) | wm nse1 0.0067 nse8 0.0149 | imag_ret 2.827 surv 1.000 | t sim/wm/pi 4.8/4.3/12.0s
+it 37800 | sim steps 94540 | 4.72 h | 2.3 it/s | train_ret 0.743 (n=3271) | wm nse1 0.0066 nse8 0.0123 | imag_ret 2.829 surv 1.000 | t sim/wm/pi 4.9/4.3/12.5s
+it 37850 | sim steps 94665 | 4.73 h | 2.3 it/s | train_ret 0.742 (n=3361) | wm nse1 0.0066 nse8 0.0103 | imag_ret 2.826 surv 1.000 | t sim/wm/pi 4.9/4.3/12.5s
+it 37900 | sim steps 94790 | 4.73 h | 2.3 it/s | train_ret 0.745 (n=3315) | wm nse1 0.0066 nse8 0.0148 | imag_ret 2.826 surv 1.000 | t sim/wm/pi 4.9/4.3/12.4s
+it 37950 | sim steps 94915 | 4.74 h | 2.3 it/s | train_ret 0.745 (n=3310) | wm nse1 0.0066 nse8 0.0143 | imag_ret 2.828 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 38000 | sim steps 95040 | 4.75 h | 2.4 it/s | train_ret 0.751 (n=3264) | wm nse1 0.0066 nse8 0.0137 | imag_ret 2.827 surv 1.000 | t sim/wm/pi 4.7/4.3/11.8s
+it 38050 | sim steps 95165 | 4.75 h | 2.3 it/s | train_ret 0.749 (n=3226) | wm nse1 0.0066 nse8 0.0111 | imag_ret 2.828 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 38100 | sim steps 95290 | 4.76 h | 2.3 it/s | train_ret 0.749 (n=3316) | wm nse1 0.0066 nse8 0.0123 | imag_ret 2.827 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 38150 | sim steps 95415 | 4.76 h | 2.3 it/s | train_ret 0.747 (n=3207) | wm nse1 0.0066 nse8 0.0134 | imag_ret 2.822 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 38200 | sim steps 95540 | 4.77 h | 2.3 it/s | train_ret 0.745 (n=3183) | wm nse1 0.0067 nse8 0.0129 | imag_ret 2.820 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 38250 | sim steps 95665 | 4.78 h | 2.3 it/s | train_ret 0.753 (n=3189) | wm nse1 0.0067 nse8 0.0168 | imag_ret 2.821 surv 1.000 | t sim/wm/pi 4.8/4.3/12.4s
+it 38300 | sim steps 95790 | 4.78 h | 2.3 it/s | train_ret 0.744 (n=3174) | wm nse1 0.0068 nse8 0.0142 | imag_ret 2.820 surv 1.000 | t sim/wm/pi 4.8/4.3/12.5s
+it 38350 | sim steps 95915 | 4.79 h | 2.3 it/s | train_ret 0.751 (n=3233) | wm nse1 0.0066 nse8 0.0115 | imag_ret 2.818 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 38400 | sim steps 96040 | 4.79 h | 2.3 it/s | train_ret 0.736 (n=3363) | wm nse1 0.0067 nse8 0.0119 | imag_ret 2.820 surv 0.999 | t sim/wm/pi 4.8/4.3/12.3s
+it 38450 | sim steps 96165 | 4.80 h | 2.3 it/s | train_ret 0.746 (n=3207) | wm nse1 0.0067 nse8 0.0126 | imag_ret 2.821 surv 0.999 | t sim/wm/pi 4.8/4.3/12.9s
+it 38500 | sim steps 96290 | 4.81 h | 2.3 it/s | train_ret 0.742 (n=3343) | wm nse1 0.0066 nse8 0.0121 | imag_ret 2.821 surv 0.999 | t sim/wm/pi 4.8/4.3/12.4s
+it 38550 | sim steps 96415 | 4.81 h | 2.3 it/s | train_ret 0.744 (n=3220) | wm nse1 0.0068 nse8 0.0132 | imag_ret 2.823 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 38600 | sim steps 96540 | 4.82 h | 2.3 it/s | train_ret 0.747 (n=3439) | wm nse1 0.0065 nse8 0.0130 | imag_ret 2.823 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 38650 | sim steps 96665 | 4.82 h | 2.3 it/s | train_ret 0.748 (n=3321) | wm nse1 0.0066 nse8 0.0142 | imag_ret 2.826 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 38700 | sim steps 96790 | 4.83 h | 2.3 it/s | train_ret 0.745 (n=3214) | wm nse1 0.0066 nse8 0.0129 | imag_ret 2.824 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 38750 | sim steps 96915 | 4.84 h | 2.3 it/s | train_ret 0.740 (n=3471) | wm nse1 0.0066 nse8 0.0106 | imag_ret 2.826 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 38800 | sim steps 97040 | 4.84 h | 2.3 it/s | train_ret 0.748 (n=3325) | wm nse1 0.0065 nse8 0.0150 | imag_ret 2.830 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 38850 | sim steps 97165 | 4.85 h | 2.3 it/s | train_ret 0.750 (n=3268) | wm nse1 0.0065 nse8 0.0175 | imag_ret 2.830 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 38900 | sim steps 97290 | 4.85 h | 2.3 it/s | train_ret 0.743 (n=3324) | wm nse1 0.0065 nse8 0.0125 | imag_ret 2.832 surv 1.000 | t sim/wm/pi 4.9/4.3/12.5s
+it 38950 | sim steps 97415 | 4.86 h | 2.3 it/s | train_ret 0.750 (n=3364) | wm nse1 0.0064 nse8 0.0133 | imag_ret 2.832 surv 1.000 | t sim/wm/pi 4.9/4.3/12.5s
+it 39000 | sim steps 97540 | 4.86 h | 2.4 it/s | train_ret 0.744 (n=3269) | wm nse1 0.0065 nse8 0.0121 | imag_ret 2.834 surv 1.000 | t sim/wm/pi 4.7/4.3/11.3s
+it 39050 | sim steps 97665 | 4.87 h | 2.4 it/s | train_ret 0.739 (n=3356) | wm nse1 0.0065 nse8 0.0112 | imag_ret 2.835 surv 1.000 | t sim/wm/pi 4.7/4.3/11.8s
+it 39100 | sim steps 97790 | 4.88 h | 2.4 it/s | train_ret 0.739 (n=3404) | wm nse1 0.0065 nse8 0.0125 | imag_ret 2.836 surv 1.000 | t sim/wm/pi 4.7/4.3/11.9s
+it 39150 | sim steps 97915 | 4.88 h | 2.4 it/s | train_ret 0.740 (n=3444) | wm nse1 0.0065 nse8 0.0102 | imag_ret 2.837 surv 1.000 | t sim/wm/pi 4.7/4.3/11.9s
+it 39200 | sim steps 98040 | 4.89 h | 2.3 it/s | train_ret 0.743 (n=3415) | wm nse1 0.0065 nse8 0.0130 | imag_ret 2.839 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 39250 | sim steps 98165 | 4.89 h | 2.3 it/s | train_ret 0.736 (n=3448) | wm nse1 0.0064 nse8 0.0135 | imag_ret 2.838 surv 1.000 | t sim/wm/pi 4.8/4.3/12.4s
+it 39300 | sim steps 98290 | 4.90 h | 2.3 it/s | train_ret 0.739 (n=3373) | wm nse1 0.0065 nse8 0.0126 | imag_ret 2.835 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 39350 | sim steps 98415 | 4.91 h | 2.3 it/s | train_ret 0.744 (n=3394) | wm nse1 0.0065 nse8 0.0135 | imag_ret 2.834 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 39400 | sim steps 98540 | 4.91 h | 2.3 it/s | train_ret 0.748 (n=3270) | wm nse1 0.0065 nse8 0.0132 | imag_ret 2.837 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 39450 | sim steps 98665 | 4.92 h | 2.3 it/s | train_ret 0.744 (n=3349) | wm nse1 0.0065 nse8 0.0108 | imag_ret 2.836 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 39500 | sim steps 98790 | 4.92 h | 2.3 it/s | train_ret 0.736 (n=3438) | wm nse1 0.0065 nse8 0.0149 | imag_ret 2.838 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 39550 | sim steps 98915 | 4.93 h | 2.3 it/s | train_ret 0.737 (n=3314) | wm nse1 0.0065 nse8 0.0110 | imag_ret 2.836 surv 1.000 | t sim/wm/pi 4.8/4.3/12.3s
+it 39600 | sim steps 99040 | 4.94 h | 2.3 it/s | train_ret 0.735 (n=3326) | wm nse1 0.0066 nse8 0.0133 | imag_ret 2.834 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 39650 | sim steps 99165 | 4.94 h | 2.3 it/s | train_ret 0.737 (n=3456) | wm nse1 0.0066 nse8 0.0116 | imag_ret 2.836 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 39700 | sim steps 99290 | 4.95 h | 2.3 it/s | train_ret 0.741 (n=3492) | wm nse1 0.0066 nse8 0.0159 | imag_ret 2.835 surv 1.000 | t sim/wm/pi 4.8/4.3/12.2s
+it 39750 | sim steps 99415 | 4.95 h | 2.3 it/s | train_ret 0.741 (n=3410) | wm nse1 0.0066 nse8 0.0127 | imag_ret 2.836 surv 0.999 | t sim/wm/pi 4.8/4.3/12.2s
+it 39800 | sim steps 99540 | 4.96 h | 2.3 it/s | train_ret 0.739 (n=3397) | wm nse1 0.0066 nse8 0.0114 | imag_ret 2.833 surv 1.000 | t sim/wm/pi 4.8/4.3/12.1s
+it 39850 | sim steps 99665 | 4.97 h | 2.3 it/s | train_ret 0.727 (n=3532) | wm nse1 0.0066 nse8 0.0145 | imag_ret 2.835 surv 1.000 | t sim/wm/pi 4.9/4.3/12.4s
+it 39900 | sim steps 99790 | 4.97 h | 2.4 it/s | train_ret 0.731 (n=3521) | wm nse1 0.0066 nse8 0.0159 | imag_ret 2.834 surv 1.000 | t sim/wm/pi 4.7/4.3/11.7s
+it 39950 | sim steps 99915 | 4.98 h | 2.4 it/s | train_ret 0.736 (n=3438) | wm nse1 0.0066 nse8 0.0149 | imag_ret 2.837 surv 0.999 | t sim/wm/pi 4.8/4.3/11.7s
+it 40000 | sim steps 100040 | 4.98 h | 2.3 it/s | train_ret 0.746 (n=3391) | wm nse1 0.0066 nse8 0.0131 | imag_ret 2.836 surv 1.000 | t sim/wm/pi 4.8/4.3/11.8s
+[INFO] stop_iteration 40000 reached, stopping

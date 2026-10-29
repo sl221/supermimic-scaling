@@ -40,16 +40,28 @@ LOG_RE = re.compile(
 # ---------------------------------------------------------------- loading
 
 
+RESUME_RE = re.compile(r"resumed from .* at iteration (\d+)")
+
+
 def parse_log(path: Path) -> list[dict]:
-    """One dict per progress line of a training log."""
-    rows = []
+    """One dict per progress line of a training log. A resumed run appends to the same log and its clock restarts
+    at zero: lines past the resume point from the interrupted attempt are dropped, and the resumed lines are
+    shifted by the elapsed hours at the resume point, so hours stay cumulative GPU time of the kept trajectory."""
+    rows: list[dict] = []
+    offset = 0.0
     if not path.exists():
         return rows
     for line in path.read_text(errors="replace").splitlines():
+        r = RESUME_RE.search(line)
+        if r:
+            n = int(r.group(1))
+            offset = hours_at(rows, n) or 0.0 if rows else 0.0
+            rows = [x for x in rows if x["it"] <= n]
+            continue
         m = LOG_RE.match(line.strip())
         if m:
             it, h, its, tr, n1, n8 = m.groups()
-            rows.append({"it": int(it), "hours": float(h), "it_s": float(its), "train_ret": float(tr), "nse1": float(n1), "nse8": float(n8)})
+            rows.append({"it": int(it), "hours": offset + float(h), "it_s": float(its), "train_ret": float(tr), "nse1": float(n1), "nse8": float(n8)})
     return rows
 
 

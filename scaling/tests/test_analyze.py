@@ -84,3 +84,13 @@ def test_partial_results_are_fine(tmp_path):
     fake_tree(tmp_path, runs=("D40",))
     res = summarize(tmp_path)
     assert list(res["runs"]) == ["D40"]
+
+
+def test_resumed_log_is_stitched(tmp_path):
+    lines = [f"it {it} | sim steps 1 | {it / 1000:.2f} h | 2.3 it/s | train_ret 0.5 (n=1) | wm nse1 0.01 nse8 0.02 | x" for it in range(1000, 6001, 1000)]
+    lines.append("[INFO] resumed from ckpt_0004000.pt at iteration 4000 (1 sim steps)")
+    lines += [f"it {it} | sim steps 1 | {0.2 + (it - 4000) / 1000:.2f} h | 2.3 it/s | train_ret 0.6 (n=1) | wm nse1 0.01 nse8 0.02 | x" for it in range(5000, 8001, 1000)]
+    (tmp_path / "r.out").write_text("\n".join(lines))
+    rows = parse_log(tmp_path / "r.out")
+    assert [r["it"] for r in rows] == [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000]
+    assert rows[4]["hours"] == pytest.approx(4.0 + 1.2) and rows[4]["train_ret"] == 0.6

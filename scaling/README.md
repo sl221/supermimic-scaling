@@ -32,11 +32,12 @@ Mean normalized return; min–max ranges, failure rates and best checkpoints are
 1. **In-distribution generalization saturates at about 40 hours.** On held-out BONES-SEED motions and performers,
    return rises by +0.042 from 1 h to 7 h and +0.017 from 7 h to 40 h, then by **0.000** from 40 h to 254 h. The paper's
    plateau on training motions also holds for motions the policy never saw.
-2. **Out-of-distribution transfer keeps improving.** On LAFAN1, a different capture source the runs never trained on,
-   return rises at every step, including **+0.024 from 40 h to 254 h**, and the failure rate halves (16% → 7%). The
-   extra 214 hours buy nothing in distribution and something real out of it. This is one seed per size, and D40's LAFAN1
-   score moved between 0.725 and 0.771 over its last three checkpoints, so the size of the last step is uncertain; the
-   rising trend is not.
+2. **Out-of-distribution transfer improves much more, and may keep improving past 40 h.** On LAFAN1, a different
+   capture source the runs never trained on, return rises from 0.624 (1 h) to 0.779 (254 h), far beyond any plausible
+   seed noise, and the failure rate halves (16% → 7%). Whether it still improves *after* 40 h is less certain: the
+   +0.024 step from 40 h to 254 h is the size of the seed-to-seed spreads reported in the community (0.007–0.03), and
+   D40's LAFAN1 score moved between 0.725 and 0.771 over its last three checkpoints. Dall is ahead of D40 on LAFAN1 at
+   every checkpoint from 24k on except 36k, which is suggestive, not conclusive.
 3. **The generalization gap closes with data.** The gap between a run's own training motions and unseen motions shrinks
    from 0.093 (1 h) to 0.031 (7 h), 0.016 (40 h) and about zero (254 h). (The training column uses a 2,000-clip sample of
    each run's own subset, so it differs in clips as well as policy; the held-out columns are like-for-like.)
@@ -110,8 +111,9 @@ Mean normalized return; min–max ranges, failure rates and best checkpoints are
 
 ## Caveats
 
-- **One seed per data size.** The trends are consistent across sets and checkpoints, but differences of about 0.01
-  (D40 vs Dall in distribution) are within seed noise, which this study did not measure.
+- **One seed per data size,** as in the paper (which reports single runs, noting that training is very stable across
+  seeds) and most community reproductions. Trends spanning the whole 1 h → 254 h range are far larger than the
+  seed-to-seed spreads reported elsewhere (0.007–0.03); differences between D40 and Dall are not.
 - **40,000 of 320,000 iterations.** These are mid-training results, not converged ones.
 - **"Unseen motion" is only as clean as the dataset's labels.** Two different `content_name`s can be near-identical
   movements, so the motion split partly tests interpolation to similar motions. LAFAN1 is the clean

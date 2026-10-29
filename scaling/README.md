@@ -4,18 +4,30 @@ A held-out data-scaling study of **SuperMimic** ([arXiv:2610.28480](https://arxi
 on BONES-SEED, built on [LaoYang1994/SuperMimic-Rep](https://github.com/LaoYang1994/SuperMimic-Rep) (itself a fork of
 [CuboiLeo/SuperMimic-Reproduced](https://github.com/CuboiLeo/SuperMimic-Reproduced), MIT).
 
-The paper's data-scaling result (Fig. 3) trains on 1, 7, 40 and 264 hours of BONES-SEED and evaluates **on the training
-motions only**. It reports that larger datasets take longer to reach a target return and that the benefit plateaus
-around 40 h. It does not ask the question a user of the method cares about: **does more data make the policy, and the
-world model, better on motions they have never seen?** Community reproductions report held-out results for the full
-dataset only, and none report world-model error on held-out data (see [Related results](#related-results)). This study
-measures both across data sizes, under one protocol.
+The paper's data sweep (Fig. 3) trains on 1, 7, 40 and 264 hours of BONES-SEED and evaluates on the training motions,
+finding that larger datasets take longer to reach a target return and that the benefit plateaus around 40 h. This
+study asks the held-out version of the question: **does more data make the policy, and the world model, better on
+motions they have never seen?** Community reproductions report held-out results for models trained on the full dataset
+only, and none report world-model error on held-out data (see [Related results](#related-results)).
+
+**In short:**
+
+- On held-out BONES-SEED motions and performers, return improves from 1 h to 40 h of data and not at all from 40 h to
+  254 h (at equal compute).
+- On LAFAN1, a different capture source, return improves much more (0.62 → 0.78) and is highest with all the data.
+- With 1 h of data, the world model fits its own data well but is far worse on held-out transitions, and gets worse with
+  more training while the policy does not.
 
 ## Findings
 
-Four runs on nested subsets of BONES-SEED (1 h, 7 h, 40 h, all 254 h), identical networks, hyperparameters and compute
-(40,000 iterations each), evaluated every 4,000 iterations on three held-out sets carved out before any subset was
-drawn. Headline numbers average the last three checkpoints (32k–40k).
+Four runs on nested subsets of BONES-SEED (1 h, 7 h, 40 h, and all 254 h: the 263 h left by the paper's filters minus
+the 8.7 h held out), identical networks, hyperparameters and compute (40,000 iterations each; an iteration is one gradient
+update, about 2.5 simulator steps across 4,096 parallel environments), evaluated every 4,000 iterations on three
+held-out sets carved out before any subset was drawn. Headline numbers average the last three checkpoints (32k–40k).
+
+**Return** is the paper's normalized return: the reward summed over a 10-second segment divided by the largest value it
+can take, so 1.0 is perfect tracking and a fall ends the segment early with a low score. A segment **fails** when the
+robot falls (pelvis height or tilt beyond the training termination limits).
 
 | Run | Data | Unseen motions | Unseen performers | LAFAN1 (other capture source) | Own training motions |
 |---|---:|---:|---:|---:|---:|
@@ -29,27 +41,26 @@ Mean normalized return; min–max ranges, failure rates and best checkpoints are
 
 ![Tracking return vs training data](figures/fig1_heldout_vs_data.png)
 
+The three held-out sets are identical for every run. "Own training motions" is a sample of each run's own subset, so
+that line is measured on different clips for each run.
+
 1. **In-distribution generalization saturates at about 40 hours.** On held-out BONES-SEED motions and performers,
    return rises by +0.042 from 1 h to 7 h and +0.017 from 7 h to 40 h, then by **0.000** from 40 h to 254 h. The paper's
    plateau on training motions also holds for motions the policy never saw.
 2. **Out-of-distribution transfer improves much more, and may keep improving past 40 h.** On LAFAN1, a different
-   capture source the runs never trained on, return rises from 0.624 (1 h) to 0.779 (254 h), far beyond any plausible
-   seed noise, and the failure rate halves (16% → 7%). Whether it still improves *after* 40 h is less certain: the
-   +0.024 step from 40 h to 254 h is the size of the seed-to-seed spreads reported in the community (0.007–0.03), and
-   D40's LAFAN1 score moved between 0.725 and 0.771 over its last three checkpoints. Dall is ahead of D40 on LAFAN1 at
-   every checkpoint from 8k to 40k (9 of 10), which is suggestive, not conclusive.
-3. **The generalization gap closes with data.** The gap between a run's own training motions and unseen motions shrinks
-   from 0.093 (1 h) to 0.031 (7 h), 0.016 (40 h) and about zero (254 h). (The training column uses a 2,000-clip sample of
-   each run's own subset, so it differs in clips as well as policy; the held-out columns are like-for-like.)
-4. **Small data gives a lower ceiling, not a collapse.** D1 plateaus at about 0.865 on unseen motions by 20k iterations
-   and does not decline through 40k, but it never reaches 0.90 and fails 4% of unseen-performer segments (0.1% for 40 h
-   and 254 h).
+   capture source the runs never trained on, return rises from 0.624 (1 h) to 0.779 (254 h) and the failure rate halves
+   (16% → 7%). The last step, +0.024 from 40 h to 254 h, is within seed noise (see [Caveats](#caveats)), though Dall is
+   ahead of D40 on LAFAN1 at 9 of 10 checkpoints.
+3. **Small data generalizes worse but does not collapse.** The gap between a run's own training motions and unseen
+   motions shrinks from 0.093 (1 h) to 0.031 (7 h), 0.016 (40 h) and about zero (254 h). D1 plateaus at about 0.865 on
+   unseen motions by 20k iterations (learning curves below) and does not decline through 40k, but it never reaches 0.90
+   and fails 4% of unseen-performer segments, against 0.1% for 40 h and 254 h.
 
 ![Learning curves](figures/fig2_learning_curves.png)
 
 ### The world model
 
-5. **A 1-hour dataset gives a world model that looks excellent on its own data and is 6× worse off it.** Each run's
+4. **A 1-hour dataset gives a world model that looks excellent on its own data and is 6× worse off it.** Each run's
    world model is scored on the same pooled held-out transitions (8-step open-loop error, the paper's metric):
 
    | Run | Held-out windows (pooled) | Own training rollouts | Ratio |
@@ -62,7 +73,7 @@ Mean normalized return; min–max ranges, failure rates and best checkpoints are
    Normalized 8-step error ×10⁻³. Error on its own rollouts *rises* with data (more varied data is harder to fit),
    which reproduces the paper's Fig. 3(c) (about 7, 7.5, 11, 10). Error on held-out windows falls 2.5× from 1 h to 40 h and
    then flattens, exactly where held-out return flattens.
-6. **D1's world model overfits before its policy does.** Its held-out error is lowest at 8k iterations (31) and climbs to
+5. **D1's world model overfits before its policy does.** Its held-out error is lowest at 8k iterations (31) and climbs to
    47 by 40k while its training error keeps falling; the other runs keep improving to the end. D1's held-out *return*
    does not drop over the same period. (At each checkpoint the windows come from that step's policies, so the window set
    shifts over training; all runs are always scored on the same windows.)
@@ -71,7 +82,7 @@ Mean normalized return; min–max ranges, failure rates and best checkpoints are
 
 ### Compute to target
 
-7. **The paper's compute-to-target ranking reverses on held-out motions.** Iterations to a mean return of 0.85:
+6. **The paper's compute-to-target ranking reverses on held-out motions.** Iterations to a mean return of 0.85:
 
    | Run | Own training motions | Unseen motions |
    |---|---:|---:|
@@ -106,14 +117,17 @@ Mean normalized return; min–max ranges, failure rates and best checkpoints are
 - **Training-motion evaluation:** a fixed sample of up to 2,000 clips of each run's own subset, same segment protocol.
 - **World-model error** ([`wm_error.py`](wm_error.py)): every run's world model scored on the same pooled transitions
   recorded while all four policies played the held-out sets; open-loop on logged actions, normalized as in the paper.
-- **Evaluation noise:** re-evaluating one checkpoint changed its return by 0.0007; checkpoint-to-checkpoint variation is
-  about ±0.005 (the bracketed ranges in [`results/results.md`](results/results.md)).
+- **Evaluation noise:** evaluation is deterministic up to GPU nondeterminism; re-evaluating one checkpoint (the smoke
+  test's, on LAFAN1) changed its return by 0.0007. Checkpoint-to-checkpoint variation within a run is about ±0.005 on the
+  BONES-SEED sets and larger on LAFAN1 (the bracketed ranges in [`results/results.md`](results/results.md)).
 
 ## Caveats
 
 - **One seed per data size,** as in the paper (which reports single runs, noting that training is very stable across
   seeds) and most community reproductions. Trends spanning the whole 1 h → 254 h range are far larger than the
-  seed-to-seed spreads reported elsewhere (0.007–0.03); differences between D40 and Dall are not.
+  seed-to-seed spreads reported elsewhere (0.007–0.03); differences between D40 and Dall are not. This matters most
+  for LAFAN1: the +0.024 step from 40 h to 254 h is the size of those spreads, and D40's LAFAN1 score moved between
+  0.725 and 0.771 over its last three checkpoints.
 - **40,000 of 320,000 iterations.** These are mid-training results, not converged ones.
 - **"Unseen motion" is only as clean as the dataset's labels.** Two different `content_name`s can be near-identical
   movements, so the motion split partly tests interpolation to similar motions. LAFAN1 is the clean
@@ -129,10 +143,10 @@ and the reproductions it links. Held-out results exist only for models trained o
 world-model error on held-out data. The closest comparisons:
 
 - [realmimic](https://huggingface.co/kevinhenryz/realmimic) (full BONES-SEED, two seeds): LAFAN1 10-second segments,
-  return 0.821–0.828 with 4–6% failures. Our Dall run reaches 0.779 with 7% failures at 40,000 iterations; the gap is
-  consistent with our shorter training.
-- [ScaleBFM_Plus](https://github.com/Hxxxz0/ScaleBFM_Plus): 99.5% success on 2,575 held-out motions. Our 40 h and 254 h
-  runs fail 0.1–0.5% of held-out BONES-SEED segments (99.5–99.9% success), under a different split.
+  return 0.821–0.828 with 4–6% failures, at a training length it does not state. Our Dall run: 0.779 with 7% failures at
+  40,000 iterations.
+- [ScaleBFM_Plus](https://github.com/Hxxxz0/ScaleBFM_Plus): 99.5% tracking success on 2,575 held-out motions, under its
+  own split and success definition.
 
 ## Reproduce
 

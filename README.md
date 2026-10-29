@@ -1,5 +1,9 @@
 # SuperMimic-Rep
 
+> **Held-out data-scaling study:** this fork adds a study of how SuperMimic's policy and world model generalize to
+> unseen motions as training data grows from 1 to 254 hours. Results, figures and method:
+> [`scaling/README.md`](scaling/README.md). The rest of this page is the upstream reproduction's README.
+
 A paper-faithful reproduction of **SuperMimic: Scaling Humanoid Whole-Body Control with One Differentiable World
 Model** ([arXiv:2610.28480](https://arxiv.org/abs/2610.28480), CoRL 2026): a learned differentiable world model plus a
 short-horizon BPTT actor-critic for whole-body motion tracking on the Unitree G1, built on

@@ -8,7 +8,8 @@ The paper's data-scaling result (Fig. 3) trains on 1, 7, 40 and 264 hours of BON
 motions only**. It reports that larger datasets take longer to reach a target return and that the benefit plateaus
 around 40 h. It does not ask the question a user of the method cares about: **does more data make the policy, and the
 world model, better on motions they have never seen?** Community reproductions report held-out results for the full
-dataset only. This study measures it across data sizes, under one protocol, for both the policy and the world model.
+dataset only, and none report world-model error on held-out data (see [Related results](#related-results)). This study
+measures both across data sizes, under one protocol.
 
 ## Findings
 
@@ -118,6 +119,18 @@ Mean normalized return; min–max ranges, failure rates and best checkpoints are
 - **Two operational blemishes.** D40 was interrupted at iteration 6,400 and resumed from its 4,000 checkpoint (the
   replay buffer is not checkpointed and was refilled). Dall shared its GPU with a stray process for a few minutes, which
   affects its wall-clock time but not its iterations. Neither should move the results.
+
+## Related results
+
+Checked on 2026-10-29 against the community list [awesome-supermimic](https://github.com/miao-org/awesome-supermimic)
+and the reproductions it links. Held-out results exist only for models trained on the full dataset, and no entry reports
+world-model error on held-out data. The closest comparisons:
+
+- [realmimic](https://huggingface.co/kevinhenryz/realmimic) (full BONES-SEED, two seeds): LAFAN1 10-second segments,
+  return 0.821–0.828 with 4–6% failures. Our Dall run reaches 0.779 with 7% failures at 40,000 iterations; the gap is
+  consistent with our shorter training.
+- [ScaleBFM_Plus](https://github.com/Hxxxz0/ScaleBFM_Plus): 99.5% success on 2,575 held-out motions. Our 40 h and 254 h
+  runs fail 0.1–0.5% of held-out BONES-SEED segments (99.5–99.9% success), under a different split.
 
 ## Reproduce
 

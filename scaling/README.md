@@ -53,15 +53,15 @@ motions it gets there last, and never reaches 0.9.
 
 20 hours from idea to results, using 27 H100-hours (about $120).
 
-| Phase | When (Toronto time) |
+| Phase | When (Pacific time) |
 |---|---|
-| Idea and literature check | Wed 11:30 – 12:30 |
-| Experiment design and plan | Wed 12:30 – 13:30 |
-| Code and tests | Wed 13:30 – 14:40 |
-| Accounts, GPUs, data pipeline | Wed 14:40 – 18:00 |
-| Smoke test and launch | Wed 18:00 – 19:00 |
-| Training: 4 runs on 2 H100s | Wed 19:00 – Thu 06:00 |
-| Evaluation and analysis | Thu 07:00 – 07:45 |
+| Idea and literature check | Wed 08:30 – 09:30 |
+| Experiment design and plan | Wed 09:30 – 10:30 |
+| Code and tests | Wed 10:30 – 11:40 |
+| Accounts, GPUs, data pipeline | Wed 11:40 – 15:00 |
+| Smoke test and launch | Wed 15:00 – 16:00 |
+| Training: 4 runs on 2 H100s | Wed 16:00 – Thu 03:00 |
+| Evaluation and analysis | Thu 04:00 – 04:45 |
 
 <details>
 <summary>Problems caught along the way</summary>

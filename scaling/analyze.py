@@ -378,7 +378,8 @@ def figures(res: dict, out_dir: Path) -> list[Path]:
         fig, ax = plt.subplots(figsize=(7.2, 4.4), facecolor=SURFACE)
         _style(ax)
         ends = []
-        for s in WM_SETS:
+        has_train = any("train" in runs[n].get("wm_sets", {}) for n in names)
+        for s in WM_SETS + (["train"] if has_train else []):
             xs, ys, lo, hi = [], [], [], []
             for n in names:
                 v = runs[n].get("wm_sets", {}).get(s)
@@ -389,9 +390,8 @@ def figures(res: dict, out_dir: Path) -> list[Path]:
                 ax.errorbar(xs, ys, yerr=[lo, hi], color=SET_COLORS[s], marker=SET_MARKERS[s], markersize=7, linewidth=2, capsize=3,
                             markeredgecolor=SURFACE, markeredgewidth=1.5, label=SET_LABELS[s])
                 ends.append((xs[-1], ys[-1], SET_LABELS[s]))
-        own_label = "Own training motions" if any("train" in runs[n].get("wm_sets", {}) for n in names) else "Own training rollouts"
-        pts = [(runs[n]["hours_data"], 1e3 * (runs[n]["wm_sets"]["train"]["mean"] if "train" in runs[n].get("wm_sets", {}) else runs[n]["online_nse8"]))
-               for n in names if "train" in runs[n].get("wm_sets", {}) or runs[n].get("online_nse8") is not None]
+        own_label = SET_LABELS["train"] if has_train else "Own training rollouts"
+        pts = [] if has_train else [(runs[n]["hours_data"], 1e3 * runs[n]["online_nse8"]) for n in names if runs[n].get("online_nse8") is not None]
         if pts:
             ax.plot(*zip(*pts), color=SET_COLORS["train"], marker=SET_MARKERS["train"], markersize=7, linewidth=2,
                     markeredgecolor=SURFACE, markeredgewidth=1.5, label=own_label)
@@ -419,7 +419,10 @@ def figures(res: dict, out_dir: Path) -> list[Path]:
                 if c:
                     ax.plot([i / 1000 for i in c["iterations"]], [1e3 * v for v in c["nse8"]], color=RUN_COLORS[n], linewidth=2,
                             marker="o", markersize=4, label=_data_label(runs[n]["hours_data"]))
-            ax.set_ylim(bottom=0)
+            later = [1e3 * v for n in names
+                     for c in [runs[n].get("wm_sets", {}).get(s, {}).get("curve") or (runs[n].get("online_nse8_curve") if s == "train" else None)]
+                     if c for i, v in zip(c["iterations"], c["nse8"]) if i > min(c["iterations"])]
+            ax.set_ylim(0, 1.15 * max(later) if later else None)
             ax.set_title(own_label if s == "train" else SET_LABELS[s], loc="left", color=INK, fontsize=10)
             ax.set_xlabel("Iteration (thousands)", color=INK2, fontsize=9)
         axes[0][0].set_ylabel("8-step error, x1e-3", color=INK2, fontsize=10)

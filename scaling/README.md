@@ -21,12 +21,17 @@ The two BONES-SEED held-out sets stop improving at 40 h. LAFAN1 keeps improving 
 Over training, the 1 h run is best on its own motions and worst on everything new. More training does not close the
 gap.
 
-### 2. The world model memorizes even more than the policy
+### 2. The world model tells the same story, and memorizes motions, not performers
 
-![World-model error](figures/fig3_wm_error.png)
+![World-model error vs training data](figures/fig3_wm_vs_data.png)
 
-With 1 h of data, the world model predicts its own training data well but new motions badly (left). As training
-continues, it gets *worse* on new motions (right), while its policy holds steady.
+On unseen BONES-SEED motions and performers, the world model's error stops improving between 7 h and 40 h. On LAFAN1
+it keeps falling up to 254 h. This matches the policy.
+
+![World-model error during training](figures/fig3b_wm_curves.png)
+
+With 1 h of data, the world model keeps improving on its own motions and on new performers, but gets *worse* on new
+motions and on LAFAN1 as training continues. The first checkpoint is off the top of some panels.
 
 ### 3. Measured on training motions, small data looks cheap. On new motions, it is the most expensive.
 

@@ -143,18 +143,22 @@ from the logs and evaluation summaries. CPU tests: `python -m pytest scaling/tes
 
 ## How this was built
 
-I did this in about a day and a half, deliberately with an AI agent (Claude) doing most of the reading, coding and
-debugging, to see how far that speeds up a real research question.
+From the first literature search to results took 34 hours of elapsed time (including a midterm and a night's sleep),
+about 12 hours of my own time, and 27 rented H100-hours (about $120). I worked deliberately with an AI agent (Claude)
+doing most of the reading, coding and debugging, to see how far that speeds up a real research question.
 
-- **Choosing the question** (Wednesday morning): the agent surveyed the paper and the community reproductions to find extensions that had not been done. I chose the held-out scaling question and cut the scope from
-  a full grid to four runs and one seed.
-- **Code** (Wednesday): the agent wrote the scaling code in `scaling/` (splits, subsets, segmenting, held-out
-  evaluation, pooled world-model error, analysis, tests) and the runbook. I set up the accounts, rented the GPUs and
-  ran every command, pasting the output back.
-- **Runs** (Wednesday evening to Thursday morning): data preparation took about 1.5 hours, then a smoke test, then four
-  runs on two H100s overnight, about 27 rented GPU-hours in all.
-- **Checking:** several problems were caught by checking real output against expectations rather than trusting the
-  code: the mirrored-motion leak (found by inspecting the metadata before splitting), a command-line flag that silently
-  dropped two held-out sets, a wrong metadata path, and the interrupted D40 run.
-- **Write-up** (Thursday): the agent wrote the analysis and a first draft of this page from the results; I reviewed and
-  edited it.
+| Phase | When (Toronto time) | Who |
+|---|---|---|
+| Idea and literature check: what has the community already done? | Tue 21:00 – 23:00 | agent researches, I choose |
+| Experiment design and plan | Wed 11:30 – 13:30 | together; I cut the scope to four runs and one seed |
+| Scaling code and tests (`scaling/`) | Wed 13:30 – 14:40 | agent, during my lunch |
+| Accounts, GPUs, data pipeline (129,511 clips) | Wed 14:40 – 18:00 | I run every command, agent debugs from the output |
+| Splits, libraries, smoke test, launch | Wed 18:00 – 19:00 | same |
+| Training: 4 runs, 2 H100s, unattended | Wed 19:00 – Thu 06:00 | one interruption fixed at 22:15 |
+| Evaluation, analysis, figures | Thu 07:00 – 07:45 | agent writes the analysis, I run it |
+| Write-up | Thu 07:45 – evening | agent drafts, I review and edit |
+
+Commit timestamps and the run logs record these times. Several problems were caught by checking real output against
+expectations rather than trusting the code: the mirrored-motion leak (found by inspecting the metadata before
+splitting), a command-line flag that silently dropped two held-out sets, a wrong metadata path, and the interrupted
+D40 run.

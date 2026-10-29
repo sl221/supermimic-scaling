@@ -112,11 +112,10 @@ Commit timestamps and the run logs record the times above.
 
 ## Caveats
 
-- **One seed per data size,** as in the paper. Differences between 40 h and 254 h are within seed noise.
+- **One seed per data size,** as in the paper.
 - **40,000 of 320,000 iterations.** Mid-training results, not converged ones.
 - **"Unseen motion" relies on the dataset's labels.** Two differently named motions can be similar. LAFAN1 is the clean
   test.
-- **The 40 h run was interrupted** at iteration 6,400 and resumed from its 4,000 checkpoint.
 
 <details>
 <summary>Related results</summary>

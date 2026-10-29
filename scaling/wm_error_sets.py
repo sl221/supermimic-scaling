@@ -6,6 +6,9 @@ build the world model is created once.
 
   python scaling/wm_error_sets.py --data $DATA --out $DATA/results/wm_error_sets.json
 
+With ``--own-train``, also scores each run's world model on its own training-motion windows (``train``, from the
+training-motion evaluation in ``post_runs.sh``), the like-for-like counterpart of the held-out sets.
+
 Writes ``{step: {set: {run: {"nse_1step", "nse_8step"}}}}``.
 """
 
@@ -28,6 +31,7 @@ def main(
     runs: list[str] = ["D1", "D7", "D40", "Dall"],
     sets: list[str] = ["motion", "performer", "lafan1"],
     device: str = "cuda:0",
+    own_train: bool = False,
 ) -> None:
     from wm_error import build_world_model, load_windows, score
 
@@ -35,7 +39,7 @@ def main(
     report = json.loads(out.read_text()) if out.exists() else {}
     wm = None
     for step in steps:
-        if step in report and all(s in report[step] for s in sets):
+        if step in report and all(s in report[step] for s in sets) and (not own_train or "train" in report[step]):
             continue
         windows = {}
         for s in sets:
@@ -55,6 +59,11 @@ def main(
             for s, w in windows.items():
                 err = score(wm, w, device)
                 report[step][s][run] = {"nse_1step": err[0], "nse_8step": err[-1]}
+            own = data / "results" / run / step / "train_windows.pt"
+            if own_train and own.exists():
+                w, _ = load_windows(str(own))
+                err = score(wm, w, device)
+                report[step].setdefault("train", {})[run] = {"nse_1step": err[0], "nse_8step": err[-1]}
         line = " | ".join(f"{s} " + " ".join(f"{r}={1e3 * v['nse_8step']:.1f}" for r, v in report[step][s].items()) for s in windows)
         print(f"{step}: {line}", flush=True)
         out.parent.mkdir(parents=True, exist_ok=True)

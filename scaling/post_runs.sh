@@ -3,7 +3,8 @@
 #   1. a fixed sample of each run's OWN training clips (up to 2000, 10 s segments) evaluated at every checkpoint
 #      -> compute to target on training motions, the paper's Fig. 3(b) protocol;
 #   2. every run's world model scored on the same pooled held-out windows, at every checkpoint step;
-#   3. tables and figures.
+#   3. the same per held-out set and on each run's own training motions (wm_error_sets.py);
+#   4. tables and figures.
 # Usage (one GPU pod, from the repository root):  DATA=/workspace/data bash scaling/post_runs.sh
 set -euo pipefail
 : "${DATA:?set DATA to the shared volume}"
@@ -34,5 +35,8 @@ for c in "$DATA"/logs/Dall/ckpt_00*.pt "$DATA"/logs/D40/ckpt_00*.pt; do basename
   # held-out windows only (motion, performer, lafan1), not the training samples
   uv run python scaling/wm_error.py --ckpt $ckpts --windows "$DATA/results/*/$step/[mpl]*_windows.pt" --out "$out" 2>&1 | tail -4
 done
+
+# per held-out set, plus each run's own training-motion windows (figures 3 and 3b)
+uv run python scaling/wm_error_sets.py --data "$DATA" --out "$DATA/results/wm_error_sets.json" --own-train
 
 uv run --with matplotlib python scaling/analyze.py --data "$DATA" --out-dir "$DATA/analysis"

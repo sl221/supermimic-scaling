@@ -218,7 +218,9 @@ def fmt(x, nd=3):
 def markdown(res: dict) -> str:
     runs = res["runs"]
     k = res["last_k"]
-    lines = [f"Held-out mean return (mean of the last {k} checkpoints; min–max in brackets) and failure rate.", ""]
+    sizes = ", ".join(f"{n} = {fmt(r.get('hours_data'), 0)} h" for n, r in runs.items())
+    lines = [f"Runs by training data: {sizes}.", "",
+             f"Held-out mean return (mean of the last {k} checkpoints; min–max in brackets) and failure rate.", ""]
     sets = [s for s in SETS if any(s in r["sets"] for r in runs.values())]
     lines.append("| Run | Data (h) | " + " | ".join(SET_LABELS[s] for s in sets) + " |")
     lines.append("|---|---:|" + "---:|" * len(sets))

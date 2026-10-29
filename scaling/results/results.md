@@ -1,3 +1,5 @@
+Runs by training data: D1 = 1 h, D7 = 7 h, D40 = 40 h, Dall = 254 h.
+
 Held-out mean return (mean of the last 3 checkpoints; min–max in brackets) and failure rate.
 
 | Run | Data (h) | Unseen motions | Unseen performers | LAFAN1 | Own training motions |

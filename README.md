@@ -61,7 +61,7 @@ Checking real output against expectations caught:
 - **A wrong metadata path** in the download step.
 - **An interrupted run** (40 h), resumed from its checkpoint.
 
-Commit timestamps and the run logs record the times above.
+Commit timestamps and the run logs record the times from the code onwards.
 
 </details>
 

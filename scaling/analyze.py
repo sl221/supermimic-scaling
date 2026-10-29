@@ -165,7 +165,9 @@ def summarize(data: Path, last_k_ckpts: int = 3, targets: tuple[float, ...] = (0
             for t in targets:
                 c = crossing(its, vals, t)
                 cross[f"{t:g}"] = None if c is None else {"iterations": round(c), "gpu_hours": round(hours_at(log, c), 3) if log else None}
-            r["sets"][s] = {**lk, "curve": {"iterations": its, "mean_norm_return": vals}, "to_target": cross}
+            ib = max(range(len(vals)), key=vals.__getitem__)
+            best = {"mean_norm_return": vals[ib], "iteration": its[ib]}
+            r["sets"][s] = {**lk, "best": best, "curve": {"iterations": its, "mean_norm_return": vals}, "to_target": cross}
         wm_its = sorted(it for it in pooled if run in pooled[it])
         if wm_its:
             sel = wm_its[-last_k_ckpts:]
@@ -195,6 +197,15 @@ def markdown(res: dict) -> str:
             v = r["sets"].get(s)
             cells.append("–" if v is None else f"{v['mean']:.3f} [{v['min']:.3f}–{v['max']:.3f}], fail {100 * v['fail_rate']:.1f}%")
         lines.append(f"| {name} | {fmt(r['hours_data'], 1)} | " + " | ".join(cells) + " |")
+    lines += ["", "Best single checkpoint (chosen by looking at the same evaluation, so optimistic) and its iteration.", ""]
+    lines.append("| Run | " + " | ".join(SET_LABELS[s] for s in sets) + " |")
+    lines.append("|---|" + "---:|" * len(sets))
+    for name, r in runs.items():
+        cells = []
+        for s in sets:
+            b = r["sets"].get(s, {}).get("best")
+            cells.append("–" if not b else f"{b['mean_norm_return']:.3f} @ {b['iteration'] // 1000}k")
+        lines.append(f"| {name} | " + " | ".join(cells) + " |")
     lines += ["", "World-model 8-step error (normalised, x1e-3): pooled held-out windows vs the run's own training rollouts.", ""]
     lines.append("| Run | Pooled held-out | Own training rollouts (online) | it/s | GPU-h trained |")
     lines.append("|---|---:|---:|---:|---:|")

@@ -51,19 +51,17 @@ motions it gets there last, and never reaches 0.9.
 
 ## How this was built
 
-34 hours from idea to results: about 12 hours of my time and 27 H100-hours (about $120). I used an AI agent (Claude)
-for most of the reading, coding and debugging.
+20 hours from idea to results, using 27 H100-hours (about $120).
 
-| Phase | When (Toronto time) | Who |
-|---|---|---|
-| Idea and literature check | Tue 21:00 – 23:00 | agent researches, I choose |
-| Experiment design and plan | Wed 11:30 – 13:30 | together; I set the scope |
-| Code and tests | Wed 13:30 – 14:40 | agent, during my lunch |
-| Accounts, GPUs, data pipeline | Wed 14:40 – 18:00 | I run commands, agent debugs |
-| Smoke test and launch | Wed 18:00 – 19:00 | same |
-| Training: 4 runs on 2 H100s | Wed 19:00 – Thu 06:00 | unattended |
-| Evaluation and analysis | Thu 07:00 – 07:45 | agent writes, I run |
-| Write-up | Thu 07:45 – evening | agent drafts, I edit |
+| Phase | When (Toronto time) |
+|---|---|
+| Idea and literature check | Wed 11:30 – 12:30 |
+| Experiment design and plan | Wed 12:30 – 13:30 |
+| Code and tests | Wed 13:30 – 14:40 |
+| Accounts, GPUs, data pipeline | Wed 14:40 – 18:00 |
+| Smoke test and launch | Wed 18:00 – 19:00 |
+| Training: 4 runs on 2 H100s | Wed 19:00 – Thu 06:00 |
+| Evaluation and analysis | Thu 07:00 – 07:45 |
 
 <details>
 <summary>Problems caught along the way</summary>

@@ -1,4 +1,4 @@
-"""Regenerate every figure in scaling/README.md from the data stored in the repository (no GPU, no dataset needed).
+"""Regenerate every figure in the README from the data stored in the repository (no GPU, no dataset needed).
 
   python scaling/make_figures.py
 

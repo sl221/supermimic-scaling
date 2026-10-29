@@ -10,35 +10,38 @@ Built on [LaoYang1994/SuperMimic-Rep](https://github.com/LaoYang1994/SuperMimic-
 
 ## Findings
 
-### 1. The policy: within BONES-SEED, 40 hours is enough, and small data memorizes
+### 1. More data helps the policy generalize, with returns that diminish sooner in distribution than out of it
 
 ![Tracking return vs training data](figures/fig1_heldout_vs_data.png)
 
-The two BONES-SEED held-out sets stop improving at 40 h. LAFAN1 keeps improving up to 254 h.
+As data grows, return on unseen BONES-SEED motions and performers rises, then levels off. On LAFAN1, recorded in a
+different studio, it keeps rising for longer. Return on the training motions themselves drifts down, so the gap between
+training and new motions closes.
 
 ![Learning curves](figures/fig2_learning_curves.png)
 
-Over training, the 1 h run is best on its own motions and worst on everything new. More training does not close the
-gap.
+With less data, the policy fits its own motions better and generalizes worse. Training longer does not close the gap.
 
-### 2. The world model tells the same story, and memorizes motions, not performers
+### 2. The world model follows the same trend, and overfits to motions when data is scarce
 
 ![World-model error vs training data](figures/fig3_wm_vs_data.png)
 
-On unseen BONES-SEED motions and performers, the world model's error stops improving between 7 h and 40 h. On LAFAN1
-it keeps falling up to 254 h. This matches the policy.
+As data grows, the world model's error on new motions falls, then levels off, again later out of distribution than in
+it. The gap between its error on training motions and on new motions closes.
 
 ![World-model error during training](figures/fig3b_wm_curves.png)
 
-With 1 h of data, the world model keeps improving on its own motions and on new performers, but gets *worse* on new
-motions and on LAFAN1 as training continues. The first checkpoint is off the top of some panels.
+With scarce data, the world model keeps improving on its own motions and on new performers, but gets *worse* on new
+motions as training continues. It memorizes motions, not performers. The first checkpoint is off the top of some
+panels.
 
-### 3. Measured on training motions, small data looks cheap. On new motions, it is the most expensive.
+### 3. Measured on training motions, less data looks cheaper. On new motions, more data is cheaper.
 
 ![Iterations to target](figures/fig4_compute_to_target.png)
 
-The paper measures compute to a target return on training motions, where the 1 h run gets there first. On unseen
-motions it gets there last, and it never reaches 0.9 there or 0.7 on LAFAN1.
+The paper measures compute to a target return on training motions, where smaller datasets generally get there first.
+On unseen motions the order flips: larger datasets generally get there sooner, and the smallest never reaches the
+higher targets.
 
 ## How this was built
 

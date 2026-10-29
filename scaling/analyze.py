@@ -274,7 +274,7 @@ def _end_labels(ax, items, min_gap: float = 0.06):
 def _hours_axis(ax, hours):
     ax.set_xscale("log")
     ax.set_xticks(hours)
-    ax.set_xticklabels([f"{h:.0f} h" if h >= 10 else f"{h:g} h" for h in hours])
+    ax.set_xticklabels([f"{h:.0f} h" if h >= 10 or abs(h - round(h)) < 0.05 else f"{h:.1f} h" for h in hours])
     ax.minorticks_off()
     ax.set_xlabel("Training data (hours of motion)", color=INK2, fontsize=10)
 
@@ -313,7 +313,7 @@ def figures(res: dict, out_dir: Path) -> list[Path]:
     ax.set_xlim(min(hours) / 1.6, max(hours) * 12)
     _end_labels(ax, ends)
     ax.set_ylabel(f"Mean return (last {res['last_k']} checkpoints)", color=INK2, fontsize=10)
-    ax.set_title("Held-out tracking return vs training data", loc="left", color=INK, fontsize=12)
+    ax.set_title("Tracking return vs training data", loc="left", color=INK, fontsize=12)
     ax.legend(frameon=False, fontsize=9, loc="lower right")
     fig.tight_layout()
     written.append(out_dir / "fig1_heldout_vs_data.png")
@@ -341,7 +341,7 @@ def figures(res: dict, out_dir: Path) -> list[Path]:
     # 3. world-model error vs data size (both are the same normalised error, so one axis)
     series = [("pooled_nse8", "Held-out windows (pooled)", "#2a78d6", "o"), ("online_nse8", "Own training rollouts", "#eb6834", "s")]
     if any(runs[n].get(k) is not None for n in names for k, *_ in series):
-        fig, ax = plt.subplots(figsize=(7.2, 4.2), facecolor=SURFACE)
+        fig, (ax, ax2) = plt.subplots(1, 2, figsize=(12.4, 4.2), facecolor=SURFACE, gridspec_kw={"width_ratios": [1.15, 1]})
         _style(ax)
         ends = []
         for key, label, color, mk in series:
@@ -354,8 +354,19 @@ def figures(res: dict, out_dir: Path) -> list[Path]:
         ax.set_ylim(bottom=0)
         _end_labels(ax, ends)
         ax.set_ylabel("8-step error (x1e-3, normalised)", color=INK2, fontsize=10)
-        ax.set_title("World-model error vs training data", loc="left", color=INK, fontsize=12)
+        ax.set_title(f"World-model 8-step error vs training data (last {res['last_k']} checkpoints)", loc="left", color=INK, fontsize=11)
         ax.legend(frameon=False, fontsize=9, loc="upper right")
+        # right: the held-out error over training, per run (D1's world model gets worse on held-out windows)
+        _style(ax2)
+        for n in names:
+            c = runs[n].get("pooled_nse8_curve")
+            if c:
+                ax2.plot([i / 1000 for i in c["iterations"]], [1e3 * v for v in c["nse8"]], color=RUN_COLORS[n], linewidth=2,
+                         marker="o", markersize=4, label=n)
+        ax2.set_ylim(bottom=0)
+        ax2.set_xlabel("Iteration (thousands)", color=INK2, fontsize=10)
+        ax2.set_title("Held-out (pooled) 8-step error during training", loc="left", color=INK, fontsize=11)
+        ax2.legend(frameon=False, fontsize=9, title="Run", title_fontsize=9, loc="upper right")
         fig.tight_layout()
         written.append(out_dir / "fig3_wm_error.png")
         fig.savefig(written[-1], dpi=160, facecolor=SURFACE)
@@ -371,14 +382,14 @@ def figures(res: dict, out_dir: Path) -> list[Path]:
                 pts = []
                 for n in names:
                     c = runs[n]["sets"].get(s, {}).get("to_target", {}).get(f"{t:g}")
-                    if c and c.get("gpu_hours") is not None:
-                        pts.append((runs[n]["hours_data"], c["gpu_hours"]))
+                    if c:
+                        pts.append((runs[n]["hours_data"], c["iterations"] / 1000))
                 if pts:
                     ax.plot(*zip(*pts), color=SET_COLORS[s], marker=SET_MARKERS[s], markersize=7, linewidth=2,
                             markeredgecolor=SURFACE, markeredgewidth=1.5, label=SET_LABELS[s])
             _hours_axis(ax, hours)
-            ax.set_title(f"GPU-hours to a return of {t:g}", loc="left", color=INK, fontsize=10)
-        axes[0][0].set_ylabel("GPU-hours (H100 SXM)", color=INK2, fontsize=10)
+            ax.set_title(f"Iterations to a mean return of {t:g} (missing = never)", loc="left", color=INK, fontsize=10)
+        axes[0][0].set_ylabel("Iterations (thousands)", color=INK2, fontsize=10)
         handles, labels = {}, {}
         for ax in axes[0]:
             for h, l in zip(*ax.get_legend_handles_labels()):

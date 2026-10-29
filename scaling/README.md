@@ -37,7 +37,7 @@ Mean normalized return; min–max ranges, failure rates and best checkpoints are
    seed noise, and the failure rate halves (16% → 7%). Whether it still improves *after* 40 h is less certain: the
    +0.024 step from 40 h to 254 h is the size of the seed-to-seed spreads reported in the community (0.007–0.03), and
    D40's LAFAN1 score moved between 0.725 and 0.771 over its last three checkpoints. Dall is ahead of D40 on LAFAN1 at
-   every checkpoint from 24k on except 36k, which is suggestive, not conclusive.
+   every checkpoint from 8k to 40k (9 of 10), which is suggestive, not conclusive.
 3. **The generalization gap closes with data.** The gap between a run's own training motions and unseen motions shrinks
    from 0.093 (1 h) to 0.031 (7 h), 0.016 (40 h) and about zero (254 h). (The training column uses a 2,000-clip sample of
    each run's own subset, so it differs in clips as well as policy; the held-out columns are like-for-like.)

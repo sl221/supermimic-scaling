@@ -8,12 +8,6 @@ tested it on three held-out sets.
 
 *Unseen BONES-SEED motions and performers flatten after 40 h. LAFAN1 keeps rising.*
 
-**Takeaways**
-
-- Unseen BONES-SEED motions: no gain beyond 40 h of data (at equal compute).
-- A different motion-capture source (LAFAN1): large gains, best with all the data.
-- With 1 h of data, the world model is far worse on unseen transitions, and it overfits while the policy does not.
-
 | Training data | Unseen motions | Unseen performers | LAFAN1 |
 |---|---:|---:|---:|
 | 1 h | 0.867 | 0.872 | 0.624 |
@@ -29,82 +23,31 @@ Built on [LaoYang1994/SuperMimic-Rep](https://github.com/LaoYang1994/SuperMimic-
 
 ## Findings
 
-### 1. Unseen BONES-SEED motions: no gain beyond 40 h
+### 1. Within BONES-SEED, 40 hours is enough. Beyond it, extra data only helps on motions from elsewhere.
 
-Return on unseen motions: 0.867 → 0.909 → 0.926 → 0.926 (1 h → 254 h).
+In the figure above, the two BONES-SEED held-out sets stop improving at 40 h. LAFAN1, recorded in a different studio,
+keeps improving up to 254 h, though with one seed the last step could be noise.
 
-<details>
-<summary>Details</summary>
-
-- Unseen performers show the same pattern.
-- The paper found the same plateau on training motions.
-- 1 h of data gives a lower ceiling, not a collapse. It plateaus at about 0.865 by 20k iterations and does not decline.
-  But it never reaches 0.90 and fails 4% of unseen-performer segments (0.1% at 40 h and 254 h).
-- The gap between training and unseen motions shrinks: 0.093 (1 h), 0.031 (7 h), 0.016 (40 h), about 0 (254 h).
-  The training score uses a sample of each run's own data, so it is measured on different clips for each run.
-
-</details>
+### 2. Small data memorizes.
 
 ![Learning curves](figures/fig2_learning_curves.png)
 
-*Learning curves on each evaluation set.*
+The 1 h run scores highest of all on its own training motions and lowest on everything new. Its curves flatten early,
+and more training does not close the gap.
 
-### 2. A different capture source (LAFAN1): keeps improving
-
-Return 0.62 → 0.78 and failures 16% → 7% (1 h → 254 h).
-
-<details>
-<summary>Details</summary>
-
-- The last step (+0.024, 40 h → 254 h) is within seed noise (see [Caveats](#caveats)).
-- 254 h is ahead of 40 h on LAFAN1 at 9 of 10 checkpoints.
-
-</details>
-
-### 3. The world model: small data overfits
-
-Error on unseen transitions (8-step, ×10⁻³): 44.5 → 21.3 → 17.9 → 17.7 (1 h → 254 h).
+### 3. The world model memorizes even more than the policy.
 
 ![World-model error](figures/fig3_wm_error.png)
 
-*Left: error vs data. Right: the 1 h world model gets worse with more training.*
+With 1 h of data, the world model predicts its own training data well but new motions badly (left). As training
+continues, it gets *worse* on new motions (right), while its policy holds steady.
 
-<details>
-<summary>Details</summary>
-
-- On its own training rollouts, the 1 h model's error is only 7.2. It is 6× worse on unseen transitions (1.4× at 254 h).
-- Its unseen-transition error is lowest at 8k iterations (31) and rises to 47 by 40k. Its policy's held-out return
-  does not drop.
-- Error on its own rollouts rises with data (7.2 → 13.0), a trend similar to the paper's Fig. 3(c).
-- The error is the paper's metric: 8 steps open-loop on logged actions. Every run's world model is scored on the same
-  transitions, recorded while all four policies played the held-out sets. At each checkpoint, those come from that
-  checkpoint's policies.
-
-</details>
-
-### 4. Compute to target: the paper's ranking reverses
-
-Iterations to reach a return of 0.85:
-
-- **On training motions,** 1 h is fastest (5.7k vs 9.3k for 254 h), as in the paper's Fig. 3(b).
-- **On unseen motions,** 1 h is slowest (10.4k vs 7.3k for 254 h), and it never reaches 0.90.
+### 4. Measured on training motions, small data looks cheap. On new motions, it is the most expensive.
 
 ![Iterations to target](figures/fig4_compute_to_target.png)
 
-<details>
-<summary>Details</summary>
-
-| Training data | Training motions | Unseen motions |
-|---|---:|---:|
-| 1 h | 5.7k | 10.4k |
-| 7 h | 7.4k | 7.8k |
-| 40 h | 6.7k | 7.4k |
-| 254 h | 9.3k | 7.3k |
-
-Crossings are interpolated between checkpoints, which are 4,000 iterations apart. GPU-hours are in
-[`results/results.md`](results/results.md).
-
-</details>
+The paper measures compute to a target return on training motions, where the 1 h run gets there first. On unseen
+motions it gets there last, and never reaches 0.9.
 
 ## How this was built
 
@@ -176,16 +119,6 @@ Commit timestamps and the run logs record the times above.
 - **"Unseen motion" relies on the dataset's labels.** Two differently named motions can be similar. LAFAN1 is the clean
   test.
 - **The 40 h run was interrupted** at iteration 6,400 and resumed from its 4,000 checkpoint.
-
-<details>
-<summary>More on the caveats</summary>
-
-- Other reproductions report seed-to-seed spreads of 0.007–0.03. The LAFAN1 step from 40 h to 254 h (+0.024) is that
-  size. The 40 h run's LAFAN1 score moved between 0.725 and 0.771 over its last three checkpoints.
-- The resumed run refilled its replay buffer, which checkpoints do not store.
-- The 254 h run briefly shared its GPU with a stray process. This changed its wall-clock time, not its iterations.
-
-</details>
 
 <details>
 <summary>Related results</summary>
